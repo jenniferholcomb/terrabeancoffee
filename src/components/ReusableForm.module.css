@@ -1,0 +1,61 @@
+select.nameInput {
+  border-radius: 20px;
+  border: 1.5px solid #468E54;
+  background: #FFFFFD;
+  min-width: 179px !important;
+  min-height: 25px !important;
+  color: #000;
+  font-family: Mulish;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.26px;
+  padding: 0 0px 0 15px;
+
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+select.originInput {
+  background-size: 20px, 15px;
+  background-repeat: no-repeat, no-repeat;
+  background-position: calc(10%) 68%, calc(100% - 10px) 68%;
+  padding-left: 45px;
+}
+
+select.placeholderOrigin {
+  padding-left: 15px;
+  color: #7B7773;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.28px;
+  background-position: calc(100% - 10px) 78%;
+  background-size: 15px;
+  background-image: url("./../img/green-caret.svg");
+}
+
+select.roastInput {
+  background-image: url("./../img/green-caret.svg");
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px) 68%;
+}
+
+select.nameInputBrazil {
+  background-image: url("./../img/brazilFlag.png"), url("./../img/green-caret.svg");
+}
+
+select.nameInputColombia {
+  background-image: url("./../img/colombiaFlag.png"), url("./../img/green-caret.svg");
+}
+
+select.nameInputIndia {
+  background-image: url("./../img/indiaFlag.png"), url("./../img/green-caret.svg");
+}
+
+select.nameInputPhillipines {
+  background-image: url("./../img/philFlag.png"), url("./../img/green-caret.svg");
+}
+
