@@ -8,6 +8,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akatab:wght@400;500;600;700;800;900&family=Dongle&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Fira+Mono:wght@400;500;700&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 body {
   margin: 0;
@@ -141,7 +142,7 @@ input[type=number] {
 
 .menuContent {
   position: fixed;
-  left: 30px;
+  left: 2.12rem;
   padding: 42px 0 0 0px;
 }
 
@@ -151,11 +152,11 @@ input[type=number] {
   padding-bottom: 15px;
   color: rgba(255, 255, 255, 0.95);
   font-family: Mulish;
-  font-size: 14px;
-  font-style: normal;
+  font-size: 0.875rem;
+  font-style: italic;
   font-weight: 600;
   line-height: normal;
-  letter-spacing: 0.98px;
+  letter-spacing: 0.06125rem;
   text-transform: uppercase;
 }
 
@@ -216,19 +217,20 @@ input[type=number] {
   position: fixed;
   top: 10px;
   right: 3%;
-  z-index: 997;
+  padding-top: 42px;
   display: flex;
   flex-direction: row;
+  z-index: 9999;
 }
 
 .cart {
-  color: #fffffd;
-  text-align: center;
+  color: rgba(255, 255, 255, 0.95);
   font-family: Mulish;
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.06125rem;
   text-transform: uppercase;
   margin: 0;
   align-self: center;
@@ -243,12 +245,13 @@ input[type=number] {
   align-self: center;
   justify-items: center;
   align-content: center;
-  /* padding-top: 3px; */
   padding-left: 5px;
   pointer-events: all;
   cursor: pointer;
   max-width: 100%;
   max-height: 17px;
+  z-index: 9999999;
+  transform: translateY(-1px);
 }
 
 .cartCircle {
@@ -268,7 +271,7 @@ input[type=number] {
   line-height: normal;
   margin: 0;
   text-align: start;
-  margin-top: -17px;
+  margin-top: -18px;
 }
 
 #cartHeader {
@@ -537,27 +540,25 @@ input.cartQuantityInput {
   content: "";
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  /* height: 18rem; */
-  background-image:   url('./img/coffeeBeans.webp');
-  filter: saturate(60%);
+  width: 71.1875rem;
+  height: 35.6875rem;
+  flex-shrink: 0;
+  aspect-ratio: 1139/571;
+  background-image:   url('/img/terraHeader.webp');
   background-repeat: no-repeat;
   position: absolute;
   background-size: cover;
-  box-shadow: 0px 3px 9.1px 1px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0px 3px 9.1px 1px rgba(0, 0, 0, 0.25); */
 }
 
 .centerPage {
   width: 100%;
   height: 100%;
   display: grid;
-  place-items: center;
-  color: #ff43ea;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 50% -1rem;
+  /* background-position: 50% -1rem; */
 }
 
 .centerGradient {
@@ -565,15 +566,33 @@ input.cartQuantityInput {
   top: 0;
   left: 0;
   right: 0;
-  background: 
-  linear-gradient(to bottom, rgba(255,255,253,.1), rgba(255,255,253,.3));
+  background: rgba(78, 100, 62, 0.28);
+  border-bottom: 3px solid #FFFCFC;
   z-index: 989;
+  height: 35.6875rem;
+}
+
+
+.shop {
+  display: grid;
+  grid-template-columns: 1fr 71.1875rem 1fr;
+  width: 100%;
+  min-height: 100vh;
+  position: relative; 
+  background: linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
+}
+
+.shopLayer-left, .shopLayer-right {
+  background: rgba(29, 69, 37, 0.10);
   height: 100%;
 }
 
-.centerPageBottom {
-  grid-column: 2;
-  padding: 0 10px 0 10px;
+.shopLayer-left {
+  grid-column: 1;
+}
+
+.shopLayer-right {
+  grid-column: 3;
 }
 
 header {
@@ -583,10 +602,8 @@ header {
 
 .mast-head {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  max-width: 100%;
-  height: 100%;
-  margin-top: 78px;
+  grid-template-columns: 35% 30% 35%;
+  min-width: 100%;
   position: relative;
   z-index: 990;
 }
@@ -594,17 +611,35 @@ header {
 .logoContainer {
   grid-column: 2;
   display: grid;
+  justify-content: center;
   max-width: 100%;
   max-height: 100%;
-  align-content: center;
-  justify-content: center;
-  /* padding-bottom: 80px; */
 }
 
 .logo {
   max-width: 150px;
   max-height: 150px;
-  align-self: center;
+}
+
+.awardsContainer {
+  grid-column: 3;
+  display: flex;
+  flex-direction: row;
+  gap: .65rem;
+  padding-top: 1rem;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.award-1 {
+  width: 4rem;
+  height: 4rem;
+}
+
+.award-2 {
+  width: 3rem;
+  height: 5rem;
+  padding-right: 1.34rem;
 }
 
 h1#header {
@@ -735,19 +770,25 @@ a {
   pointer-events: all;
 } */
 
-#container-items-list {
+.container-items-list {
+  /* grid-column: 2;
   display: flex;
-  /* position: relative; */
-  /* align-items: center; */
   flex-flow: row wrap;
-  /* flex-direction: row; */
   justify-content: space-evenly;
   column-gap: 1rem;
   row-gap: 2rem;
   max-width: 100%;
   padding-bottom: 80px;
-  padding-top: 40px;
-  /* flex: 6; */
+  padding-top: 40px; */
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* .cardContainer {
@@ -1912,7 +1953,7 @@ textarea {
 @media all and (min-width: 730px) {
   
   .centerPage {
-    background-position: 50% -3rem;
+    /* background-position: 50% -3rem; */
   }
 
 }
@@ -1920,23 +1961,12 @@ textarea {
 @media all and (min-width: 600px) {
 
   .centerPage::before {
-    background-image:   url('./img/coffeeBeans.webp');
-    filter: saturate(60%);
-    background-repeat: no-repeat;
-    position: absolute;
-    background-size: cover;
-    box-shadow: 0px 3px 9.1px 1px rgba(0, 0, 0, 0.25);
+    /* background-image:   url('/img/terraHeader.webp'); */
+    /* box-shadow: 0px 3px 9.1px 1px rgba(0, 0, 0, 0.25); */
   }
 
   .mast-head {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    max-width: 100%;
-    height: 100%;
-    margin-top: 60px;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 9999;
+
   }
 
   .container-details {
@@ -2272,8 +2302,138 @@ textarea {
 @media all and (min-width: 834px) {
 
   .appContainer {
+
+  }
+
+  .home {
+    /* width: 100vw;
+    background: rgba(29, 69, 37, 0.20); */
+    height: 58.875rem;
+    background: linear-gradient(0deg, rgba(17, 24, 12, 0.90) 0%, rgba(17, 24, 12, 0.90) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat;
     display: grid;
-    grid-template-columns: 7% 1fr 7%;
+    grid-template-columns: 1fr 71.1875rem 1fr;
+  }
+
+  .homeLayer {
+    position: absolute;
+    width: 100vw;
+    height: 58.875rem;
+    background: rgba(29, 69, 37, 0.20);
+  }
+
+  .homeContent {
+    grid-column: 1 / span 3;
+    height: 18.8125rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .homeImages {
+    width: 61.8%;
+    height: 100%;
+    background: rgba(217, 217, 217, 0.15);
+    padding: .69rem 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: end;
+  }
+
+  .homeImages img {
+    max-height: 100%;
+    padding-right: 3.5rem;
+  }
+
+  .homeCopy {
+    width: 38.2%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .copy {
+    padding: 0 3.5rem;
+    color: #FFF;
+    font-family: Mulish;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.5rem;
+    letter-spacing: 0.225rem;
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  .intro {
+    color: #FFF;
+    font-family: Epilogue;
+    font-size: 1.375rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5rem; /* 109.091% */
+    letter-spacing: 0.55rem;
+    text-transform: uppercase;
+  }
+
+  .line {
+    width: 92%;
+    height: 0.125rem;
+    background: #FFF;
+    align-self: flex-end;
+    margin: 1.94rem 0;
+  }
+
+  .tagHead1 {
+    color: #FFFFFD;
+    text-align: left;
+    font-family: Epilogue;
+    font-size: 1.375rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.9375rem; /* 140.909% */
+    letter-spacing: 0.55rem;
+    text-transform: uppercase;
+    padding-left: 3.5rem;
+    margin: 0;
+  }
+
+  .textLine2 {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tagHead2 {
+    width: 100%;
+    max-height: 100%;
+    text-align: right;
+    color: #FFFFFD;
+    font-family: Epilogue;
+    font-size: 1.125rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.9375rem;
+    letter-spacing: 0.57375rem;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .boldCopy {
+    color: #FFFFFD;
+    font-family: Epilogue;
+    font-size: 1.375rem;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0.70125rem;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .bean {
+    padding-left: .75rem;
+    padding-right: 3.88rem;
+    width: 1.306rem;
+    height: 1.75rem;
   }
 
   .topNav {
@@ -2281,9 +2441,7 @@ textarea {
   }
 
   .mast-head {
-    height: 120%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+
   }
 
   .logo {
@@ -2292,16 +2450,16 @@ textarea {
   }
 
   .leftPage, .rightPage {
-    background: linear-gradient(180deg, rgba(255, 255, 253, 0.10) 31.51%, rgba(133, 72, 33, 0.10) 87.09%);
-    /* background: rgba(29, 69, 37, 0.05); */
     display: flex;
+    background: linear-gradient(180deg, rgba(255, 255, 253, 0.10) 31.51%, rgba(133, 72, 33, 0.10) 87.09%);
     max-width: 100%;
+    max-height: 100%;
   }
   
   .leftPage {
     /* display: grid;
     justify-items: center; */
-    width: 7%;
+    grid-column: 1;
     height: 100%;
     position: fixed;
     bottom: 0;
@@ -2322,7 +2480,6 @@ textarea {
     grid-column: 3;
     display: grid;
     /* justify-items: center; */
-    width: 7%; 
     height: 100%;
     position: fixed;
     bottom: 0;
@@ -2332,28 +2489,22 @@ textarea {
   .cartContainer {
     top: 15px;
     right: 2%;
-    display: flex;
-    flex-direction: column;
   }
 
   .cart {
-    color: #343434;
     align-self: first baseline;
   }
 
   .cartCountContainer {
-    padding-top: 2px;
-    padding-left: 0;
+    padding-left: .5rem;
     width: 100%;
     max-height: 20px;
   }
 
   .cartCircle {
-    fill: #343434;
   }
   
   .cartCount {
-    color: #fffffd;
   }
 
   .centerPage {
@@ -2361,13 +2512,8 @@ textarea {
   }
 
   .centerPageBottom {
-    border-top: 6px solid #50A060;
+    
   }
-
-  .footer {
-    position: fixed;
-  }
-
 }
 
 @media all and (min-width: 900px) {
@@ -2399,7 +2545,6 @@ textarea {
 
   .cartCount {
     font-size: 12px;
-    margin-top: -18px;
   }
 
 }
@@ -2407,27 +2552,27 @@ textarea {
 @media all and (min-width: 1024px) {
 
   .appContainer {
-    grid-template-columns: 5rem 1fr 5rem;
+    grid-template-columns: 1fr 71.1875rem 1fr;
   }
 
   .leftPage, .rightPage {
-    width: 5rem;
-  }
 
+  }
+/* 
   .centerPage {
     height: 100%;
-    background-size: cover;
-    background-position: 50% -5.9rem;
-  }
+  } */
 
   .mast-head {
-    height: 18rem;
+    height: 35.6875rem;
     margin: 0;
   }
 
   .logo {
-    max-width: 196px;
-    max-height: 196px;
+    min-width: 15.3125rem;
+    min-height: 15.3125rem;
+    align-self: last baseline;
+    padding-bottom: 4.56rem;
   }
 
   .footerText {
@@ -2533,8 +2678,7 @@ textarea {
 
 @media all and (min-width: 1270px) {
 
-  .centerPageBottom {
-    padding: 0 8px 0 8px;
+  .shop {
   }
 
   .menuIconContainer {

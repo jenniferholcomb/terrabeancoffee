@@ -9,6 +9,10 @@ import InventoryWidget from "./InventoryWidget";
 import Cart from "./Cart";
 import { v4 } from 'uuid';
 
+import roasters from "/img/coffeeRoasters.webp";
+import coffeeMugs from "/img/coffee.webp";
+import coffeeBean from "/img/terraBeanBean.webp";
+
 import colImg from "./../img/colombiaBag.png";
 import colImgNo from "./../img/colombiaBagNoName.png";
 import colFlag from "./../img/colombiaFlag.png";
@@ -222,174 +226,197 @@ class MenuController extends React.Component {
     return (
       <React.Fragment>
         <div className="appContainer">
-          <div className="topNav"></div>
-          <div className="leftPage"></div>
-          <div className="centerPage"> 
-            <div className="centerGradient"></div>
-            <Header /> 
-          </div>
-          <div className="centerPageBottom">
-            {
-              screenChange && this.state.selectedItem !== null ? 
-                null
-              : 
-                <React.Fragment>
-                  <ItemsList itemsList={ this.state.itemsList } 
-                            onItemSelection={ this.handleChangingSelectedItem } 
-                            countryList={ this.state.countryList } />
-
-                </React.Fragment>
-            }
-          </div>
-          {
-            this.state.cartVisible ?
-              <React.Fragment>
-                <div className="container-details">
-                  <div className="closeIconWindow" onClick={ this.handleCartClick } alt="close icon"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                      <path d="M3.13341 23.0834L0.916748 20.8667L9.78341 12L0.916748 3.13335L3.13341 0.916687L12.0001 9.78335L20.8667 0.916687L23.0834 3.13335L14.2167 12L23.0834 20.8667L20.8667 23.0834L12.0001 14.2167L3.13341 23.0834Z" />
-                    </svg>
-                  </div> 
-                  <Cart cartList={this.state.cartItems}
-                        onEditingCartItem={this.handleCartQuantityUpdate}
-                        onRemovingCartItem={this.handleCartItemDelete}
-                        cartTotal={this.state.cartSubtotal}
-                        onClickingCancel={this.handleCartClick}
-                        onClickingCheckout={this.handleCheckingOut}/>
+          <div className="home">
+            <div className="homeLayer"></div>
+            <div className="topNav"></div>
+            <div className="leftPage">
+              <ul className="menuContent">
+                <li className="menuList" onClick={this.handleMenuClick}>shop</li>
+                <li className="listContainer"><h3 className="menuList">inventory</h3></li>
+                <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">about us</li>
+                <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">contact</li>
+              </ul>
+            </div>
+            <div className="centerPage"> 
+              <div className="centerGradient"></div>
+              <Header /> 
+            </div>
+            <div className="rightPage">
+              <div className="cartContainer" >
+                <h3 className="cart" onClick={this.handleCartClick}>cart</h3>
+                <div className="cartCountContainer" onClick={this.handleCartClick}>
+                  <svg className="cartCircle" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <circle cx="9.5" cy="9.5" r="9.5" />
+                  </svg>
+                  <h3 className="cartCount">{this.state.cartItems.length}</h3>
                 </div>
-              </React.Fragment>
-            :
-            this.state.newItemAddedSuccessful || this.state.deleteWarningVisible || this.state.checkoutCompleteVisible ?
-              <React.Fragment>
-                <div className="container-details" id="popupStyle">
-                  <div className="deleteWarning">
-                    <p className="deleteWarningText">{ this.state.deleteWarningVisible ? `Are you sure you want to delete ${this.state.selectedItem.name}?` : this.state.newItemAddedSuccessful ? `You've successfully added ${this.state.itemsList[this.state.itemsList.length - 1].name}.` : 'Purchase successfull. Thanks for shopping.' }</p>
-                    <div className="deleteWdgButtons">
-                      <button type="submit" className="cancelButton" id="doneButton" onClick={this.handleCancelingMessage}><span className="buttonText">{this.state.deleteWarningVisible ? `Cancel` : `Done`}</span></button>
-                      {
-                        this.state.deleteWarningVisible ?
-                          <button type="submit" className="deleteButton" onClick={() => this.handleDeletingItem(this.state.selectedItem.id)}><span className="buttonTextSolid">Delete Bean</span></button>
-                        : null
-                      }
+              </div>
+          </div>
+            <div className="homeContent">
+              <div className="homeImages">
+                <img className="img-1" src={roasters} alt="Terra Bean Coffee Co logo" />
+                <img className="img-2" src={coffeeMugs} alt="Terra Bean Coffee Co logo" />
+              </div>
+              <div className="homeCopy">
+                <h5 className="copy">
+                  <span className="intro">Lorem</span> ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                </h5>
+                <object className="line"></object>
+                <h3 className="tagHead1">crafted with care,</h3>
+                <div className="textLine2">
+                  <h3 className="tagHead2">from <span className="boldCopy">soil</span> to <span className="boldCopy">brew</span></h3>
+                  <img className="bean" src={coffeeBean} alt="coffee bean graphic" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <div className="shop">
+              <div className="shopLayer-left"></div>
+              <div className="shopLayer-right"></div>
+              {
+                screenChange && this.state.selectedItem !== null ? 
+                  null
+                : 
+                  <React.Fragment>
+                    <ItemsList itemsList={ this.state.itemsList } 
+                               onItemSelection={ this.handleChangingSelectedItem } 
+                               countryList={ this.state.countryList } />
+
+                  </React.Fragment>
+              }
+            </div>
+            {
+              this.state.cartVisible ?
+                <React.Fragment>
+                  <div className="container-details">
+                    <div className="closeIconWindow" onClick={ this.handleCartClick } alt="close icon"> 
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                        <path d="M3.13341 23.0834L0.916748 20.8667L9.78341 12L0.916748 3.13335L3.13341 0.916687L12.0001 9.78335L20.8667 0.916687L23.0834 3.13335L14.2167 12L23.0834 20.8667L20.8667 23.0834L12.0001 14.2167L3.13341 23.0834Z" />
+                      </svg>
+                    </div> 
+                    <Cart cartList={this.state.cartItems}
+                          onEditingCartItem={this.handleCartQuantityUpdate}
+                          onRemovingCartItem={this.handleCartItemDelete}
+                          cartTotal={this.state.cartSubtotal}
+                          onClickingCancel={this.handleCartClick}
+                          onClickingCheckout={this.handleCheckingOut}/>
+                  </div>
+                </React.Fragment>
+              :
+              this.state.newItemAddedSuccessful || this.state.deleteWarningVisible || this.state.checkoutCompleteVisible ?
+                <React.Fragment>
+                  <div className="container-details" id="popupStyle">
+                    <div className="deleteWarning">
+                      <p className="deleteWarningText">{ this.state.deleteWarningVisible ? `Are you sure you want to delete ${this.state.selectedItem.name}?` : this.state.newItemAddedSuccessful ? `You've successfully added ${this.state.itemsList[this.state.itemsList.length - 1].name}.` : 'Purchase successfull. Thanks for shopping.' }</p>
+                      <div className="deleteWdgButtons">
+                        <button type="submit" className="cancelButton" id="doneButton" onClick={this.handleCancelingMessage}><span className="buttonText">{this.state.deleteWarningVisible ? `Cancel` : `Done`}</span></button>
+                        {
+                          this.state.deleteWarningVisible ?
+                            <button type="submit" className="deleteButton" onClick={() => this.handleDeletingItem(this.state.selectedItem.id)}><span className="buttonTextSolid">Delete Bean</span></button>
+                          : null
+                        }
+                      </div>
                     </div>
                   </div>
-                </div>
-              </React.Fragment>
-            :
-            this.state.editItemFormVisible ?
-              <React.Fragment>
-                <div className="container-details">
-                  <div className="closeIconWindow" onClick={ this.handleEditClick } alt="close icon"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                      <path d="M3.13341 23.0834L0.916748 20.8667L9.78341 12L0.916748 3.13335L3.13341 0.916687L12.0001 9.78335L20.8667 0.916687L23.0834 3.13335L14.2167 12L23.0834 20.8667L20.8667 23.0834L12.0001 14.2167L3.13341 23.0834Z" />
-                    </svg>
+                </React.Fragment>
+              :
+              this.state.editItemFormVisible ?
+                <React.Fragment>
+                  <div className="container-details">
+                    <div className="closeIconWindow" onClick={ this.handleEditClick } alt="close icon"> 
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                        <path d="M3.13341 23.0834L0.916748 20.8667L9.78341 12L0.916748 3.13335L3.13341 0.916687L12.0001 9.78335L20.8667 0.916687L23.0834 3.13335L14.2167 12L23.0834 20.8667L20.8667 23.0834L12.0001 14.2167L3.13341 23.0834Z" />
+                      </svg>
+                    </div>
+                    <EditItemForm item={ this.state.selectedItem }
+                                  countryList={ this.state.countryList }
+                                  onEditingItem={ this.handleEditingItem } 
+                                  onClickingCancel={ this.handleCancelingEditForm } />
+                  
                   </div>
-                  <EditItemForm item={ this.state.selectedItem }
-                                countryList={ this.state.countryList }
-                                onEditingItem={ this.handleEditingItem } 
-                                onClickingCancel={ this.handleCancelingEditForm } />
+                </React.Fragment>
+              :
+              this.state.selectedItem !== null ?
+                <React.Fragment>
                 
-                </div>
-              </React.Fragment>
-            :
-            this.state.selectedItem !== null ?
-              <React.Fragment>
-              
-                <div className="container-details">
-                  <div className="closeIconWindow" onClick={ this.handleReturningToList } alt="close icon"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                      <path d="M3.13341 23.0834L0.916748 20.8667L9.78341 12L0.916748 3.13335L3.13341 0.916687L12.0001 9.78335L20.8667 0.916687L23.0834 3.13335L14.2167 12L23.0834 20.8667L20.8667 23.0834L12.0001 14.2167L3.13341 23.0834Z" />
-                    </svg>
+                  <div className="container-details">
+                    <div className="closeIconWindow" onClick={ this.handleReturningToList } alt="close icon"> 
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                        <path d="M3.13341 23.0834L0.916748 20.8667L9.78341 12L0.916748 3.13335L3.13341 0.916687L12.0001 9.78335L20.8667 0.916687L23.0834 3.13335L14.2167 12L23.0834 20.8667L20.8667 23.0834L12.0001 14.2167L3.13341 23.0834Z" />
+                      </svg>
+                    </div>
+                    <ItemDetail item={ this.state.selectedItem }
+                                countryList={ this.state.countryList }
+                                onClickingDelete={ this.handleDeletingWarning }
+                                onClickingEdit={ this.handleEditClick } 
+                                onNewCartItem={ this.handleAddToCartClick } 
+                                onQuantityCreation={ this.handleAddToCartClick } />
                   </div>
-                  <ItemDetail item={ this.state.selectedItem }
-                              countryList={ this.state.countryList }
-                              onClickingDelete={ this.handleDeletingWarning }
-                              onClickingEdit={ this.handleEditClick } 
-                              onNewCartItem={ this.handleAddToCartClick } 
-                              onQuantityCreation={ this.handleAddToCartClick } />
-                </div>
-              </React.Fragment>
-            :
-            this.state.newItemFormVisible ?
-              <React.Fragment>
-                <div className="container-details">
-                  <div className="closeIconWindow" onClick={ this.handleClick } alt="close icon"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                      <path d="M3.13341 23.0834L0.916748 20.8667L9.78341 12L0.916748 3.13335L3.13341 0.916687L12.0001 9.78335L20.8667 0.916687L23.0834 3.13335L14.2167 12L23.0834 20.8667L20.8667 23.0834L12.0001 14.2167L3.13341 23.0834Z" />
-                    </svg>
+                </React.Fragment>
+              :
+              this.state.newItemFormVisible ?
+                <React.Fragment>
+                  <div className="container-details">
+                    <div className="closeIconWindow" onClick={ this.handleClick } alt="close icon"> 
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                        <path d="M3.13341 23.0834L0.916748 20.8667L9.78341 12L0.916748 3.13335L3.13341 0.916687L12.0001 9.78335L20.8667 0.916687L23.0834 3.13335L14.2167 12L23.0834 20.8667L20.8667 23.0834L12.0001 14.2167L3.13341 23.0834Z" />
+                      </svg>
+                    </div>
+                    <NewItemForm onNewItemCreation={ this.handleAddingNewItem } 
+                                onClickingCancel={this.handleClick}
+                                countryList={ this.state.countryList } />
                   </div>
-                  <NewItemForm onNewItemCreation={ this.handleAddingNewItem } 
-                               onClickingCancel={this.handleClick}
-                               countryList={ this.state.countryList } />
-                </div>
-              </React.Fragment>
-            : null
-          }
-          <div className="rightPage">
-            {/* <div className="cartContainer" >
-              <h3 className="cart" onClick={this.handleCartClick}>cart</h3>
-              <div className="cartCountContainer" onClick={this.handleCartClick}>
-                <svg className="cartCircle" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                  <circle cx="9.5" cy="9.5" r="9.5" fill="#343434"/>
-                </svg>
-                <h3 className="cartCount">{this.state.cartItems.length}</h3>
-              </div>
+                </React.Fragment>
+              : null
+            }
+            {/* <div className="footer">
+              <h4 className="footerText">Crafted with care, <span className="footerBreak"><br /></span>from soil to cup </h4>
             </div> */}
-          </div>
-          <div className="footer">
-            <h4 className="footerText">Crafted with care, <span className="footerBreak"><br /></span>from soil to cup </h4>
-          </div>
-          {
-            this.state.menuBarVisible ?
-              <React.Fragment>
-                <div id="menuBar"></div>
-                <div id="menuScreen" onClick={this.handleExitMenu}></div>
-              </React.Fragment>
-            :
-              null
-          }
-          <div className="menuIconContainer">
             {
               this.state.menuBarVisible ?
                 <React.Fragment>
-                  <div className="menuCloseIcon"> 
-                    <img src={closeIcon} onClick={ this.handleMenuClick } alt="close icon" />
-                  </div>
-                    <ul className="menuContent">
-                      <li className="menuList" onClick={this.handleCartClick}>cart</li>
-                      <li className="menuList" onClick={this.handleMenuClick}>products</li>
-                      <li className="listContainer"><h3 className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">shop</h3></li>
-                      <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">about us</li>
-                      <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">contact</li>
-                    </ul>
-                    <div className="inventory-widget"> </div>
-                    <InventoryWidget itemsList={ this.state.itemsList } 
-                                    onAddBeanClick={ this.handleAddBeanClick } />
+                  <div id="menuBar"></div>
+                  <div id="menuScreen" onClick={this.handleExitMenu}></div>
                 </React.Fragment>
-                
-              : 
-                <div className="menuIcon">
-                  {
-                    this.state.newItemFormVisible || this.state.editItemFormVisible || this.state.deleteWarningVisible || this.state.cartVisible || this.state.checkoutCompleteVisible || this.state.selectedItem !== null ?
-                      <div className="disabled"></div>
-                    :
-                      <svg onClick={this.handleMenuClick} xmlns="http://www.w3.org/2000/svg" width="20" height="13" viewBox="0 0 20 13" fill="none">
-                        <path d="M0 13V10.8333H20V13H0ZM0 7.58333V5.41667H20V7.58333H0ZM0 2.16667V0H20V2.16667H0Z" />
-                      </svg>
-                  }
-                </div>  
+              :
+                null
             }
-          </div>
-          <div className="cartContainer" >
-            <h3 className="cart" onClick={this.handleCartClick}>cart</h3>
-            <div className="cartCountContainer" onClick={this.handleCartClick}>
-              <svg className="cartCircle" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                <circle cx="9.5" cy="9.5" r="9.5" />
-              </svg>
-              <h3 className="cartCount">{this.state.cartItems.length}</h3>
+            <div className="menuIconContainer">
+              {
+                this.state.menuBarVisible ?
+                  <React.Fragment>
+                    <div className="menuCloseIcon"> 
+                      <img src={closeIcon} onClick={ this.handleMenuClick } alt="close icon" />
+                    </div>
+                      <ul className="menuContent">
+                        <li className="menuList" onClick={this.handleCartClick}>cart</li>
+                        <li className="menuList" onClick={this.handleMenuClick}>products</li>
+                        <li className="listContainer"><h3 className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">shop</h3></li>
+                        <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">about us</li>
+                        <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">contact</li>
+                      </ul>
+                      <div className="inventory-widget"> </div>
+                      <InventoryWidget itemsList={ this.state.itemsList } 
+                                      onAddBeanClick={ this.handleAddBeanClick } />
+                  </React.Fragment>
+                  
+                : 
+                  <div className="menuIcon">
+                    {
+                      this.state.newItemFormVisible || this.state.editItemFormVisible || this.state.deleteWarningVisible || this.state.cartVisible || this.state.checkoutCompleteVisible || this.state.selectedItem !== null ?
+                        <div className="disabled"></div>
+                      :
+                        <svg onClick={this.handleMenuClick} xmlns="http://www.w3.org/2000/svg" width="20" height="13" viewBox="0 0 20 13" fill="none">
+                          <path d="M0 13V10.8333H20V13H0ZM0 7.58333V5.41667H20V7.58333H0ZM0 2.16667V0H20V2.16667H0Z" />
+                        </svg>
+                    }
+                  </div>  
+              }
             </div>
-          </div>
-        </div>
+            </div>
+          
+          
       </React.Fragment>
     );
   }  

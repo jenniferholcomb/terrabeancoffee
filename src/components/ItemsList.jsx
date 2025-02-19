@@ -6,7 +6,7 @@ function ItemsList(props) {
 
   return (
     <React.Fragment>
-      <div id="container-items-list">
+      <div className="container-items-list">
         {/* <div className="cardContainer"> */}
           {props.itemsList.map(item => 
             <Item 
