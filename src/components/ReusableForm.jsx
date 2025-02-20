@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 
 import styles from './ReusableForm.module.css';
-import empty from './../img/emptyImg.png';
+import empty from './../imgold/emptyImg.png';
 
 function ReusableForm(props) {
 

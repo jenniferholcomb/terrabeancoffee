@@ -216,7 +216,7 @@ input[type=number] {
 .cartContainer {
   position: fixed;
   top: 10px;
-  right: 3%;
+  right: 2.12rem;
   padding-top: 42px;
   display: flex;
   flex-direction: row;
@@ -572,19 +572,35 @@ input.cartQuantityInput {
   height: 35.6875rem;
 }
 
+.shop-container {
+  width: 100%;
+  min-height: 100vh;
+  background: 
+    linear-gradient(to right, 
+      rgba(29, 69, 37, 0.10) 0%, 
+      rgba(29, 69, 37, 0.10) calc((100% - 71.1875rem) / 2), 
+      transparent calc((100% - 71.1875rem) / 2), 
+      transparent calc((100% + 71.1875rem) / 2), 
+      rgba(29, 69, 37, 0.10) calc((100% + 71.1875rem) / 2), 
+      rgba(29, 69, 37, 0.10) 100%), 
+    linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), 
+    url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+}
 
 .shop {
   display: grid;
-  grid-template-columns: 1fr 71.1875rem 1fr;
-  width: 100%;
+  grid-template-columns: 1fr minmax(600px, 71.1875rem) 1fr;
+  height: auto;
   min-height: 100vh;
-  position: relative; 
-  background: linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
+  /* position: absolute; */
 }
 
 .shopLayer-left, .shopLayer-right {
   background: rgba(29, 69, 37, 0.10);
-  height: 100%;
+  min-height: 100vh;
 }
 
 .shopLayer-left {
@@ -763,63 +779,45 @@ h1#header {
 .disabledWidgetLink {
   display: none;
 }
-/* 
-a {
-  color: inherit;
-  text-decoration: none !important;
-  pointer-events: all;
-} */
 
 .container-items-list {
-  /* grid-column: 2;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  column-gap: 1rem;
-  row-gap: 2rem;
-  max-width: 100%;
-  padding-bottom: 80px;
-  padding-top: 40px; */
-
-  position: absolute;
   width: 100%;
-  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
   flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 21rem;
+  overflow-y: visible;
 }
-
-/* .cardContainer {
-  display: flex;
-  width: 45%;
-} */
 
 .itemCard {
   position: relative;
   display: grid;
-  grid-template-columns: 50% 50%;
+  /* grid-template-columns: 50% 50%; */
   width: 320px;
   height: 100%;
-  border-radius: 5px;
-  background: rgba(133, 72, 33, 0.10);
-  box-shadow: 0px 4px 7.2px 0px rgba(10, 9, 9, 0.30);
+  border-radius: 0.3125rem;
+  background: #F4E7D1;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 
 .itemCard:hover {
-  transform: scale(1.04);
+  transform: scale(1.02);
   transition: all 0.5s ease;
   cursor: pointer;
 }
 
 .cardImgContainer {
   grid-column: 2;
-  grid-row: 1 / span 5;
+  grid-row: 1 / span 6;
   min-height: auto;
   /* display: grid;
   align-content: end; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #listImg {
@@ -829,8 +827,9 @@ a {
 }
 
 .cardImg {
-  max-width: 135px;
-  margin:0;
+  /* max-width: 135px;
+  margin:0; */
+  box-shadow: 1px 4px 4px 0px rgba(43, 43, 43, 0.15);
 }
 
 .content {
@@ -898,34 +897,34 @@ a {
   height: 23px;
   width: 100%;
   border-bottom: 3px #50A060;
-  padding: 56px 0px 5px 22px;
+  /* padding: 56px 0px 5px 22px; */
   align-self: baseline;
   
 }
 
 .cardHeader {
-  color: #343434;
+  color: #000;
   font-family: Mulish;
-  font-size: 18px;
+  font-size: 1.625rem;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   line-height: normal;
-  letter-spacing: 1.4px;
+  letter-spacing: 0.11375rem;
   text-transform: uppercase;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
   margin: 0;
 }
 
 .cardSubHead {
-  color: rgba(93, 91, 91, 0.80);
+  color: #433D3D;
   font-family: Mulish;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  letter-spacing: 0.84px;
+  letter-spacing: 0.0525rem;
   text-transform: uppercase;
   margin: 0;
-  margin-bottom: 7px;
 }
 
 #subHeadMarginNrw {
@@ -935,7 +934,7 @@ a {
 .listSubHeadOr {
   grid-column: 1;
   grid-row: 7;
-  margin-left: 22px;
+  margin-left: .8rem;
   align-self: flex-start;
 }
 
@@ -974,11 +973,13 @@ a {
 }
 
 .subHeadText, .subHeadTextB {
-  color: #000;
-  font-size: 15px;
-  font-weight: 500;
+  color: #433D3D;
+  font-family: Mulish;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
   line-height: normal;
-  letter-spacing: 0.48px;
+  letter-spacing: 0.02813rem;
   text-transform: capitalize;
 }
 
@@ -1001,35 +1002,35 @@ a {
 }
 
 .description {
-  /* width: 222px; */
-  color: #000;
+  color: #3A3333;
   font-family: Mulish;
-  font-size: 12px;
+  font-size: 0.8125rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
-  letter-spacing: 0.36px;
+  letter-spacing: 0.02438rem;
   margin: 5px 16px 0px 16px;
   padding-right: 10px;
 }
 
 #listDescription {
   margin: 0 15px 7px 15px;
-  font-size: 11px;
+  /* font-size: 11px; */
 }
 
 .cardPrice {
   grid-column: 1;
   grid-row: 3;
   color: #000;
+  text-align: right;
   font-family: Mulish;
-  font-size: 14px;
+  font-size: 1.125rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  letter-spacing: .84px;
+  letter-spacing: 0.07875rem;
   text-transform: uppercase;
-  max-height: 100%;
+  /* max-height: 100%; */
   padding-top: 2px;
 }
 
@@ -1046,14 +1047,22 @@ a {
 }
 
 .priceUnit {
-  color: rgba(93, 91, 91, 0.80);
+  color: #433D3D;
   font-family: Mulish;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.84px;
-  text-transform: uppercase;
+  text-transform: lowercase;
+  /* color: #000;
+  font-family: Mulish;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.06125rem;
+  text-transform: lowercase; */
 }
 
 .container-details {
@@ -1771,11 +1780,24 @@ textarea {
   border-radius: 20px;
   background: #50A060;
   border: none;
-  box-shadow: 0px 2px 7.2px 0px rgba(10, 9, 9, 0.20);
-  background: linear-gradient(0deg, #468E54 33.97%, #50B564 71.97%);
+  /* box-shadow: 0px 2px 7.2px 0px rgba(10, 9, 9, 0.20);
+  background: linear-gradient(0deg, #468E54 33.97%, #50B564 71.97%); */
 }
 
-.buttonTextSolid, .buttonText {
+.cartButtonList {
+  /* grid-column: 1; */
+  grid-row: 6;
+  width: 6.2rem;
+  height: 1.45rem;
+  border-radius: 0.3125rem;
+  background: radial-gradient(50% 50% at 50% 50%, #FEFFEB 22%, #FFF 100%);
+  box-shadow: 1px -2px 5px 0px rgba(0, 0, 0, 0.25);
+  border-color: transparent;
+  align-self: self-end;
+  margin: 0 0 1.57rem .8rem;
+}
+
+.buttonTextSolid, .buttonText, .buttonTextList {
   font-family: Mulish;
   font-size: 12px;
   font-style: normal;
@@ -1790,6 +1812,11 @@ textarea {
 
 .buttonTextSolid {
   color: #FFFFFD;
+}
+
+.buttonTextList {
+  color: #433D3D;
+  font-size: 0.655rem;
 }
 
 #formCancelButton, #formSaveButton {
@@ -1837,7 +1864,7 @@ textarea {
 }
 
 .buttonText {
-  color: #468E54;
+  color: #3D7B49;
 }
 
 .deleteButton {
@@ -2488,7 +2515,6 @@ textarea {
 
   .cartContainer {
     top: 15px;
-    right: 2%;
   }
 
   .cart {
@@ -2584,7 +2610,7 @@ textarea {
   }
 
   .itemCard {
-    grid-template-columns: 38% 40% 22%;
+    /* grid-template-columns: 38% 40% 22%; */
     width: 410px;
     height: 100%;
     padding-bottom: 10px;
@@ -2592,8 +2618,8 @@ textarea {
 
   .listCard {
     grid-column: 1 / span 2;
-    padding: 15px 0 0px 18px;
-    align-self: last baseline;
+    /* padding: 15px 0 0px 18px; */
+
   }
 
   .cardImgContainer {
@@ -2602,13 +2628,12 @@ textarea {
   }
 
   .cardImg {
-    margin: 5px 0 15px 15px;
+    /* margin: 5px 0 15px 15px; */
     max-width: 100%;
     max-height: 100%;
   }
   
   #listImg {
-    max-width: 147px;
     max-height: 100%;
     margin: 0;
   }
@@ -2629,6 +2654,7 @@ textarea {
   .listSubHeadRo {
     grid-column: 2;
     grid-row: 3;
+    align-self: center;
   }
 
   .listSubHeadDes {
@@ -2649,15 +2675,14 @@ textarea {
 
   #listDescription {
     margin: 0 15px 15px 0px;
-    font-size: 11px;
+    /* font-size: 11px; */
   }
 
   .cardFlag {
     grid-column: 3;
     grid-row: 3 / span 3;
-    margin-right: 25px;
     margin-bottom: 0px;
-    align-self: center;
+    align-self: self-end;
   }
 
   .cardFlagImg {
@@ -2667,7 +2692,7 @@ textarea {
 
   #listPrice {
     grid-column: 3;
-    grid-row: 1;
+    grid-row: 6;
     margin: 0 17px 0px 0px;
     align-self: flex-end;
     text-align: end;
@@ -2690,30 +2715,56 @@ textarea {
   }
 
   .itemCard {
-    width: 539px;
-    max-height: 100%;
-    grid-template-columns: 50% 30% 20%;
+    width: 40.8125rem;
+    height: 25.8125rem;
+    /* grid-template-columns: 50% 30% 20%; */
     padding-bottom: 0;
   }
 
   .cardImgContainer {
-    grid-row: 1 / span 5;
-  }
-
-  .cardImg {
-    max-width: 100%;
-    margin: 20px 0 20px 20px;
+    grid-row: 1 / span 6;
   }
 
   #listImg {
-    max-width: 100%;
-    max-height: 100%;
+    width: 19.5rem;
+    height: 25.8125rem;
+  }
+
+  .cardImg {
+    /* max-width: 100%; */
+    /* margin: 20px 0 20px 20px; */
+    width: 17.67281rem;
+    height: 23.75rem;
+    border: 10px solid #FFF;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .corner-1 {
+    transform: translateX(-13px) translateY(-13px);
+  }
+
+  .corner-2 {
+    transform: translateX(13px) translateY(-13px) rotate(90deg);
+    justify-self: end;
+  }
+
+  .corner-3 {
+    align-self: self-end;
+    transform: translateX(-13px) translateY(13px) rotate(270deg);
+  }
+
+  .corner-4 {
+    align-self: self-end;
+    justify-self: end;
+    transform: translateX(13px) translateY(13px) rotate(180deg);
   }
 
   .listCard {
     grid-column: 2;
     grid-row: 1;
-    padding: 25px 0 5px 0;
+    padding: 3.62rem 0 0 .8rem;
+    align-self: self-end;
   }
 
   .cardHeader {
@@ -2730,15 +2781,13 @@ textarea {
 
   .cardFlag {
     grid-column: 3;
-    grid-row: 5;
-    margin-right: 17px;
-    align-self: center;
-    padding-bottom: 30px;
+    grid-row: 1;
+    margin-right: 1.57rem;
   }
 
   .cardFlagImg {
-    max-width: 41px;
-    max-height: 41px;
+    min-width: 3.86363rem;
+    min-height: 3.86363rem;
   }
 
   #subHeadMarginNrw {
@@ -2746,33 +2795,31 @@ textarea {
   }
 
   .listSubHeadOr {
-    grid-row: 5;
+    grid-row: 2;
+    grid-column: 2 / span 2;
     margin: 0;
+    padding: 2.7rem 0 0 .8rem;
     align-self: center;
-    padding-bottom: 30px;
   }
 
   .listSubHeadRo {
-    grid-row: 2;
+    grid-row: 3;
     margin: 0;
-    padding-top: 13px;
-    padding-bottom: 5px;
+    padding: 0 0 0 .8rem;
   }
 
   .listSubHeadDes {
-    grid-row: 3;
+    grid-row: 4;
     margin: 0;
+    padding: 0 0 0 .8rem;
   }
 
   .desColumn {
-    grid-row: 4;
+    grid-row: 5;
     margin: 0;
+    padding: 0 0 0 .8rem;
   }
 
-  .subHeadText, .subHeadTextB {
-    font-size: 14px;
-    font-weight: 400;
-  }
 
   /* .content {
     margin-left: 8px;
@@ -2784,20 +2831,20 @@ textarea {
 
   #listDescription {
     margin: 5px 16px 0px 16px;
-    font-size: 12px;
+    /* font-size: 12px; */
   }
 
   .cardPrice {
     grid-column: 3;
     grid-row: 6;
-    color: #000;
-    font-size: 14px;
+    /* color: #000;
+    font-size: 14px; */
     text-align: end;
     align-self: flex-end;
   }
 
   #listPrice {
-    margin: 0 15px 10px 18px;
+    margin: 0 1.57rem 1.57rem 0;
   }
 
 }

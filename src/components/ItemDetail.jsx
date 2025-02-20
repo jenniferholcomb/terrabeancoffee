@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Item from "./Item";
 import { v4 } from 'uuid';
 
-import narrowIndex from "./../img/indexCardNarrow.webp";
+import narrowIndex from "./../imgold/indexCardNarrow.webp";
 
 function ItemDetail(props) {
   const { item, onNewCartItem, onClickingDelete, onClickingEdit, onQuantityCreation } = props;
@@ -79,9 +79,7 @@ function ItemDetail(props) {
           </div>
 
           <div className="addCartContainer">
-
-            {/* <button onClick={() => onBuyingItem(1)}>Buy 1 pound</button> */}
-            <form onSubmit={ handleQuantityForm }>
+            <form onSubmit={handleQuantityForm}>
               <div className="inputRow">
                 <h3 className="cardSubHead" id="inputSubhead">Quantity:</h3>
                 <button id="decrement" type="button" onClick={handleQDecrement}>-</button>
@@ -96,9 +94,9 @@ function ItemDetail(props) {
               </div>
               <button type="submit" className="cartButton" onClick={handleBuyingItem}><span className="buttonTextSolid">Add to Cart</span></button>
             </form>
-
           </div> 
         </div>
+
         <div className="indexEditWidget">
           <img src={narrowIndex} className="indexNarrow" alt="index card"/>
         </div>

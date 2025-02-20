@@ -13,16 +13,16 @@ import roasters from "/img/coffeeRoasters.webp";
 import coffeeMugs from "/img/coffee.webp";
 import coffeeBean from "/img/terraBeanBean.webp";
 
-import colImg from "./../img/colombiaBag.png";
-import colImgNo from "./../img/colombiaBagNoName.png";
-import colFlag from "./../img/colombiaFlag.png";
-import brazilImg from "./../img/brazilBag.png";
-import brazilFlag from "./../img/brazilFlag.png";
-import indiaImg from "./../img/indiaBag.png";
-import indiaFlag from "./../img/indiaFlag.png";
-import philImg from "./../img/philBag.png";
-import philFlag from "./../img/philFlag.png";
-import closeIcon from "./../img/closeIcon.png";
+import colImg from "/img/colombiaBag.webp";
+import colImgNo from "./../imgold/colombiaBagNoName.png";
+import colFlag from "./../imgold/colombiaFlag.png";
+import brazilImg from "/img/brazilBag.webp";
+import brazilFlag from "./../imgold/brazilFlag.png";
+import indiaImg from "/img/indiaBag.webp";
+import indiaFlag from "./../imgold/indiaFlag.png";
+import philImg from "/img/phillipinesBag.webp";
+import philFlag from "./../imgold/philFlag.png";
+import closeIcon from "./../imgold/closeIcon.png";
 
 class MenuController extends React.Component {
 
@@ -271,21 +271,25 @@ class MenuController extends React.Component {
             </div>
           </div>
 
-            <div className="shop">
+          <div className="shop-container">
+            {/* <div className="shop">
               <div className="shopLayer-left"></div>
-              <div className="shopLayer-right"></div>
+              <div className="shopLayer-right"></div> */}
               {
                 screenChange && this.state.selectedItem !== null ? 
                   null
                 : 
                   <React.Fragment>
                     <ItemsList itemsList={ this.state.itemsList } 
-                               onItemSelection={ this.handleChangingSelectedItem } 
-                               countryList={ this.state.countryList } />
+                                onItemSelection={ this.handleChangingSelectedItem } 
+                                countryList={ this.state.countryList } 
+                                onItemAddedToCart={this.handleCartQuantityUpdate} />
 
                   </React.Fragment>
               }
-            </div>
+            {/* </div> */}
+          </div>
+
             {
               this.state.cartVisible ?
                 <React.Fragment>

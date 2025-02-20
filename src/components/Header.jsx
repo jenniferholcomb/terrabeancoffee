@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import logo from "/terraBeanLogo.png";
-import steward from "/img/stewardAward.png";
-import league from "/img/leagueAward.png";
+import logo from "/terraBeanLogo.webp";
+import steward from "/img/stewardAward.webp";
+import league from "/img/leagueAward.webp";
 import bio from "/img/bioAward.webp";
 
 function Header() {
