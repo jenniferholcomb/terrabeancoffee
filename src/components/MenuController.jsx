@@ -222,7 +222,7 @@ class MenuController extends React.Component {
   }
 
   render() {
-    const { screenChange, translateMenu, translateCart } = this.props;
+    const { screenChange, translateY, isScrolled, logoTranslateY } = this.props;
   
     return (
       <React.Fragment>
@@ -234,34 +234,34 @@ class MenuController extends React.Component {
               <ul 
                 className="menuContent"
                 style={{
-                  transform: `translateY(${translateMenu})`, // ✅ Moves down when scrolling
-                  transition: "transform 0.5s ease-in-out" // ✅ Smooth animation
+                  transform: `translateY(${translateY})`, 
+                  transition: "transform 0.5s ease-in-out" 
                 }}
               >
-                <li className="menuList" onClick={this.handleMenuClick}>shop</li>
-                <li className="listContainer"><h3 className="menuList">inventory</h3></li>
-                <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">about us</li>
-                <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">contact</li>
+                <li className={`menuList ${isScrolled ? "shopScrolled" : ""}`} onClick={() => document.getElementById("shop").scrollIntoView({ behavior: "smooth" })}>shop</li>
+                <li className="listContainer"><h3 className={`menuList ${isScrolled ? "listScrolled" : ""}`} onClick={this.handleMenuClick}>inventory</h3></li>
+                <li className={`menuList ${isScrolled ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">about us</li>
+                <li className={`menuList ${isScrolled ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">contact</li>
               </ul>
             </div>
             <div className="centerPage"> 
               <div className="centerGradient"></div>
-              <Header /> 
+              <Header logoTranslateY={logoTranslateY} /> 
             </div>
             <div className="rightPage">
               <div 
                 className="cartContainer" 
                 style={{
-                  transform: `translateY(${translateMenu})`, // ✅ Moves down when scrolling
-                  transition: "transform 0.5s ease-in-out" // ✅ Smooth animation
+                  transform: `translateY(${translateY})`, 
+                  transition: "transform 0.5s ease-in-out" 
                 }}
               >
-                <h3 className="cart" onClick={this.handleCartClick}>cart</h3>
+                <h3 className={`cart ${isScrolled ? "cartScrolled" : ""}`} onClick={this.handleCartClick}>cart</h3>
                 <div className="cartCountContainer" onClick={this.handleCartClick}>
-                  <svg className="cartCircle" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                  <svg className={`cartCircle ${isScrolled ? "circleScrolled" : ""}`} xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                     <circle cx="9.5" cy="9.5" r="9.5" />
                   </svg>
-                  <h3 className="cartCount">{this.state.cartItems.length}</h3>
+                  <h3 className={`cartCount ${isScrolled ? "countScrolled" : ""}`}>{this.state.cartItems.length}</h3>
                 </div>
               </div>
           </div>
@@ -284,23 +284,19 @@ class MenuController extends React.Component {
             </div>
           </div>
 
-          <div className="shop-container">
-            {/* <div className="shop">
-              <div className="shopLayer-left"></div>
-              <div className="shopLayer-right"></div> */}
-              {
-                screenChange && this.state.selectedItem !== null ? 
-                  null
-                : 
-                  <React.Fragment>
-                    <ItemsList itemsList={ this.state.itemsList } 
-                                onItemSelection={ this.handleChangingSelectedItem } 
-                                countryList={ this.state.countryList } 
-                                onItemAddedToCart={this.handleCartQuantityUpdate} />
+          <div className="shop-container" id="shop">
+            {
+              screenChange && this.state.selectedItem !== null ? 
+                null
+              : 
+                <React.Fragment>
+                  <ItemsList itemsList={ this.state.itemsList } 
+                              onItemSelection={ this.handleChangingSelectedItem } 
+                              countryList={ this.state.countryList } 
+                              onItemAddedToCart={this.handleCartQuantityUpdate} />
 
-                  </React.Fragment>
-              }
-            {/* </div> */}
+                </React.Fragment>
+            }
           </div>
 
             {
@@ -387,18 +383,12 @@ class MenuController extends React.Component {
                 </React.Fragment>
               : null
             }
-            {/* <div className="footer">
-              <h4 className="footerText">Crafted with care, <span className="footerBreak"><br /></span>from soil to cup </h4>
-            </div> */}
-            {
-              this.state.menuBarVisible ?
-                <React.Fragment>
-                  <div id="menuBar"></div>
-                  <div id="menuScreen" onClick={this.handleExitMenu}></div>
-                </React.Fragment>
-              :
-                null
-            }
+
+              
+                  <div className={`menuBar ${this.state.menuBarVisible ? "open" : ""}`}></div>
+                  <div className={`menuScreen ${this.state.menuBarVisible ? "open" : ""}`} onClick={this.handleExitMenu}></div>
+                
+
             <div className="menuIconContainer">
               {
                 this.state.menuBarVisible ?
@@ -406,28 +396,21 @@ class MenuController extends React.Component {
                     <div className="menuCloseIcon"> 
                       <img src={closeIcon} onClick={ this.handleMenuClick } alt="close icon" />
                     </div>
-                      <ul className="menuContent">
-                        <li className="menuList" onClick={this.handleCartClick}>cart</li>
-                        <li className="menuList" onClick={this.handleMenuClick}>products</li>
-                        <li className="listContainer"><h3 className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">shop</h3></li>
-                        <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">about us</li>
-                        <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">contact</li>
-                      </ul>
-                      <div className="inventory-widget"> </div>
-                      <InventoryWidget itemsList={ this.state.itemsList } 
-                                      onAddBeanClick={ this.handleAddBeanClick } />
+                    <div className="inventory-widget"> </div>
+                    <InventoryWidget itemsList={ this.state.itemsList } 
+                                    onAddBeanClick={ this.handleAddBeanClick } />
                   </React.Fragment>
                   
                 : 
                   <div className="menuIcon">
-                    {
+                    {/* {
                       this.state.newItemFormVisible || this.state.editItemFormVisible || this.state.deleteWarningVisible || this.state.cartVisible || this.state.checkoutCompleteVisible || this.state.selectedItem !== null ?
                         <div className="disabled"></div>
                       :
                         <svg onClick={this.handleMenuClick} xmlns="http://www.w3.org/2000/svg" width="20" height="13" viewBox="0 0 20 13" fill="none">
                           <path d="M0 13V10.8333H20V13H0ZM0 7.58333V5.41667H20V7.58333H0ZM0 2.16667V0H20V2.16667H0Z" />
                         </svg>
-                    }
+                    } */}
                   </div>  
               }
             </div>

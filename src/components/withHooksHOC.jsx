@@ -6,12 +6,14 @@ export const withHooksHOC = (Component) => {
   return (props) => {
     const isTablet = useResize();
     const scrollY = useScroll();
-    const translateMenu = scrollY > 350 ? "60rem" : "0rem";
-    const translateCart = scrollY > 300 ? "30rem" : "0rem"; 
+    const translateY = scrollY > 350 ? "60rem" : "0rem";
+    const isScrolled = scrollY > 350; 
+    const logoTranslateY = scrollY > 400 ? "47rem" : "0rem";
 
     return <Component screenChange={isTablet} 
-                      translateMenu={translateMenu} 
-                      translateCart={translateCart}
+                      translateY={translateY} 
+                      isScrolled={isScrolled}
+                      logoTranslateY={logoTranslateY}
                       {...props} />;
   };
 };
