@@ -27,13 +27,13 @@ function Item(props) {
           >
             {[...Array(4)].map((_, index) => (
               <>
-                <svg key={index} className={`corner-${index + 1}`}xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">
+                <svg key={index} className={`corner-${index + 1}`} xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">
                   <g filter="url(#filter0_d_81_314)">
-                    <path d="M2 25L2 2L13 2L26 2C26 2 19.5 5.5 12.5 12C5.5 18.5 2 25 2 25Z" fill="#332C2C" fill-opacity="0.7" shape-rendering="crispEdges"/>
+                    <path d="M2 25L2 2L13 2L26 2C26 2 19.5 5.5 12.5 12C5.5 18.5 2 25 2 25Z" fill="#332C2C" fillOpacity="0.7" shapeRendering="crispEdges"/>
                   </g>
                   <defs>
-                    <filter id="filter0_d_81_314" x="0" y="0" width="32" height="31" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <filter id="filter0_d_81_314" x="0" y="0" width="32" height="31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                       <feOffset dx="2" dy="2"/>
                       <feGaussianBlur stdDeviation="2"/>

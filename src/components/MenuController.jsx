@@ -222,7 +222,8 @@ class MenuController extends React.Component {
   }
 
   render() {
-    const { screenChange } = this.props;
+    const { screenChange, translateMenu, translateCart } = this.props;
+  
     return (
       <React.Fragment>
         <div className="appContainer">
@@ -230,7 +231,13 @@ class MenuController extends React.Component {
             <div className="homeLayer"></div>
             <div className="topNav"></div>
             <div className="leftPage">
-              <ul className="menuContent">
+              <ul 
+                className="menuContent"
+                style={{
+                  transform: `translateY(${translateMenu})`, // ✅ Moves down when scrolling
+                  transition: "transform 0.5s ease-in-out" // ✅ Smooth animation
+                }}
+              >
                 <li className="menuList" onClick={this.handleMenuClick}>shop</li>
                 <li className="listContainer"><h3 className="menuList">inventory</h3></li>
                 <li className="menuList" title="I'm static - checkout 'cart' or '+add new bean' below">about us</li>
@@ -242,7 +249,13 @@ class MenuController extends React.Component {
               <Header /> 
             </div>
             <div className="rightPage">
-              <div className="cartContainer" >
+              <div 
+                className="cartContainer" 
+                style={{
+                  transform: `translateY(${translateMenu})`, // ✅ Moves down when scrolling
+                  transition: "transform 0.5s ease-in-out" // ✅ Smooth animation
+                }}
+              >
                 <h3 className="cart" onClick={this.handleCartClick}>cart</h3>
                 <div className="cartCountContainer" onClick={this.handleCartClick}>
                   <svg className="cartCircle" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">

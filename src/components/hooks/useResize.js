@@ -25,5 +25,6 @@ export function useResize() {
       window.removeEventListener('resize', handleResize);
     };
   }, []); 
+  
   return isTablet;
 }
