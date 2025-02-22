@@ -48,32 +48,18 @@ function Item(props) {
             ))}
           </div>
         </div>
-
         <h1 className={props.detailPg ? "detailHeader cardHeader": "listCard cardHeader"} lang="en">{props.name}</h1>
-        {/* <div className={props.detailPg ? "headerContainer" : ""}>          
-        </div> */}
         <div className={props.detailPg ? "detailFlag" : "cardFlag"}>          
           <img className={props.detailPg ? "flag" : "cardFlagImg"} src={props.flag} alt="Colombia flag" />
         </div>
-
         <h3 className={props.detailPg ? "detailSubHeadOr cardSubHead": "listSubHeadOr cardSubHead"} id={props.detailPg ? '' : "subHeadMarginNrw"}>ORIGIN:&nbsp;&nbsp;<span className="subHeadText">{props.origin}</span></h3>
         <h3 className={props.detailPg ? "detailSubHeadRo cardSubHead": "listSubHeadRo cardSubHead"} id={props.detailPg ? '' : "subHeadMarginNrw"}>ROAST:&nbsp;&nbsp;<span className="subHeadTextB">{props.roast}</span></h3>
         <h3 className={props.detailPg ? "detailSubHeadDes cardSubHead": "listSubHeadDes cardSubHead"} id="desSubHead">DESCRIPTION:</h3>
-
         <div className={props.detailPg ? "detColumn": "desColumn"}> 
           <blockquote className="description" id={props.detailPg ? "detailDescription" : 'listDescription'}>{props.description}</blockquote>
         </div>
-
-        {/* <div className="addCartContainer"> */}
-
-          <button type="submit" className="cartButtonList" onClick={props.handleAddingToCart}><span className="buttonTextList">Add to Cart</span></button>
-
-        {/* </div> */}
-
+        <button type="submit" className="cartButtonList" onClick={props.handleAddingToCart}><span className="buttonTextList">Add to Cart</span></button>
         <h4 className="cardPrice" id={props.detailPg ? "detailPrice" : "listPrice"}>${props.price}<span className="priceUnit"> /lb</span></h4>
-          {/* <h3 className="cardSubHead">QUANTITY AVAILABLE: {props.quantity} pounds</h3> */}
-        {/* </div>  */}
-
       </div>
     </div>
   );

@@ -7,24 +7,22 @@ function ItemsList(props) {
   return (
     <React.Fragment>
       <div className="container-items-list">
-        {/* <div className="cardContainer"> */}
-          {props.itemsList.map(item => 
-            <Item 
-              whenItemClicked={props.onItemSelection}
-              handleAddingToCart={props.onItemAddedToCart}
-              name={item.name}
-              flag={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].flag}
-              plantImg={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImg}
-              origin={item.origin}
-              roast={item.roast}
-              description={item.description}
-              price={item.price}
-              quantity={item.quantity}
-              id={item.id}
-              key={item.id} 
-            />
-          )}
-        {/* </div> */}
+        {props.itemsList.map(item => 
+          <Item 
+            whenItemClicked={props.onItemSelection}
+            handleAddingToCart={props.onItemAddedToCart}
+            name={item.name}
+            flag={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].flag}
+            plantImg={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImg}
+            origin={item.origin}
+            roast={item.roast}
+            description={item.description}
+            price={item.price}
+            quantity={item.quantity}
+            id={item.id}
+            key={item.id} 
+          />
+        )}
       </div>
     </React.Fragment>
   );

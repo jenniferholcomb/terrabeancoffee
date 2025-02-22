@@ -180,10 +180,10 @@ function ReusableForm(props) {
               <div className="breakLine3"></div>
               
               <div className="btn2">
-                <button className={`${saveValue ? "saveFormButton" : "disabledButton"}`} id="formSaveButton" type="submit" onClick={props.formSubmissionHandler}><span className="buttonTextSolid">{props.buttonText}</span></button>
+                <button className={`${saveValue ? "saveFormButton" : "disabledButton"}`} id="formButton" type="submit" onClick={props.formSubmissionHandler}><span className="buttonTextSolid">{props.buttonText}</span></button>
               </div>
               <div className="btn1">
-                <button className="cancelFormButton" id="formCancelButton" type="button" onClick={props.onClickingCancel}><span className="buttonText">Cancel</span></button>
+                <button className="cancelFormButton" id="formButton" type="button" onClick={props.onClickingCancel}><span className="buttonText">Cancel</span></button>
               </div>
             </div>
           </form>

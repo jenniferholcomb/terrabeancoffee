@@ -23,7 +23,7 @@ function Cart(props) {
                 <p className="emptyCart">Your cart is currently empty.</p>
               : null
             }
-            <div className="cartItemGroup">
+            <div>
               {cartList.map((item, index) => 
                 <CartItem item={item} 
                           key={item.id}
@@ -42,10 +42,10 @@ function Cart(props) {
           </div>
           <div className="cartButtons">
             <div className="updateBtnContainer">
-              <button className="cancelFormButton" id="formCancelButton" type="button" onClick={onClickingCancel}><span className="buttonText">return to store</span></button>
+              <button className="cartButtonList" id="formButton" type="button" onClick={onClickingCancel}><span className="buttonTextForm">return to store</span></button>
             </div>
             <div className="saveBtnContainer">
-              <button className={`${cartList.length !== 0 ? "saveFormButton cartSaveButton" : "disabledButton"}`} id="formSaveButton" type="submit" onClick={onClickingCheckout}><span className="buttonTextSolid">Checkout</span></button>
+              <button className={`${cartList.length !== 0 ? "cartButtonList cartSaveButton" : "cartButtonListDisabled"}`} id="formButton" type="submit" onClick={onClickingCheckout}><span className={`${cartList.length !== 0 ? "buttonTextSolid" : "buttonTextDisabled"}`}>Checkout</span></button>
             </div>
           </div>
         </div>

@@ -75,7 +75,7 @@ function ItemDetail(props) {
             <img className="flag" src={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].flag} alt="coffee plantation in Colombia" />
           </div>
           <div className="detailImgContainerNrw">
-            <img className="detailImgNrw" src={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImg} alt="coffee plantation in Colombia" />
+            <img src={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImg} alt="coffee plantation in Colombia" />
           </div>
 
           <div className="addCartContainer">

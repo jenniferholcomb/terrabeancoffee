@@ -267,12 +267,12 @@ class MenuController extends React.Component {
           </div>
             <div className="homeContent">
               <div className="homeImages">
-                <img className="img-1" src={roasters} alt="Terra Bean Coffee Co logo" />
-                <img className="img-2" src={coffeeMugs} alt="Terra Bean Coffee Co logo" />
+                <img src={roasters} alt="Terra Bean Coffee Co logo" />
+                <img src={coffeeMugs} alt="Terra Bean Coffee Co logo" />
               </div>
               <div className="homeCopy">
                 <h5 className="copy">
-                  <span className="intro">Lorem</span> ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  <span className="intro">Terra Bean Coffee Co.</span> crafts exceptional coffee while honoring the planet. Procuring the finest beans worldwide, we delicately roast to highlight unique flavors. Committed to sustainability, we prioritize ethical sourcing, eco-friendly practices, and responsible stewardship of the earth.
                 </h5>
                 <object className="line"></object>
                 <h3 className="tagHead1">crafted with care,</h3>
