@@ -4,9 +4,10 @@ import ReusableForm from "./ReusableForm";
 import { v4 } from 'uuid';
 
 function NewItemForm(props) {
-
+  console.log(props)
   function handleNewItemFormSubmission(event) {
 
+    console.log(event.currentTarget)
     event.preventDefault();
     props.onNewItemCreation({
       name: event.currentTarget.form.name.value,
@@ -16,6 +17,8 @@ function NewItemForm(props) {
       price: event.currentTarget.form.price.value,
       quantity: event.currentTarget.form.quantity.value,
       notification: '',
+      newItem: true,
+      newOrigin: false,
       id: v4()
     })
   }

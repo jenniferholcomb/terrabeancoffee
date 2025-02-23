@@ -57,11 +57,14 @@ function ItemDetail(props) {
               name={item.name}
               flag={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].flag}
               plantImg={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImg}
+              plantImgNo={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImgNo}
               origin={item.origin}
               roast={item.roast}
               description={item.description}
               price={item.price}
               quantity={item.quantity}
+              newItem={item.newItem}
+              newOrigin={item.newOrigin}
               id={item.id}
               key={item.id} 
               detailPg={true}
@@ -92,7 +95,7 @@ function ItemDetail(props) {
                 />
                 <button id="incrementAddCart" type="button" onClick={handleQIncrement}>+</button>
               </div>
-              <button type="submit" className="cartButton" onClick={handleBuyingItem}><span className="buttonTextSolid">Add to Cart</span></button>
+              <button type="submit" className="cartButtonList cartSaveButton detailButton" onClick={handleBuyingItem}><span className="buttonTextSolid">Add to Cart</span></button>
             </form>
           </div> 
         </div>

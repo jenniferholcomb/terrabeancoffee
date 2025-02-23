@@ -14,12 +14,15 @@ function ItemsList(props) {
             name={item.name}
             flag={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].flag}
             plantImg={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImg}
+            plantImgNo={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImgNo}
             origin={item.origin}
             roast={item.roast}
             description={item.description}
             price={item.price}
             quantity={item.quantity}
             id={item.id}
+            newItem={item.newItem}
+            newOrigin={item.newOrigin}
             key={item.id} 
           />
         )}

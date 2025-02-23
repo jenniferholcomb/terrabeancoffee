@@ -16,6 +16,8 @@ function EditItemForm(props) {
       price: parseInt(event.currentTarget.form.price.value),
       quantity: parseInt(event.currentTarget.form.quantity.value),
       notification: item.notification,
+      newItem: item.newItem,
+      newOrigin: item.origin === event.currentTarget.form.origin.value ? false : true,
       id: item.id
     })
   }
@@ -31,11 +33,14 @@ function EditItemForm(props) {
         name={item.name}
         // flag={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].flag}
         plantImg={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImg}
+        plantImgNo={props.countryList[props.countryList.findIndex(country => country.origin === item.origin)].cpImgNo}
         origin={item.origin}
         roast={item.roast}
         description={item.description}
         price={item.price}
         quantity={item.quantity}
+        newItem={item.newItem}
+        newOrigin={item.newOrigin}
         id={item.id}
         key={item.id}/>
     </React.Fragment>

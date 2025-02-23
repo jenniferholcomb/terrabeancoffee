@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
+import CornerSVG from './CornerSVG';
 
-import styles from './ReusableForm.module.css';
-import empty from './../imgold/emptyImg.png';
+import empty from '/img/emptyImg.webp';
 
 function ReusableForm(props) {
-
+  console.log(props)
   const [nameText, setNameText] = useState(props.name ? props.name.length : 0);
   const [descText, setDescText] = useState(props.name ? props.description.length : 0);
   const [roastValue, setRoastValue] = useState(props.name ? props.roast : '');
   const [originValue, setOriginValue] = useState(props.name ? props.origin : '');
-  const [originImg, setOriginImg] = useState(props.name ? props.plantImg : empty);
+  const [originImg, setOriginImg] = useState(props.name ? props.newItem || props.newOrigin ? props.plantImgNo : props.plantImg : empty);
   const [priceValue, setPriceValue] = useState(props.name ? props.price : 1);
   const [quanValue, setQuanValue] = useState(props.name ? props.quantity : 1);
   const [saveValue, setSaveValue] = useState(false);
@@ -42,7 +42,7 @@ function ReusableForm(props) {
       setRoastValue(value);
     } else if (name === "origin") {
       setOriginValue(value);
-      setOriginImg(value === '' ? empty : props.originImg[props.originImg.findIndex(country => country.origin === value)].cpImg); 
+      setOriginImg(value === '' ? empty : props.originImg[props.originImg.findIndex(country => country.origin === value)].cpImgNo); 
     }
   };
 
@@ -92,7 +92,6 @@ function ReusableForm(props) {
                     type='text'
                     className='nameInput'
                     name='name'
-                    // placeholder={props.name ? props.name : 'Name'} required
                     defaultValue={props.name ? props.name : ''}
                     onChange={handleChange}
                     maxLength={nameMaxLength}
@@ -105,7 +104,7 @@ function ReusableForm(props) {
                     name='origin' 
                     value={originValue} 
                     onChange={handleChange} 
-                    className={`${styles.nameInput} ${styles.originInput} ${originValue === 'Brazil' ? styles.nameInputBrazil : originValue === 'Colombia' ? styles.nameInputColombia : originValue === 'India' ? styles.nameInputIndia : originValue === 'Phillipines' ? styles.nameInputPhillipines : styles.placeholderOrigin}`}>
+                    className={`nameInput originInput ${originValue === 'Brazil' ? "nameInputBrazil" : originValue === 'Colombia' ? "nameInputColombia" : originValue === 'India' ? "nameInputIndia" : originValue === 'Phillipines' ? "nameInputPhillipines" : "placeholderOrigin"}`}>
                     { 
                       !props.name ? <option value="">select</option> : null
                     }
@@ -121,7 +120,7 @@ function ReusableForm(props) {
                     name='roast' 
                     value={roastValue} 
                     onChange={handleChange} 
-                    className={`${styles.nameInput} ${styles.roastInput} ${roastValue === '' ? styles.placeholderOrigin : null}`}>
+                    className={`nameInput roastInput ${roastValue === '' ? "placeholderOrigin" : null}`}>
                     { 
                       !props.name ? <option value="">select</option> : null
                     }
@@ -174,16 +173,34 @@ function ReusableForm(props) {
                   <button id="increment" type="button" onClick={handleQIncrement}>+</button>
                 </div>
               </div>
-              <div className="formImage">
-                <img src={originImg} alt="coffee plantation"/>
+              <div
+                className={`formImage ${originImg === empty ? "emptyFormImg" : "filledFormImg"}`}
+                style={{
+                  backgroundImage: `url(${originImg === empty ? "none" : originImg})`,
+                  backgroundPosition: "50%",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  boxSizing: "border-box"
+                }}
+                alt="coffee plantation"
+              >
+                {[...Array(4)].map((_, index) => (
+                  <>
+                    {index < 2 ?                
+                      <CornerSVG shadowDx={2} shadowDy={2} blurStdDeviation={2} width={32} height={31} index={index} />
+                    :
+                      <CornerSVG shadowDx={1} shadowDy={1} blurStdDeviation={1.5} width={30} height={29} index={index} />
+                    }
+                  </>
+                ))}
               </div>
               <div className="breakLine3"></div>
               
               <div className="btn2">
-                <button className={`${saveValue ? "saveFormButton" : "disabledButton"}`} id="formButton" type="submit" onClick={props.formSubmissionHandler}><span className="buttonTextSolid">{props.buttonText}</span></button>
+                <button className={`${saveValue ? "cartButtonList cartSaveButton" : "cartButtonListDisabled"}`} id="formButton" type="submit" onClick={props.formSubmissionHandler}><span className={`${saveValue ? "buttonTextSolid" : "buttonTextDisabled"}`}>{props.buttonText}</span></button>
               </div>
               <div className="btn1">
-                <button className="cancelFormButton" id="formButton" type="button" onClick={props.onClickingCancel}><span className="buttonText">Cancel</span></button>
+                <button className="cartButtonList" id="formButton" type="button" onClick={props.onClickingCancel}><span className="buttonTextForm">Cancel</span></button>
               </div>
             </div>
           </form>

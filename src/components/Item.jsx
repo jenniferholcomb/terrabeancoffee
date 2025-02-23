@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import CornerSVG from "./CornerSVG";
 
 function Item(props) {
   const quantityNotification = 
@@ -15,9 +16,9 @@ function Item(props) {
       <div className={props.detailPg ? "details-info" : "itemCard"}>
         <div className="cardImgContainer" id={props.detailPg ? "detailImg" : "listImg"}>
           <div
-            className={props.detailPg ? "" : "cardImg"}
+            className={`${props.detailPg ? "detailCardImg" : "cardImg"}`}
             style={{
-              backgroundImage: `url(${props.plantImg})`,
+              backgroundImage: `url(${props.newItem === true || props.newOrigin === true ? props.plantImgNo : props.plantImg})`,
               backgroundPosition: "50%",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
@@ -27,23 +28,11 @@ function Item(props) {
           >
             {[...Array(4)].map((_, index) => (
               <>
-                <svg key={index} className={`corner-${index + 1}`} xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">
-                  <g filter="url(#filter0_d_81_314)">
-                    <path d="M2 25L2 2L13 2L26 2C26 2 19.5 5.5 12.5 12C5.5 18.5 2 25 2 25Z" fill="#332C2C" fillOpacity="0.7" shapeRendering="crispEdges"/>
-                  </g>
-                  <defs>
-                    <filter id="filter0_d_81_314" x="0" y="0" width="32" height="31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dx="2" dy="2"/>
-                      <feGaussianBlur stdDeviation="2"/>
-                      <feComposite in2="hardAlpha" operator="out"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_81_314"/>
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_81_314" result="shape"/>
-                    </filter>
-                  </defs>
-                </svg>
+                {index < 2 ?                
+                  <CornerSVG shadowDx={2} shadowDy={2} blurStdDeviation={2} width={32} height={31} index={index} />
+                :
+                  <CornerSVG shadowDx={1} shadowDy={1} blurStdDeviation={1.5} width={30} height={29} index={index} />
+                }
               </>
             ))}
           </div>
@@ -58,7 +47,9 @@ function Item(props) {
         <div className={props.detailPg ? "detColumn": "desColumn"}> 
           <blockquote className="description" id={props.detailPg ? "detailDescription" : 'listDescription'}>{props.description}</blockquote>
         </div>
-        <button type="submit" className="cartButtonList" onClick={props.handleAddingToCart}><span className="buttonTextList">Add to Cart</span></button>
+        {props.detailPg !== true && (
+          <button type="submit" className="cartButtonList" onClick={props.handleAddingToCart}><span className="buttonTextList">Add to Cart</span></button>
+        )}
         <h4 className="cardPrice" id={props.detailPg ? "detailPrice" : "listPrice"}>${props.price}<span className="priceUnit"> /lb</span></h4>
       </div>
     </div>
