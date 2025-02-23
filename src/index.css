@@ -36,7 +36,7 @@ input[type=number] {
   /* -moz-appearance: textfield; */
 }
 
-.disabledButton /**/, .cartButtonListDisabled /**/{
+.cartButtonListDisabled /**/{
   display: block !important; /* since you set the element's display to none inline,
                                 we need to use !important flag (which is pretty bad)
                                 to override the inline style */
@@ -44,13 +44,13 @@ input[type=number] {
   color: #ccc; 
 }
 
-.disabledButton { /**/
+/* .disabledButton { 
   background-color: #b0aeae; 
   width: 142px;
   height: 27px;
   border-radius: 20px;
   border: none;
-}
+} */
 
 .appContainer { /**/
   display: flex;
@@ -124,7 +124,6 @@ input[type=number] {
   position: fixed;
   top: 42px;
   left: 2.12rem;
-  margin-top: 1em;
   cursor: pointer;
 }
 
@@ -800,6 +799,26 @@ h1#header {
   box-shadow: 1px 4px 4px 0px rgba(43, 43, 43, 0.15);
 }
 
+.corner-1 { /**/
+  transform: translateX(-13px) translateY(-13px);
+}
+
+.corner-2 { /**/
+  transform: translateX(13px) translateY(-13px) rotate(90deg);
+  justify-self: end;
+}
+
+.corner-3 { /**/
+  align-self: self-end;
+  transform: translateX(-13px) translateY(13px) rotate(270deg);
+}
+
+.corner-4 { /**/
+  align-self: self-end;
+  justify-self: end;
+  transform: translateX(13px) translateY(13px) rotate(180deg);
+}
+
 /* .content {
   grid-column: 2;
   grid-row: 1;
@@ -871,7 +890,7 @@ h1#header {
 .cardHeader { /**/
   color: #000;
   font-family: Mulish;
-  font-size: 1.625rem;
+  font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -1024,7 +1043,7 @@ h1#header {
   position: fixed;
   min-width: 100vw;
   min-height: 100%;
-  background: #F3EDE7;
+  background-color: #F4E7D1;
   backdrop-filter: blur(5px) saturate(70%);
   z-index: 9999;
   display: grid;
@@ -1311,6 +1330,7 @@ button .cartButton { /**/
 .formCard { /**/
   width: 100%;
   max-height: 100%;
+  background-color: #F4E7D1;
 }
 
 .formCart { /**/
@@ -1321,7 +1341,7 @@ button .cartButton { /**/
 .formHeader { /**/
   color: #143f1a;
   margin: 0 0 0px 35px;
-  padding-top: 40px;
+  padding-top: 55px;
 }
 
 .breakLine1 /**/, .breakLine3 /**/{
@@ -1609,15 +1629,15 @@ input.priceQuantityInput1, input.priceQuantityInput2 { /**/
   grid-row: 3;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-self: end;
+  justify-self: center;
   /* justify-content: center;
   justify-items: center;
   align-content: center; */
   /* padding: 20px 0 10px 0; */
 
-  width: calc((17.67281rem * .85));
-  height: calc((23.75rem * .85));
-  margin-right: 35px;
+  width: calc((17.67281rem * .75));
+  height: calc((23.75rem * .75));
+  margin: 1rem 0;
 }
 
 .filledFormImg {
@@ -1731,7 +1751,7 @@ textarea {
 }
 
 
-.cartButton /**/, .saveFormButton /**/ {
+.cartButton /**/ {
   width: 107px;
   height: 27px;
   border-radius: 20px;
@@ -1774,6 +1794,13 @@ textarea {
   box-shadow: 4px -3px 6px 0px rgba(0, 0, 0, 0.25);
 }
 
+.buttonNoStroke {
+  border-top: 1px solid #433d3d80;
+  border-right: 1px solid #433d3d80;
+  border-left: 1px solid #433d3d5c;
+  border-bottom: .75px solid #433d3d5c;
+}
+
 .buttonTextSolid /**/, .buttonText /**/, .buttonTextList /**/, .buttonTextForm /**/, .buttonTextDisabled {
   font-family: Mulish;
   font-size: 0.655rem;
@@ -1807,7 +1834,7 @@ textarea {
   width: 142px;
 }
 
-.cancelButton /**/, .cancelFormButton /**/ {
+/* .cancelButton, .cancelFormButton {
   height: 27px;
   padding-bottom: 2px;
   border-radius: 20px;
@@ -1817,11 +1844,11 @@ textarea {
   color: #4fa05f;
   box-shadow: 0px 2px 7.2px 0px rgba(65, 63, 63, 0.15);
   background: linear-gradient(180deg, rgba(70, 142, 84, 0.04) 25.93%, rgba(70, 142, 84, 0.20) 109.26%), #FFFFFD;
-}
+} */
 
-.cancelButton { /**/
+/* .cancelButton { 
   width: 110px;
-}
+} */
 
 .doneButton { /**/
   justify-self: center;
@@ -1845,9 +1872,9 @@ textarea {
   margin-bottom: 20px;
 }
 
-.buttonText { /**/
+/* .buttonText { 
   color: #3D7B49;
-}
+} */
 
 @media all and (min-height: 568px) {
 
@@ -2089,9 +2116,11 @@ textarea {
   .formImage { /**/
     grid-column: 2;
     grid-row: 1;
-    /* justify-content: end; */
+    justify-self: end;
     padding: 0;
-    /* width: 50%; */
+    width: calc((17.67281rem * .85));
+    height: calc((23.75rem * .85));
+    margin: 0 35px 0 0;
   }
 
   .formCol1Content { /**/
@@ -2211,6 +2240,10 @@ textarea {
     background: rgba(62, 56, 56, 0.85);
   }
 
+  .menuCloseIcon /**/, .closeIconWindow /**/ {
+    margin-top: 1em;
+  }
+
   .closeIconWindow svg { /**/
     fill: #fffffd;
   }
@@ -2235,6 +2268,10 @@ textarea {
     top: 50%;
     left: auto;
     transform: rotate(-5deg) translateY(167px) translateX(-130px);
+  }
+
+  .formHeader { /**/
+    padding-top: 40px;
   }
 
   .detailPriceContainer { /**/
@@ -2264,7 +2301,6 @@ textarea {
 
   .formCard /**/, .formCart /**/ {
     border-radius: 5px;
-    background-color: #F4E7D1;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
@@ -2617,26 +2653,6 @@ textarea {
     grid-template-columns: 1fr 1fr;
   }
 
-  .corner-1 { /**/
-    transform: translateX(-13px) translateY(-13px);
-  }
-
-  .corner-2 { /**/
-    transform: translateX(13px) translateY(-13px) rotate(90deg);
-    justify-self: end;
-  }
-
-  .corner-3 { /**/
-    align-self: self-end;
-    transform: translateX(-13px) translateY(13px) rotate(270deg);
-  }
-
-  .corner-4 { /**/
-    align-self: self-end;
-    justify-self: end;
-    transform: translateX(13px) translateY(13px) rotate(180deg);
-  }
-
   .listCard { /**/
     grid-column: 2;
     grid-row: 1;
@@ -2644,8 +2660,8 @@ textarea {
     align-self: self-end;
   }
 
-  .cardHeader { /**/
-    font-size: 20px;
+  .cardHeader { 
+
   }
 
   /* .listHeaderContainer {

@@ -48,7 +48,7 @@ function Item(props) {
           <blockquote className="description" id={props.detailPg ? "detailDescription" : 'listDescription'}>{props.description}</blockquote>
         </div>
         {props.detailPg !== true && (
-          <button type="submit" className="cartButtonList" onClick={props.handleAddingToCart}><span className="buttonTextList">Add to Cart</span></button>
+          <button type="submit" className="cartButtonList buttonNoStroke" onClick={props.handleAddingToCart}><span className="buttonTextList">Add to Cart</span></button>
         )}
         <h4 className="cardPrice" id={props.detailPg ? "detailPrice" : "listPrice"}>${props.price}<span className="priceUnit"> /lb</span></h4>
       </div>
