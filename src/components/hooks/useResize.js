@@ -3,12 +3,19 @@ import { useState, useEffect } from "react";
 export function useResize() {
   const [isTablet, setIsTablet] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isWdDesktop, setIsWdDestop] = useState(false);
 
   const handleResize = () => {
     if (window.innerWidth < 744) {
+      setIsWdDestop(false);
       setIsDesktop(false);
       setIsTablet(true);
+    } else if (window.innerWidth >= 1500) {
+      setIsWdDestop(true);
+      setIsDesktop(false);
+      setIsTablet(false);
     } else {
+      setIsWdDestop(false);
       setIsDesktop(true);
       setIsTablet(false);
     }
@@ -26,5 +33,5 @@ export function useResize() {
     };
   }, []); 
   
-  return isTablet;
+  return isTablet, isDesktop, isWdDesktop;
 }

@@ -6,14 +6,18 @@ import steward from "/img/stewardAward.webp";
 import league from "/img/leagueAward.webp";
 import bio from "/img/bioAward.webp";
 
-function Header({logoTranslateY}) {
+function Header({logoTranslateY, logoTranslateYNrw, isWdDesktop}) {
+  console.log(isWdDesktop)
+  console.log(logoTranslateYNrw)
   return (
     <React.Fragment>
       <header className='mast-head'>
         <div 
           className="logoContainer"
           style={{
-            transform: `translateY(${logoTranslateY})`, 
+            transform: isWdDesktop 
+              ? `translateY(${logoTranslateY})` 
+              : `translateY(${logoTranslateYNrw})`, 
             transition: "transform 0.5s ease-in-out" 
           }}
         >

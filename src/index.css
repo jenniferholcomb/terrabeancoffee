@@ -518,12 +518,12 @@ input.cartQuantityInput { /**/
   content: "";
   top: 0;
   left: 0;
-  width: 71.1875rem;
-  height: 35.6875rem;
-  flex-shrink: 0;
+  width: 100%;
+  height: 30rem;
   aspect-ratio: 1139/571;
   background-image:   url('/img/terraHeader.webp');
   background-repeat: no-repeat;
+  background-position: 50%;
   position: absolute;
   background-size: cover;
 }
@@ -545,7 +545,7 @@ input.cartQuantityInput { /**/
   background: rgba(78, 100, 62, 0.28);
   border-bottom: 3px solid #FFFCFC;
   z-index: 989;
-  height: 35.6875rem;
+  height: 30rem;
 }
 
 .shop-container { /**/
@@ -2546,8 +2546,13 @@ textarea {
 @media all and (min-width: 1024px) {
 
   .appContainer { /**/
-    grid-template-columns: 1fr 71.1875rem 1fr;
+    /* grid-template-columns: 1fr 71.1875rem 1fr; */
   }
+
+  .home {
+    grid-template-columns: 11.25rem 1fr 11.25rem;
+  }
+  
 
   .mast-head {  /**/
     height: 35.6875rem;
@@ -2557,8 +2562,8 @@ textarea {
   .logo { /**/
     min-width: 15.3125rem;
     min-height: 15.3125rem;
-    align-self: last baseline;
-    padding-bottom: 4.56rem;
+    align-self: center;
+    /* padding-bottom: 4.56rem; */
   }
 
   /* .footerText {
@@ -2901,5 +2906,25 @@ textarea {
 @media all and (min-width: 1340px) {
   .container-items-list { /**/
     column-gap: 4rem;
+  }
+}
+
+@media all and (min-width: 1500px) {
+  .home {
+    grid-template-columns: 1fr 71.1875rem 1fr;
+  }
+
+  .centerPage::before { /**/
+    width: 71.1875rem;
+    height: 35.6875rem;
+  }
+
+  .centerGradient {
+    height: 35.6875rem;
+  }
+
+  .logo { /**/
+    align-self: last baseline;
+    padding-bottom: 4.56rem;
   }
 }

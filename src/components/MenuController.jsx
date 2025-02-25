@@ -225,7 +225,7 @@ class MenuController extends React.Component {
   }
 
   render() {
-    const { screenChange, translateY, isScrolled, logoTranslateY } = this.props;
+    const { isTablet, isDesktop, isWdDesktop, translateY, isScrolled, logoTranslateY, logoTranslateYNrw } = this.props;
   
     return (
       <React.Fragment>
@@ -249,7 +249,9 @@ class MenuController extends React.Component {
             </div>
             <div className="centerPage"> 
               <div className="centerGradient"></div>
-              <Header logoTranslateY={logoTranslateY} /> 
+              <Header logoTranslateY={logoTranslateY} 
+                      logoTranslateYNrw={logoTranslateYNrw} 
+                      isWdDesktop={isWdDesktop} /> 
             </div>
             <div className="rightPage">
               <div 
@@ -289,7 +291,7 @@ class MenuController extends React.Component {
 
           <div className="shop-container" id="shop">
             {
-              screenChange && this.state.selectedItem !== null ? 
+              isTablet && this.state.selectedItem !== null ? 
                 null
               : 
                 <React.Fragment>
