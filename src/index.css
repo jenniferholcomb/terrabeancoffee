@@ -122,7 +122,7 @@ input[type=number] {
 .menuCloseIcon /**/, .closeIconWindow /**/ {
   z-index: 999999;
   position: fixed;
-  top: 42px;
+  top: 30px;
   left: 2.12rem;
   cursor: pointer;
 }
@@ -751,14 +751,15 @@ h1#header {
 }
 
 .container-items-list { /**/
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-  column-gap: 4rem;
+  /* column-gap: 3vw;  */
+  column-gap: min(2.5vw, 4rem);
   row-gap: 2.7rem;
-  margin-top: 21rem;
+  margin: 21rem 1rem 0 1rem;
   overflow-y: visible;
   padding-bottom: 5rem;
 }
@@ -766,6 +767,7 @@ h1#header {
 .itemCard { /**/
   position: relative;
   display: grid;
+  grid-template-columns: 50% 50%;
   width: 320px;
   height: 100%;
   border-radius: 0.3125rem;
@@ -782,41 +784,45 @@ h1#header {
 
 .cardImgContainer { /**/
   grid-column: 2;
-  grid-row: 1 / span 6;
-  min-height: auto;
+  grid-row: 1 / span 5;
+  min-height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  /* align-items: center; */
+  padding: 1rem 1rem .75rem 0;
 }
 
 #listImg { /**/
-  max-width: 100%;
-  max-height: 100%;
-  margin: 22px 0 0 6px;
+  /* max-width: 100%;
+  max-height: 100%; */
+  margin: 0;
 }
 
 .cardImg, .detailCardImg { /**/
-  box-shadow: 1px 4px 4px 0px rgba(43, 43, 43, 0.15);
+  /* box-shadow: 1px 4px 4px 0px rgba(43, 43, 43, 0.15); */
+  filter: drop-shadow(2px 1px 2px rgba(89, 82, 82, 0.12));
 }
 
-.corner-1 { /**/
-  transform: translateX(-13px) translateY(-13px);
+.cardImg { /**/
+  /* max-width: 100%; */
+  /* margin: 20px 0 20px 20px; */
+  /* width: calc(17.67281rem *.75);
+  height: calc(23.75rem *.75); */
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+
+    width: calc(17.67281rem *.65);
+    height: calc(23.75rem *.65);
+    max-width: 100%;
+    /* max-height: 75%; */
+    border-radius: 0.3rem;
+    box-shadow: 1px -2px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
-.corner-2 { /**/
-  transform: translateX(13px) translateY(-13px) rotate(90deg);
-  justify-self: end;
-}
-
-.corner-3 { /**/
-  align-self: self-end;
-  transform: translateX(-13px) translateY(13px) rotate(270deg);
-}
-
-.corner-4 { /**/
-  align-self: self-end;
-  justify-self: end;
-  transform: translateX(13px) translateY(13px) rotate(180deg);
+[class^="corner"] {
+  display: none;
 }
 
 /* .content {
@@ -841,9 +847,9 @@ h1#header {
   display: flex;
   justify-content: flex-end;
   margin-top: 0px;
-  margin-right: 22px;
-  margin-bottom: 22px;
- }
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
 
 .detailFlag { /**/
   grid-column: 3;
@@ -882,9 +888,10 @@ h1#header {
   grid-column: 1;
   grid-row: 1;
   height: 23px;
-  width: 100%;
-  border-bottom: 3px #50A060;
+  /* width: 100%; */
+  /* border-bottom: 3px #50A060; */
   align-self: baseline;
+  padding: 4.5rem 0 0 1rem;
 }
 
 .cardHeader { /**/
@@ -912,43 +919,45 @@ h1#header {
   margin: 0;
 }
 
-#subHeadMarginNrw { /**/
-  margin-bottom: 2px;
-}
+
 
 .listSubHeadOr { /**/
   grid-column: 1;
   grid-row: 7;
-  margin-left: .8rem;
+  margin-left: 1rem;
+  padding-top: 3px;
   align-self: flex-start;
 }
 
 .detailSubHeadOr { /**/
   grid-column: 1;
   grid-row: 2;
+  padding-bottom: 8px;
 }
 
 .listSubHeadRo { /**/
   grid-column: 1;
   grid-row: 4;
-  margin-left: 22px;
+  margin: 1rem 1rem 0 1rem;
 }
 
 .detailSubHeadRo { /**/
   grid-column: 1;
   grid-row: 3;
+  padding-bottom: 8px;
 }
 
 .listSubHeadDes { /**/
   grid-column: 1; 
   grid-row: 5;
-  margin-left: 22px;
+  margin-left: 1rem
 }
 
 .detailSubHeadDes { /**/
   grid-column: 1;
   grid-row: 4;
   max-width: 100%;
+  padding-bottom: 8px;
 }
 
 #desSubHead { /**/
@@ -976,8 +985,7 @@ h1#header {
   grid-row: 6;
   max-height: 8.6rem;
   overflow-y: hidden;
-  margin-top: 4px;
-  margin-left: 22px;
+  margin-left: 1rem;
 }
 
 .detColumn { /**/
@@ -994,38 +1002,37 @@ h1#header {
   line-height: normal;
   letter-spacing: 0.02438rem;
   margin: 5px 16px 0px 16px;
-  padding-right: 10px;
+  /* padding-right: 10px; */
 }
 
 #listDescription {  /**/
-  margin: 0 15px 7px 15px;
+  margin: 0 1rem 7px 1rem;
 }
 
 .cardPrice { /**/
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 2;
   color: #000;
-  text-align: right;
   font-family: Mulish;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.07875rem;
   text-transform: uppercase;
-  padding-top: 2px;
+
 }
 
 #detailQuantitySpan { /**/
-  padding-left: 42px;
+  padding-left: 46px;
 }
 
 #detailPriceSpan { /**/
-  padding-left: 24px;
+  padding-left: 22px;
 }
 
 #listPrice { /**/
-  margin: 10px 0px 2px 22px;
+  margin: 1.6rem 0 0 1.1rem;
 }
 
 .priceUnit { /**/
@@ -1084,31 +1091,34 @@ h1#header {
 }
 
 .mobileNameDetail { /**/
-  font-weight: 900;
+  /* font-weight: 900; */
+}
+
+.detailHeader {
+  display: none;
 }
 
 .detailLineContainerA /**/, .detailLineContainerB /**/ {
   grid-column: 1 / span 2;
   max-width: 100%;
   max-height: 2px;
-  border-bottom: solid 1.5px #50A060; 
+  border-bottom: solid 1.5px #143f1a; 
 }
 
 .detailLineContainerA { /**/
   grid-row: 2;
-  margin: 17px 0 15px 0;
+  margin: 17px 0 20px 0;
 }
 
 .detailLineContainerB { /**/
   grid-row: 5;
-  margin: 40px 0 17px 0;
+  margin: 10px 0 25px 0;
 }
 
 .detailImgContainerNrw { /**/
   grid-column: 1;
   grid-row: 3 / span 2;
   align-self: flex-start;
-  padding-top: 10px;
 }
 
 .detailImgContainerNrw img { /**/
@@ -1158,7 +1168,7 @@ h1#header {
 }
 
 #detailPriceSubhead{ /**/
-  margin: 0px 0 0 0px;
+  margin: 0;
 }
 
 /* .detBtn {
@@ -1279,7 +1289,7 @@ button .cartButton { /**/
 }
 
 .widgetLinkDetail { /**/
-  color: #468E54;
+  color: #2d7037;
   font-family: Mulish;
   font-size: 13px;
   font-style: normal;
@@ -1624,7 +1634,7 @@ input.priceQuantityInput1, input.priceQuantityInput2 { /**/
   z-index: 999;
 }
 
-.formImage { /**/
+.formImage, .detailFormImage { /**/
   grid-column: 1;
   grid-row: 3;
   display: grid;
@@ -1634,7 +1644,7 @@ input.priceQuantityInput1, input.priceQuantityInput2 { /**/
   justify-items: center;
   align-content: center; */
   /* padding: 20px 0 10px 0; */
-
+  filter: drop-shadow(3px -2px 4px rgba(89, 82, 82, 0.12));
   width: calc((17.67281rem * .75));
   height: calc((23.75rem * .75));
   margin: 1rem 0;
@@ -1798,7 +1808,10 @@ textarea {
   border-top: 1px solid #433d3d80;
   border-right: 1px solid #433d3d80;
   border-left: 1px solid #433d3d5c;
-  border-bottom: .75px solid #433d3d5c;
+  border-bottom: .75px solid #433d3d42;
+  grid-column: 1;
+  grid-row: 3;
+  margin: 0 0 1.5rem 1rem;
 }
 
 .buttonTextSolid /**/, .buttonText /**/, .buttonTextList /**/, .buttonTextForm /**/, .buttonTextDisabled {
@@ -1980,6 +1993,10 @@ textarea {
 
 @media all and (min-width: 600px) {
 
+  .menuCloseIcon /**/, .closeIconWindow /**/ {
+    top: 42px;
+  }
+
   .container-details { /**/
     position: fixed;
     align-content: start;
@@ -2008,7 +2025,8 @@ textarea {
     display: unset;
     grid-column: 3;
     grid-row: 1 / span 5;
-    margin: 3px 0 0 10px;
+    margin: 0;
+    justify-content: end;
   }
 
   .detailPriceContainer { /**/
@@ -2017,6 +2035,15 @@ textarea {
     max-height: 100%;
     margin-right: 49px;
     padding-top: 10px;
+    transform: translateX(0px);
+  }
+
+  #detailQuantitySpan { /**/
+    padding-left: 49px;
+  }
+
+  #detailPriceSpan { /**/
+    padding-left: 24px;
   }
 
   .addCartContainer { /**/
@@ -2047,6 +2074,7 @@ textarea {
   } */
 
   .detailHeader { /**/
+    display: unset;
     grid-column: 1;
     grid-row: 1;
     margin-bottom: 20px;
@@ -2094,6 +2122,10 @@ textarea {
     display: none;
   }
 
+  .detailSubHeadDes { /**/
+    padding-bottom: 0px;
+  }
+
   .formCard /**/, .formCart /**/ {
     width: 596px;
     max-height: 750px;
@@ -2113,14 +2145,21 @@ textarea {
     margin-right: 6px;
   }
 
-  .formImage { /**/
+  .formImage, .detailFormImage { /**/
     grid-column: 2;
     grid-row: 1;
     justify-self: end;
     padding: 0;
     width: calc((17.67281rem * .85));
     height: calc((23.75rem * .85));
+  }
+
+  .formImage {
     margin: 0 35px 0 0;
+  }
+
+  .detailFormImage {
+    margin: 0;
   }
 
   .formCol1Content { /**/
@@ -2280,6 +2319,10 @@ textarea {
     justify-content: start;
     margin-left: 37px;
     padding-top: 10px;
+  }
+
+  #detailQuantitySpan { /**/
+    padding-left: 52px;
   }
 
   .addCartContainer { /**/
@@ -2494,6 +2537,10 @@ textarea {
     width: 20px;
     height: 20px;
   }
+
+  .container-items-list { /**/
+    column-gap: 4rem;
+  }
 }
 
 @media all and (min-width: 1024px) {
@@ -2518,34 +2565,83 @@ textarea {
     font-size: 15px;
   } */
 
+  .container-items-list { /**/
+    column-gap: min(2.5vw, 4rem);
+  }
+
   .itemCard { /**/
     /* grid-template-columns: 38% 40% 22%; */
-    width: 410px;
+    /* width: 410px;
     height: 100%;
-    padding-bottom: 10px;
+    padding-bottom: 10px; */
+    grid-template-columns: 1fr 1fr;
+    width: calc(40.8125rem * .739);
+    height: calc(25.8125rem * .85);
+    padding-bottom: 0;
   }
 
   .listCard { /**/
-    grid-column: 1 / span 2;
-    /* padding: 15px 0 0px 18px; */
+    /* grid-column: 1 / span 2;
+    padding: 15px 0 0px 18px; */
 
+    grid-column: 2;
+    grid-row: 1;
+    padding: 1.5rem 0 0 0;
+    align-self: center;
   }
 
   .cardImgContainer { /**/
     grid-column: 1;
-    grid-row: 3 / span 4;
+    grid-row: 1 / span 6;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
   }
 
-  .cardImg, .detailCardImg { /**/
+  .cardImg { /**/
     /* margin: 5px 0 15px 15px; */
+    border: 10px solid #FFF;
+    width: calc(17.67281rem *.77);
+    height: calc(23.75rem *.83);
+    max-width: 85%;
+    max-height: 100%;
+  }
+
+  .detailCardImg { /**/
     max-width: 100%;
     max-height: 100%;
   }
   
   #listImg { /**/
-    max-height: 100%;
-    margin: 0;
+    /* margin: 0; */
   }
+
+  /* [class^="corner"] {
+    display: unset;
+    width: calc(32px *.85);
+    height: calc(31px *.85);
+  }
+
+  .corner-1 { 
+    transform: translateX(-13px) translateY(-13px);
+  }
+  
+  .corner-2 { 
+    transform: translateX(13px) translateY(-13px) rotate(90deg);
+    justify-self: end;
+  }
+  
+  .corner-3 { 
+    align-self: self-end;
+    transform: translateX(-13px) translateY(13px) rotate(270deg);
+  }
+  
+  .corner-4 { 
+    align-self: self-end;
+    justify-self: end;
+    transform: translateX(13px) translateY(13px) rotate(180deg);
+  } */
+
 
   /* .listHeaderContainer {
     grid-column: 1 / span 3;
@@ -2556,30 +2652,52 @@ textarea {
   } */
 
   .listSubHeadOr { /**/
-    grid-column: 2;
-    grid-row: 4;
+    /* grid-column: 2;
+    grid-row: 4; */
+
+    grid-row: 2;
+    grid-column: 2 / span 2;
+    margin: 0;
+    padding: 1rem 0 0 0;
+    align-self: center;
   }
 
   .listSubHeadRo { /**/
     grid-column: 2;
-    grid-row: 3;
     align-self: center;
+
+    grid-row: 3;
+    margin: 0;
+    /* padding: 0; */
+  }
+
+  #subHeadMarginNrw { /**/
+    margin-bottom: 2px;
   }
 
   .listSubHeadDes { /**/
     grid-column: 2;
-    grid-row: 5;
+    /* grid-row: 5; */
     align-self: center;
+
+    grid-row: 4;
+    margin: 0;
+    /* padding: 0; */
   }
 
   #desSubHead { /**/
-    padding-top: 3px;
+    /* padding-top: 3px; */
   }
 
   .desColumn { /**/
     grid-column: 2 / span 2;
-    grid-row: 6;
+    /* grid-row: 6; */
     margin-top: 4px;
+
+    grid-row: 5;
+    margin: 0;
+    padding: .25rem 0 0 .8rem;
+    max-height: 8.6rem;
   }
 
   #listDescription {  /**/
@@ -2588,26 +2706,48 @@ textarea {
   }
 
   .cardFlag { /**/
-    grid-column: 3;
-    grid-row: 3 / span 3;
+    /* grid-column: 3;
+    grid-row: 3 / span 3; */
     margin-bottom: 0px;
     align-self: self-end;
+
+    grid-column: 3;
+    grid-row: 1;
+    margin-right: 1rem;
+    margin-top: 1.3rem;
   }
 
   .cardFlagImg { /**/
-    max-width: 31px;
-    max-height: 31px;
+    /* max-width: 31px;
+    max-height: 31px; */
+    min-width: calc(3.86363rem * .8);
+    min-height: calc(3.86363rem * .8);
+  }
+
+  .cardPrice {  /**/
+    grid-column: 3;
+    grid-row: 6;
+    text-align: right;
+    align-self: flex-end;
+    font-size: 1.125rem;
+    padding-top: 2px;
   }
 
   #listPrice { /**/
-    grid-column: 3;
-    grid-row: 6;
-    margin: 0 17px 0px 0px;
-    align-self: flex-end;
-    text-align: end;
-    /* height: 100%; */
+    margin: 0 1rem 1rem 0;
   }
 
+  .buttonNoStroke {
+    grid-column: 2;
+    grid-row: 6;
+    margin: 0 0 1rem 0;
+  }
+}
+
+@media all and (min-width: 1100px) {
+  .container-items-list { /**/
+    column-gap: 4rem;
+  }
 }
 
 @media all and (min-width: 1270px) {
@@ -2619,10 +2759,13 @@ textarea {
     left: 46.25%;
   }
 
+  .container-items-list { /**/
+    column-gap: min(2.5vw, 4rem);
+  }
+
   .itemCard { /**/
-    width: 40.8125rem;
+    width: 37.68rem;
     height: 25.8125rem;
-    /* grid-template-columns: 50% 30% 20%; */
     padding-bottom: 0;
   }
 
@@ -2638,7 +2781,8 @@ textarea {
   .cardImg { /**/
     /* max-width: 100%; */
     /* margin: 20px 0 20px 20px; */
-    width: 17.67281rem;
+    width: 16.2rem;
+    max-width: 85%;
     height: 23.75rem;
     border: 10px solid #FFF;
     display: grid;
@@ -2653,11 +2797,18 @@ textarea {
     grid-template-columns: 1fr 1fr;
   }
 
+  [class^="corner"] {
+    width: 32px;
+    height: 31px;
+  }
+
   .listCard { /**/
-    grid-column: 2;
+    /* grid-column: 2;
     grid-row: 1;
-    padding: 3.62rem 0 0 .8rem;
-    align-self: self-end;
+    padding: 3.62rem 0 0 .8rem;*/
+
+    align-self: self-end; 
+    padding: 0 0 1rem 0;
   }
 
   .cardHeader { 
@@ -2676,6 +2827,7 @@ textarea {
     grid-column: 3;
     grid-row: 1;
     margin-right: 1.57rem;
+    margin-top: 1.8rem;
   }
 
   .cardFlagImg { /**/
@@ -2684,54 +2836,70 @@ textarea {
   }
 
   #subHeadMarginNrw { /**/
-    margin-bottom: 0px;
+    /* margin-bottom: 0px; */
   }
 
   .listSubHeadOr { /**/
-    grid-row: 2;
+    /* grid-row: 2;
     grid-column: 2 / span 2;
     margin: 0;
     padding: 2.7rem 0 0 .8rem;
-    align-self: center;
+    align-self: center; */
+
+    padding: 2rem 0 0 0;
   }
 
   .listSubHeadRo { /**/
-    grid-row: 3;
+    /* grid-row: 3;
     margin: 0;
-    padding: 0 0 0 .8rem;
+    padding: 0 0 0 .8rem; */
+
+    /* padding-left: .8rem; */
   }
 
   .listSubHeadDes { /**/
-    grid-row: 4;
+    /* grid-row: 4;
     margin: 0;
-    padding: 0 0 0 .8rem;
+    padding: 0 0 0 .8rem; */
+/* 
+    padding-left: .8rem; */
   }
 
   .desColumn { /**/
-    grid-row: 5;
+    /* grid-row: 5;
     margin: 0;
     padding: 0 0 0 .8rem;
-    max-height: 8.6rem;
+    max-height: 8.6rem; */
+
+    padding-top: 0;
+    padding-right: .5rem;
   }
 
   #listDescription {  /**/
-    margin: 5px 16px 0px 16px;
+    margin: 5px 16px 0px 8px;
     /* font-size: 12px; */
   }
 
   .cardPrice {  /**/
-    grid-column: 3;
+    /* grid-column: 3;
     grid-row: 6;
-    /* color: #000;
-    font-size: 14px; */
     text-align: end;
-    align-self: flex-end;
+    align-self: flex-end; */
   }
 
   #listPrice { /**/
     margin: 0 1.57rem 1.57rem 0;
   }
 
+  .buttonNoStroke {
+    /* margin-left: .8rem; */
+    margin-bottom: 1.57rem;
+  }
+
 }
 
-
+@media all and (min-width: 1340px) {
+  .container-items-list { /**/
+    column-gap: 4rem;
+  }
+}

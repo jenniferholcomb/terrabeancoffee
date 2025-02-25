@@ -16,7 +16,7 @@ function Item(props) {
       <div className={props.detailPg ? "details-info" : "itemCard"}>
         <div className="cardImgContainer" id={props.detailPg ? "detailImg" : "listImg"}>
           <div
-            className={`${props.detailPg ? "detailCardImg" : "cardImg"}`}
+            className={`${props.detailPg ? "detailFormImage filledFormImg" : "cardImg"}`}
             style={{
               backgroundImage: `url(${props.newItem === true || props.newOrigin === true ? props.plantImgNo : props.plantImg})`,
               backgroundPosition: "50%",
