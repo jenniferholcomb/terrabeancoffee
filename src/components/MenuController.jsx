@@ -223,21 +223,22 @@ class MenuController extends React.Component {
       });
     }
   }
-
   render() {
-    const { isTablet, isDesktop, isWdDesktop, translateY, isScrolled, logoTranslateY, logoTranslateYNrw } = this.props;
+    const { isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, isScrolled, logoTranslateY, logoTranslateYNrw } = this.props;
   
     return (
       <React.Fragment>
         <div className="appContainer">
           <div className="home">
-            <div className="homeLayer"></div>
+            {/* <div className="homeLayer"></div> */}
             <div className="topNav"></div>
             <div className="leftPage">
               <ul 
                 className="menuContent"
                 style={{
-                  transform: `translateY(${translateY})`, 
+                  transform: isWdDesktop 
+                             ? `translateY(${translateY})` 
+                             : `translateY(${translateYNrw})`, 
                   transition: "transform 0.5s ease-in-out" 
                 }}
               >
@@ -257,7 +258,9 @@ class MenuController extends React.Component {
               <div 
                 className="cartContainer" 
                 style={{
-                  transform: `translateY(${translateY})`, 
+                  transform: isWdDesktop 
+                             ? `translateY(${translateY})` 
+                             : `translateY(${translateYNrw})`, 
                   transition: "transform 0.5s ease-in-out" 
                 }}
               >
@@ -271,25 +274,31 @@ class MenuController extends React.Component {
               </div>
           </div>
             <div className="homeContent">
-              <div className="homeImages">
-                <img src={roasters} alt="Terra Bean Coffee Co logo" />
-                <img src={coffeeMugs} alt="Terra Bean Coffee Co logo" />
-              </div>
-              <div className="homeCopy">
-                <h5 className="copy">
-                  <span className="intro">Terra Bean Coffee Co.</span> crafts exceptional coffee while honoring the planet. Procuring the finest beans worldwide, we delicately roast to highlight unique flavors. Committed to sustainability, we prioritize ethical sourcing, eco-friendly practices, and responsible stewardship of the earth.
-                </h5>
-                <object className="line"></object>
-                <h3 className="tagHead1">crafted with care,</h3>
-                <div className="textLine2">
-                  <h3 className="tagHead2">from <span className="boldCopy">soil</span> to <span className="boldCopy">brew</span></h3>
-                  <img className="bean" src={coffeeBean} alt="coffee bean graphic" />
+              <div className="homeRow1">
+                <div className="homeImages">
+                  <img src={roasters} alt="Terra Bean Coffee Co logo" />
+                  <img src={coffeeMugs} alt="Terra Bean Coffee Co logo" />
+                </div>
+                <div className="homeCopy">
+                  <h5 className="copy">
+                    <span className="intro"></span>Terra Bean Coffee Co. crafts exceptional coffee while honoring the planet. Procuring the finest beans worldwide, we delicately roast to highlight unique flavors. Committed to sustainability, we prioritize ethical sourcing, eco-friendly practices, and responsible stewardship of the earth.
+                  </h5>
+                  <object className="line"></object>
+                  <h3 className="tagHeadRight tagHead1">crafted with care,</h3>
+                  <div className="textLine2">
+                    <h3 className="tagHead2">from <span className="boldCopy">soil</span> to <span className="boldCopy">brew</span></h3>
+                    <img className="bean" src={coffeeBean} alt="coffee bean graphic" />
+                  </div>
                 </div>
               </div>
+              {/* <div className="homeRow2">
+                <h3 className="tagHead1">crafted with care,<br />from <span className="boldCopy">soil</span>to <span className="boldCopy">brew</span></h3>
+              </div> */}
+
             </div>
           </div>
 
-          <div className="shop-container" id="shop">
+          <div className={`${isDesktop ? "shop-containerNrw" : "shop-container"}`} id="shop">
             {
               isTablet && this.state.selectedItem !== null ? 
                 null

@@ -7,8 +7,7 @@ import league from "/img/leagueAward.webp";
 import bio from "/img/bioAward.webp";
 
 function Header({logoTranslateY, logoTranslateYNrw, isWdDesktop}) {
-  console.log(isWdDesktop)
-  console.log(logoTranslateYNrw)
+  
   return (
     <React.Fragment>
       <header className='mast-head'>

@@ -4,19 +4,19 @@ import { useScroll } from "./hooks/useScroll.js";
 
 export const withHooksHOC = (Component) => {
   return (props) => {
-    const isTablet = useResize();
-    const isDesktop = useResize();
-    const isWdDesktop = useResize();
+    const { isTablet, isDesktop, isWdDesktop } = useResize();
     const scrollY = useScroll();
-    const translateY = scrollY > 350 ? "60rem" : "0rem";
+    const translateY = scrollY > 350 ? "62rem" : "0rem";
+    const translateYNrw = scrollY > 350 ? "55rem" : "0rem";
     const isScrolled = scrollY > 350; 
-    const logoTranslateY = scrollY > 400 ? "47rem" : "0rem";
-    const logoTranslateYNrw = scrollY > 400 ? "53rem" : "0rem";
+    const logoTranslateY = scrollY > 400 ? "49rem" : "0rem";
+    const logoTranslateYNrw = scrollY > 400 ? "50.5rem" : "0rem";
 
     return <Component isTablet={isTablet} 
                       isDesktop={isDesktop}
                       isWdDesktop={isWdDesktop}
                       translateY={translateY} 
+                      translateYNrw={translateYNrw}
                       isScrolled={isScrolled}
                       logoTranslateY={logoTranslateY}
                       logoTranslateYNrw={logoTranslateYNrw}
