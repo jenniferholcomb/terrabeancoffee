@@ -224,7 +224,7 @@ class MenuController extends React.Component {
     }
   }
   render() {
-    const { isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, isScrolled, logoTranslateY, logoTranslateYNrw } = this.props;
+    const { isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, translateYTablet, isScrolled, isScrolledNrw, isScrolledTablet, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet } = this.props;
   
     return (
       <React.Fragment>
@@ -238,6 +238,8 @@ class MenuController extends React.Component {
                 style={{
                   transform: isWdDesktop 
                              ? `translateY(${translateY})` 
+                             : isTablet
+                             ? `translateY(${translateYTablet})`
                              : `translateY(${translateYNrw})`, 
                   transition: "transform 0.5s ease-in-out" 
                 }}
@@ -252,7 +254,9 @@ class MenuController extends React.Component {
               <div className="centerGradient"></div>
               <Header logoTranslateY={logoTranslateY} 
                       logoTranslateYNrw={logoTranslateYNrw} 
-                      isWdDesktop={isWdDesktop} /> 
+                      logoTranslateYTablet={logoTranslateYTablet}
+                      isWdDesktop={isWdDesktop} 
+                      isTablet={isTablet} /> 
             </div>
             <div className="rightPage">
               <div 
@@ -260,11 +264,13 @@ class MenuController extends React.Component {
                 style={{
                   transform: isWdDesktop 
                              ? `translateY(${translateY})` 
+                             : isTablet
+                             ? `translateY(${translateYTablet})`
                              : `translateY(${translateYNrw})`, 
                   transition: "transform 0.5s ease-in-out" 
                 }}
               >
-                <h3 className={`cart ${isScrolled ? "cartScrolled" : ""}`} onClick={this.handleCartClick}>cart</h3>
+                <h3 className={`cart ${isScrolled || isScrolledNrw || isScrolledTablet ? "cartScrolled" : ""}`} onClick={this.handleCartClick}>cart</h3>
                 <div className="cartCountContainer" onClick={this.handleCartClick}>
                   <svg className={`cartCircle ${isScrolled ? "circleScrolled" : ""}`} xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                     <circle cx="9.5" cy="9.5" r="9.5" />
@@ -298,7 +304,7 @@ class MenuController extends React.Component {
             </div>
           </div>
 
-          <div className={`${isDesktop ? "shop-containerNrw" : "shop-container"}`} id="shop">
+          <div className={`${isWdDesktop ? "shop-container" : "shop-containerNrw"}`} id="shop">
             {
               isTablet && this.state.selectedItem !== null ? 
                 null

@@ -519,7 +519,7 @@ input.cartQuantityInput { /**/
   top: 0;
   left: 0;
   width: 100%;
-  height: 30rem;
+  height: 26rem;
   aspect-ratio: 1139/571;
   background-image:   url('/img/terraHeader.webp');
   background-repeat: no-repeat;
@@ -545,7 +545,7 @@ input.cartQuantityInput { /**/
   background: rgba(78, 100, 62, 0.28);
   border-bottom: 3px solid #FFFCFC;
   z-index: 989;
-  height: 30rem;
+  height: 26rem;
 }
 
 .shop-container, .shop-containerNrw { /**/
@@ -2584,6 +2584,7 @@ textarea {
 
   .home {
     grid-template-columns: 11.25rem 1fr 11.25rem;
+    height: 51rem;
   }
   
   .homeContent {
@@ -2624,15 +2625,15 @@ textarea {
 
 
   .mast-head {  /**/
-    height: 30rem;
+    height: 26rem;
     margin: 0;
   }
 
   .logo { /**/
     min-width: 15.3125rem;
     min-height: 15.3125rem;
-    align-self: center;
-    /* padding-bottom: 4.56rem; */
+    align-self: flex-end;
+    padding-bottom: 2.2rem;
   }
 
   /* .footerText {
@@ -2827,6 +2828,26 @@ textarea {
 @media all and (min-width: 1270px) {
   .menuIconContainer { /**/
     left: 28px;
+  }
+
+  .logo { /**/
+    padding-bottom: 4rem;
+  }
+
+  .centerPage::before { /**/
+    height: 30rem;
+  }
+
+  .centerGradient {
+    height: 30rem;
+  }
+
+  .mast-head {
+    height: 30rem;
+  }
+
+  .home {
+    height: 56rem;
   }
 
   .homeContent {

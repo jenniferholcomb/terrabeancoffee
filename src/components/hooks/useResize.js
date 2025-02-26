@@ -6,11 +6,11 @@ export function useResize() {
   const [isWdDesktop, setIsWdDesktop] = useState(false);
 
   const handleResize = () => {
-    if (window.innerWidth < 744) {
+    if (window.innerWidth < 1270) {
       setIsWdDesktop(false);
       setIsDesktop(false);
       setIsTablet(true);
-    } else if (window.innerWidth < 1500 && window.innerWidth >= 744) {
+    } else if (window.innerWidth < 1500 && window.innerWidth >= 1270) {
       setIsWdDesktop(false);
       setIsDesktop(true);
       setIsTablet(false);

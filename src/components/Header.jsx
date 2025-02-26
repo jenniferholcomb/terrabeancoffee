@@ -6,8 +6,8 @@ import steward from "/img/stewardAward.webp";
 import league from "/img/leagueAward.webp";
 import bio from "/img/bioAward.webp";
 
-function Header({logoTranslateY, logoTranslateYNrw, isWdDesktop}) {
-  
+function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, isWdDesktop, isTablet}) {
+
   return (
     <React.Fragment>
       <header className='mast-head'>
@@ -16,6 +16,8 @@ function Header({logoTranslateY, logoTranslateYNrw, isWdDesktop}) {
           style={{
             transform: isWdDesktop 
               ? `translateY(${logoTranslateY})` 
+              : isTablet
+              ? `translateY(${logoTranslateYTablet})`
               : `translateY(${logoTranslateYNrw})`, 
             transition: "transform 0.5s ease-in-out" 
           }}
