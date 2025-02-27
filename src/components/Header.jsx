@@ -6,7 +6,7 @@ import steward from "/img/stewardAward.webp";
 import league from "/img/leagueAward.webp";
 import bio from "/img/bioAward.webp";
 
-function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, isWdDesktop, isTablet}) {
+function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, isWdDesktop, isTablet, isTabletPor, isMobile, orientation}) {
 
   return (
     <React.Fragment>
@@ -14,10 +14,14 @@ function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, isWdDe
         <div 
           className="logoContainer"
           style={{
-            transform: isWdDesktop 
+            transform: !isMobile && (orientation === "portrait") && (window.innerHeight > 960)
+              ? "none"
+              : isWdDesktop 
               ? `translateY(${logoTranslateY})` 
               : isTablet
               ? `translateY(${logoTranslateYTablet})`
+              : isTabletPor
+              ? `translateY(${logoTranslateYTabletPor})`
               : `translateY(${logoTranslateYNrw})`, 
             transition: "transform 0.5s ease-in-out" 
           }}

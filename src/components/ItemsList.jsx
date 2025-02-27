@@ -3,10 +3,10 @@ import Item from "./Item";
 import PropTypes from 'prop-types';
 
 function ItemsList(props) {
-
+  
   return (
     <React.Fragment>
-      <div className="container-items-list">
+      <div className={`${!props.isMobile && (props.orientation === "portrait") && (window.innerHeight > 960)  ? "container-items-list-portrait" : "container-items-list"}`}>
         {props.itemsList.map(item => 
           <Item 
             whenItemClicked={props.onItemSelection}

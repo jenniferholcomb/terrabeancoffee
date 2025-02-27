@@ -224,8 +224,8 @@ class MenuController extends React.Component {
     }
   }
   render() {
-    const { isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, translateYTablet, isScrolled, isScrolledNrw, isScrolledTablet, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet } = this.props;
-  
+    const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, translateYTablet, translateYTabletPor, isScrolled, isScrolledNrw, isScrolledTablet, isScrolledTabletPor, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, orientation } = this.props;
+
     return (
       <React.Fragment>
         <div className="appContainer">
@@ -236,18 +236,23 @@ class MenuController extends React.Component {
               <ul 
                 className="menuContent"
                 style={{
-                  transform: isWdDesktop 
+                  transform: !isMobile && (orientation === "portrait") && (window.innerHeight > 960)
+                             ? "none"
+                             : isWdDesktop 
                              ? `translateY(${translateY})` 
                              : isTablet
                              ? `translateY(${translateYTablet})`
+                             : isTabletPor
+                             ? `translateY(${translateYTabletPor})`
                              : `translateY(${translateYNrw})`, 
+                             
                   transition: "transform 0.5s ease-in-out" 
                 }}
               >
-                <li className={`menuList ${isScrolled ? "shopScrolled" : ""}`} onClick={() => document.getElementById("shop").scrollIntoView({ behavior: "smooth" })}>shop</li>
-                <li className="listContainer"><h3 className={`menuList ${isScrolled ? "listScrolled" : ""}`} onClick={this.handleMenuClick}>inventory</h3></li>
-                <li className={`menuList ${isScrolled ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">about us</li>
-                <li className={`menuList ${isScrolled ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">contact</li>
+                <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ||  (isTabletPor && isScrolledTabletPor) ? "shopScrolled" : ""}`} onClick={() => document.getElementById("shop").scrollIntoView({ behavior: "smooth" })}>shop</li>
+                <li className="listContainer"><h3 className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ||  (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} onClick={this.handleMenuClick}>inventory</h3></li>
+                <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) || (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">about us</li>
+                <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) || (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">contact</li>
               </ul>
             </div>
             <div className="centerPage"> 
@@ -255,27 +260,35 @@ class MenuController extends React.Component {
               <Header logoTranslateY={logoTranslateY} 
                       logoTranslateYNrw={logoTranslateYNrw} 
                       logoTranslateYTablet={logoTranslateYTablet}
+                      logoTranslateYTabletPor={logoTranslateYTabletPor}
                       isWdDesktop={isWdDesktop} 
-                      isTablet={isTablet} /> 
+                      isTablet={isTablet} 
+                      isTabletPor={isTabletPor}
+                      isMobile={isMobile} 
+                      orientation={orientation} /> 
             </div>
             <div className="rightPage">
               <div 
                 className="cartContainer" 
                 style={{
-                  transform: isWdDesktop 
+                  transform: !isMobile && (orientation === "portrait") && (window.innerHeight > 960)
+                             ? "none"
+                             : isWdDesktop 
                              ? `translateY(${translateY})` 
                              : isTablet
                              ? `translateY(${translateYTablet})`
+                             : isTabletPor
+                             ? `translateY(${translateYTabletPor})`
                              : `translateY(${translateYNrw})`, 
                   transition: "transform 0.5s ease-in-out" 
                 }}
               >
-                <h3 className={`cart ${isScrolled || isScrolledNrw || isScrolledTablet ? "cartScrolled" : ""}`} onClick={this.handleCartClick}>cart</h3>
+                <h3 className={`cart ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) || (isTabletPor && isScrolledTabletPor) ? "cartScrolled" : ""}`} onClick={this.handleCartClick}>cart</h3>
                 <div className="cartCountContainer" onClick={this.handleCartClick}>
-                  <svg className={`cartCircle ${isScrolled ? "circleScrolled" : ""}`} xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                  <svg className={`cartCircle ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ? "circleScrolled" : ""}`} xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                     <circle cx="9.5" cy="9.5" r="9.5" />
                   </svg>
-                  <h3 className={`cartCount ${isScrolled ? "countScrolled" : ""}`}>{this.state.cartItems.length}</h3>
+                  <h3 className={`cartCount ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ? "countScrolled" : ""}`}>{this.state.cartItems.length}</h3>
                 </div>
               </div>
           </div>
@@ -287,10 +300,10 @@ class MenuController extends React.Component {
                 </div>
                 <div className="homeCopy">
                   <h5 className="copy">
-                    <span className="intro"></span>Terra Bean Coffee Co. crafts exceptional coffee while honoring the planet. Procuring the finest beans worldwide, we delicately roast to highlight unique flavors. Committed to sustainability, we prioritize ethical sourcing, eco-friendly practices, and responsible stewardship of the earth.
+                    <span className={`${isTabletPor ? "intro" : ""}`}>Terra Bean</span> Coffee Co. crafts exceptional coffee while protecting the planet. Procuring the finest beans, we delicately roast to highlight unique flavors. Committed to sustainability, we prioritize ethical sourcing, eco-friendly practices, and responsible stewardship of the earth.
                   </h5>
                   <object className="line"></object>
-                  <h3 className="tagHeadRight tagHead1">crafted with care,</h3>
+                  <h3 className="tagHeadRight tagHead1"><span className={`${isTabletPor ? "boldCopy1" : ""}`}>crafted</span> with care,</h3>
                   <div className="textLine2">
                     <h3 className="tagHead2">from <span className="boldCopy">soil</span> to <span className="boldCopy">brew</span></h3>
                     <img className="bean" src={coffeeBean} alt="coffee bean graphic" />
@@ -313,7 +326,9 @@ class MenuController extends React.Component {
                   <ItemsList itemsList={ this.state.itemsList } 
                               onItemSelection={ this.handleChangingSelectedItem } 
                               countryList={ this.state.countryList } 
-                              onItemAddedToCart={this.handleCartQuantityUpdate} />
+                              onItemAddedToCart={this.handleCartQuantityUpdate} 
+                              isMobile={isMobile} 
+                              orientation={orientation} />
 
                 </React.Fragment>
             }
