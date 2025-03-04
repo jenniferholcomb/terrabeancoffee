@@ -9,6 +9,10 @@ import InventoryWidget from "./InventoryWidget";
 import Cart from "./Cart";
 import { v4 } from 'uuid';
 
+import steward from "/img/stewardAward.webp";
+import league from "/img/leagueAward.webp";
+import bio from "/img/bioAward.webp";
+
 import roasters from "/img/coffeeRoasters.webp";
 import coffeeMugs from "/img/coffee.webp";
 import coffeeBean from "/img/terraBeanBean.webp";
@@ -32,6 +36,7 @@ class MenuController extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      scrollingDown: false,
       menuBarVisible: false,
       newItemFormVisible: false,
       editItemFormVisible: false,
@@ -43,6 +48,7 @@ class MenuController extends React.Component {
       selectedItem: null,
       cartItems: [],
       cartSubtotal: 0,
+      introParagraph: 'Terra Bean Coffee Co. crafts exceptional coffee while protecting the planet. Procuring the finest beans, we delicately roast to highlight unique flavors. Committed to sustainability, we prioritize ethical sourcing, eco-friendly practices, and responsible stewardship of the earth.',
       itemsList: [ { name: 'Arabica', origin: 'Colombia', roast: 'medium', description: 'Our Arabica beans produce the highest-quality coffee, smooth and sweet with complex and intricate flavor undertones that may include fruit, sugar or chocolate. They will usually contain just enough acidity and very little bitterness.', price: 15, quantity: 130, notification: '', newItem: false, newOrigin: false, id: v4() }, { name: 'Robusta', origin: 'Brazil', roast: 'dark', description: 'Robusta coffee is stronger with a heavier body. It has a slight-bitter taste, but still smooth and robust with a fragrant aroma. It\'s deep flavor profile stands up well to creamer, milk, sugar, and other added ingredients.', price: 14, quantity: 130, notification: "", newItem: false, newOrigin: false, id: v4() }, { name: 'Liberica', origin: 'Phillipines', roast: 'light', description: 'A less caffeinated bean, with a nutty bold taste, and a floral aroma. It\'s unique profile is suited to those looking for a lighter cup of coffee, but enjoy the unique flavor notes this been produces. ', price: 17, quantity: 130, notification: "", newItem: false, newOrigin: false, id: v4() }, { name: 'Excelsa', origin: 'India', roast: 'light', description: 'Our excelsa beans have a tart, fruity flavor for a light roast, but with additional notes that are more like those you\'d find in a dark roast. This exceptional bean is a rare treat, many feel it produces the tastiest of cup of coffee.', price: 21, quantity: 130, notification: "", newItem: false, newOrigin: false, id: v4() } ],
       countryList: [ 
                   {origin: 'Colombia', flag: colFlag, cpImg: colImg, cpImgNo: colImgNo}, 
@@ -50,7 +56,102 @@ class MenuController extends React.Component {
                   {origin: 'India', flag: indiaFlag, cpImg: indiaImg, cpImgNo: indiaImgNo},
                   {origin: 'Phillipines', flag: philFlag, cpImg: philImg, cpImgNo: philImgNo} ]
     };
+    this.observer = null;
+    this.lastScrollY = 0;
   }
+
+  componentDidMount() {
+    const { sectionsRef } = this.props;
+
+    if (sectionsRef.current.length > 0) {
+      this.observer = new IntersectionObserver(
+        
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.intersectionRatio >= 0.2) {
+              const index = sectionsRef.current.findIndex((el) => el.current === entry.target);
+
+              if (index !== -1) {
+
+                if (this.state.scrollingDown && sectionsRef.current[index]?.current) {
+                  const nextSection = sectionsRef.current[index]?.current;
+                  if (nextSection) {
+                    const topOffset = nextSection.getBoundingClientRect().top + window.scrollY;
+                    
+                    window.scrollTo({
+                      top: topOffset,
+                      behavior: "smooth"
+                    });
+                  }
+                  
+                  // sectionsRef.current[index].current.scrollIntoView({ 
+                  //   behavior: "smooth",
+                  //   block: "start",
+                  //   inline: "nearest"
+                  // });
+
+                } else if (!this.state.scrollingDown && sectionsRef.current[index - 1]?.current) {
+                  // const prevSection = sectionsRef.current[index-1]?.current;
+                  // if (prevSection) {
+                  //   const topOffset = prevSection.getBoundingClientRect().top + window.scrollY;
+                    
+                  //   window.scrollTo({
+                  //     top: topOffset,
+                  //     behavior: "smooth"
+                  //   });
+                  // }
+
+                  sectionsRef.current[index - 1].current.scrollIntoView({ 
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest" 
+                  });
+
+                  // setTimeout(() => {
+                  //   window.scrollBy({ top: 0, left: 0, behavior: "instant" });
+                  // }, 300);
+                }
+              }
+            }
+          });
+        },
+        {
+          root: null,
+          threshold: 0.2
+        }
+      );
+    };
+
+    sectionsRef.current.forEach((section) => {
+      if (section.current) {
+        this.observer.observe(section.current);
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.cartItems !== this.state.cartItems) {
+      const total = this.state.cartItems.reduce((accumulator, item) => {
+        return accumulator + item.quantityPurchase * parseInt(item.price);
+      }, 0);
+      this.setState({
+        cartSubtotal: total
+      });
+    }
+
+    if (prevProps.scrollingDown !== this.props.scrollingDown) {
+      this.setState({
+        scrollingDown: true
+      });
+    }
+  }
+
 
   handleMenuClick = () => {
     this.setState(prevState => ({
@@ -213,25 +314,15 @@ class MenuController extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.cartItems !== this.state.cartItems) {
-      const total = this.state.cartItems.reduce((accumulator, item) => {
-        return accumulator + item.quantityPurchase * parseInt(item.price);
-      }, 0);
-      this.setState({
-        cartSubtotal: total
-      });
-    }
-  }
   render() {
-    const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, translateYTablet, translateYTabletPor, isScrolled, isScrolledNrw, isScrolledTablet, isScrolledTabletPor, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, orientation } = this.props;
+    const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, translateYTablet, translateYTabletPor, translateYMobile, translateYMobileB, isScrolled, isScrolledNrw, isScrolledTablet, isScrolledTabletPor, isScrolledMobile, isScrolledMobileB, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, orientation, scrollY, scrollingDown, sectionsRef } = this.props;
 
     return (
       <React.Fragment>
         <div className="appContainer">
           <div className="home">
-            {/* <div className="homeLayer"></div> */}
-            <div className="topNav"></div>
+            <div className="homeLayer" ref={sectionsRef.current[0]}></div>
+            {/* <div className="topNav"></div> */}
             <div className="leftPage">
               <ul 
                 className="menuContent"
@@ -257,10 +348,47 @@ class MenuController extends React.Component {
             </div>
             <div className="centerPage"> 
               <div className="centerGradient"></div>
+              <div className="menuIconContainer">
+              {
+                this.state.menuBarVisible ?
+                  <React.Fragment>
+                    <div className="menuCloseIcon"> 
+                      <img src={closeIcon} onClick={ this.handleMenuClick } alt="close icon" />
+                    </div>
+                    <div className="inventory-widget"> </div>
+                    <InventoryWidget itemsList={ this.state.itemsList } 
+                                    onAddBeanClick={ this.handleAddBeanClick } />
+                  </React.Fragment>
+                  
+                : 
+                  <div 
+                    className="menuIcon"
+                    style={{
+                      transform: isScrolledMobileB
+                                 ? `translateY(${translateYMobileB})`
+                                 : `translateY(${translateYMobile})`, 
+                      background: isScrolledMobile
+                                 ? "none"
+                                 : `radial-gradient(40.2% 50% at 50% 50%, rgba(0, 0, 0, 0.24) 45.5%, rgba(0, 0, 0, 0.00) 100%)`,
+                      transition: "transform 0.5s ease-in-out" 
+                    }}
+                  >
+                    {
+                      this.state.newItemFormVisible || this.state.editItemFormVisible || this.state.deleteWarningVisible || this.state.cartVisible || this.state.checkoutCompleteVisible || this.state.selectedItem !== null ?
+                        <div className="disabled"></div>
+                      :
+                        [...Array(3)].map((_) => (
+                          <object className={`${isScrolledMobileB ? "menuShop" : ""}`}></object>
+                        ))
+                    }
+                  </div>  
+              }
+            </div>
               <Header logoTranslateY={logoTranslateY} 
                       logoTranslateYNrw={logoTranslateYNrw} 
                       logoTranslateYTablet={logoTranslateYTablet}
                       logoTranslateYTabletPor={logoTranslateYTabletPor}
+                      logoTranslateYMobile={logoTranslateYMobile}
                       isWdDesktop={isWdDesktop} 
                       isTablet={isTablet} 
                       isTabletPor={isTabletPor}
@@ -294,20 +422,39 @@ class MenuController extends React.Component {
           </div>
             <div className="homeContent">
               <div className="homeRow1">
-                <div className="homeImages">
-                  <img src={roasters} alt="Terra Bean Coffee Co logo" />
-                  <img src={coffeeMugs} alt="Terra Bean Coffee Co logo" />
+                <div className="awardsMobile">
+                  <img className="award-1" src={steward} alt="Terra Bean Coffee Co logo" />
+                  <img className="award-1" src={league} alt="Terra Bean Coffee Co logo" />
+                  <img className="award-2" src={bio} alt="Terra Bean Coffee Co logo" />
+                </div>
+                <div className="homeImagesDisabled homeImages">
+                  <img src={roasters} alt="roasters at work" />
+                  <img src={coffeeMugs} alt="steaming cups of coffee" />
                 </div>
                 <div className="homeCopy">
-                  <h5 className="copy">
-                    <span className={`${isTabletPor ? "intro" : ""}`}>Terra Bean</span> Coffee Co. crafts exceptional coffee while protecting the planet. Procuring the finest beans, we delicately roast to highlight unique flavors. Committed to sustainability, we prioritize ethical sourcing, eco-friendly practices, and responsible stewardship of the earth.
+                  <h5 className="copyDisabled copy">
+                    {this.state.introParagraph}
                   </h5>
                   <object className="line"></object>
-                  <h3 className="tagHeadRight tagHead1"><span className={`${isTabletPor ? "boldCopy1" : ""}`}>crafted</span> with care,</h3>
+                  <h3 className="tagHeadRight tagHead1"><span className={`${isMobile || isTabletPor ? "boldCopy1" : ""}`}>crafted</span> with care,</h3>
                   <div className="textLine2">
                     <h3 className="tagHead2">from <span className="boldCopy">soil</span> to <span className="boldCopy">brew</span></h3>
                     <img className="bean" src={coffeeBean} alt="coffee bean graphic" />
                   </div>
+                </div>
+              </div>
+              <div className="homeRow2" ref={sectionsRef.current[1]}>
+                <div className="mobileContent">
+                  <img src={roasters} alt="roasters roasting coffee" />
+                  <div className="copyMobile">
+                    <p>{this.state.introParagraph}</p>
+                  </div>
+                </div>
+                <div className="shopLinkMobile" onClick={() => document.getElementById("shop").scrollIntoView({ behavior: "smooth" })}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="87" height="87" viewBox="0 0 87 87" fill="none">
+                    <path d="M43.5 56.1875L59.8125 39.875L54.6469 34.8L43.5 45.9469L32.3531 34.8L27.1875 39.875L43.5 56.1875ZM43.5 79.75C38.4854 79.75 33.7729 78.7984 29.3625 76.8953C24.9521 74.9922 21.1156 72.4094 17.8531 69.1469C14.5906 65.8844 12.0078 62.0479 10.1047 57.6375C8.20156 53.2271 7.25 48.5146 7.25 43.5C7.25 38.4854 8.20156 33.7729 10.1047 29.3625C12.0078 24.9521 14.5906 21.1156 17.8531 17.8531C21.1156 14.5906 24.9521 12.0078 29.3625 10.1047C33.7729 8.20156 38.4854 7.25 43.5 7.25C48.5146 7.25 53.2271 8.20156 57.6375 10.1047C62.0479 12.0078 65.8844 14.5906 69.1469 17.8531C72.4094 21.1156 74.9922 24.9521 76.8953 29.3625C78.7984 33.7729 79.75 38.4854 79.75 43.5C79.75 48.5146 78.7984 53.2271 76.8953 57.6375C74.9922 62.0479 72.4094 65.8844 69.1469 69.1469C65.8844 72.4094 62.0479 74.9922 57.6375 76.8953C53.2271 78.7984 48.5146 79.75 43.5 79.75ZM43.5 72.5C51.5958 72.5 58.4531 69.6906 64.0719 64.0719C69.6906 58.4531 72.5 51.5958 72.5 43.5C72.5 35.4042 69.6906 28.5469 64.0719 22.9281C58.4531 17.3094 51.5958 14.5 43.5 14.5C35.4042 14.5 28.5469 17.3094 22.9281 22.9281C17.3094 28.5469 14.5 35.4042 14.5 43.5C14.5 51.5958 17.3094 58.4531 22.9281 64.0719C28.5469 69.6906 35.4042 72.5 43.5 72.5Z" fill="#E4E4E4"/>
+                  </svg>
+                  <h5 className="boldCopy mobileBoldText">shop</h5>
                 </div>
               </div>
               {/* <div className="homeRow2">
@@ -318,6 +465,7 @@ class MenuController extends React.Component {
           </div>
 
           <div className={`${isWdDesktop ? "shop-container" : "shop-containerNrw"}`} id="shop">
+            <div className="shopContainerLayer" ref={sectionsRef.current[2]}></div>
             {
               isTablet && this.state.selectedItem !== null ? 
                 null
@@ -424,7 +572,7 @@ class MenuController extends React.Component {
                   <div className={`menuScreen ${this.state.menuBarVisible ? "open" : ""}`} onClick={this.handleExitMenu}></div>
                 
 
-            <div className="menuIconContainer">
+            {/* <div className="menuIconContainer">
               {
                 this.state.menuBarVisible ?
                   <React.Fragment>
@@ -438,17 +586,17 @@ class MenuController extends React.Component {
                   
                 : 
                   <div className="menuIcon">
-                    {/* {
+                    {
                       this.state.newItemFormVisible || this.state.editItemFormVisible || this.state.deleteWarningVisible || this.state.cartVisible || this.state.checkoutCompleteVisible || this.state.selectedItem !== null ?
                         <div className="disabled"></div>
                       :
-                        <svg onClick={this.handleMenuClick} xmlns="http://www.w3.org/2000/svg" width="20" height="13" viewBox="0 0 20 13" fill="none">
-                          <path d="M0 13V10.8333H20V13H0ZM0 7.58333V5.41667H20V7.58333H0ZM0 2.16667V0H20V2.16667H0Z" />
-                        </svg>
-                    } */}
+                        [...Array(3)].map((_) => (
+                          <object className="menuLine"></object>
+                        ))
+                    }
                   </div>  
               }
-            </div>
+            </div> */}
             </div>
           
           

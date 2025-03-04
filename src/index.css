@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Akatab:wght@400;500;600;700;800;900&family=Dongle&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Fira+Mono:wght@400;500;700&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-body {
+html, body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -17,6 +17,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #FFFFFD;
+  scroll-behavior: auto; 
+  overscroll-behavior: contain; 
 }
 
 code {
@@ -59,34 +61,48 @@ input[type=number] {
   overflow-x: hidden;
 }
 
-.topNav { /**/
+/* .topNav { 
   position: fixed;
   height: 2.5rem;
   width: 100vw;
   background: #50A060;
   z-index: 995;
-}
+} */
 
 .leftPage /**/, .rightPage /**/ {
   display: none;
 }
 
 .menuIconContainer { /**/
-  position: fixed;
-  top: 9px;
-  left: 3%;
+  position: absolute;
+  left: clamp(2.75rem, 9vw, 4.5rem);
+  top: clamp(2.31rem, 6vh, 3rem);
   z-index: 9999;
 }
 
 .menuIcon { /**/
   pointer-events: all;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.menuIcon object {
+  width: 2.8125rem;
+  height: 0.25rem;
+  border-radius: 0.625rem;
+  background: #FFFFFD;
+}
+
+object.menuShop {
+  background: #143f1a;
 }
 
 .menuIcon svg { /**/
-  width: 19px;
-  height: 19px;
-  fill: #FFFFFD
+  /* width: 19px;
+  height: 19px; */
+  /* fill: #FFFFFD */
 }
 
 .menuBar { /**/
@@ -514,12 +530,29 @@ input.cartQuantityInput { /**/
   letter-spacing: 0.28px;
 }
 
+.home {
+  display: grid;
+  background: linear-gradient(0deg, rgba(17, 24, 12, 0.90) 0%, rgba(17, 24, 12, 0.90) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat;
+  height: 100%;
+  justify-content: center;
+}
+
+.homeLayer { /**/
+  position: absolute; 
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  /* scroll-margin-top: 0px; */
+  margin-top: 0;
+  padding-top: 0;
+}
+
 .centerPage::before { /**/
   content: "";
   top: 0;
   left: 0;
   width: 100%;
-  height: 26rem;
+  height: 61.8vh;
   aspect-ratio: 1139/571;
   background-image:   url('/img/terraHeader.webp');
   background-repeat: no-repeat;
@@ -545,7 +578,312 @@ input.cartQuantityInput { /**/
   background: rgba(78, 100, 62, 0.28);
   border-bottom: 3px solid #FFFCFC;
   z-index: 989;
-  height: 26rem;
+  height: 61.8vh;
+}
+
+.mast-head { /**/
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+  min-width: 100vw;
+  height: 61.8vh;
+  position: relative;
+  z-index: 990;
+}
+
+.logoContainer { /**/
+  position: sticky;
+  grid-column: 2;
+  display: grid;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.logo { /**/
+  max-width: 150px;
+  max-height: 150px;
+  z-index: 99;
+  min-width: 15.3125rem;
+  min-height: 15.3125rem;
+  align-self: flex-end;
+  padding-bottom: 2.2rem;
+}
+
+/* home-content-props */
+
+.homeContent { /**/
+  /* height: 18.8125rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: block;
+}
+
+.homeRow1 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 38.2vh;
+  background: linear-gradient(0deg, rgba(17, 24, 12, 0.90) 0%, rgba(17, 24, 12, 0.90) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat;
+  background-size: auto 280%;
+  background-position: 50% 35%;
+}
+
+.awardsMobile {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(.2rem, .6rem, .8rem);
+  /* height: 38.2vh; */
+  width: 20vw;
+  justify-content: center;
+  align-content: center;
+  /* padding-left: clamp(2.31rem, 6vw, 3rem); */
+  padding: 2.31rem 0 2.31rem clamp(2.31rem, 6vw, 3rem);
+}
+
+.award-1 { /**/
+  /* width: 4.25rem; */
+  height: 8vh;
+  align-self: center;
+}
+
+.award-1 img {
+  padding-bottom: 1rem;
+  height: 100%;
+}
+
+.award-1 img:first-child {
+  padding-top: 1rem;
+}
+
+.award-2 { /**/
+  /* width: 3.25rem; */
+  height: 11vh;
+  align-self: center;
+  padding-top: .25rem;
+  transform: translateX(2px);
+}
+
+.award-2 img {
+  padding-bottom: 1rem;
+}
+
+.homeRow2 {
+  display: grid;
+  background: linear-gradient(0deg, rgba(17, 24, 12, 0.90) 0%, rgba(17, 24, 12, 0.90) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat;
+  min-height: 100vh;
+  background-size: auto 103%;
+  background-position: center center;
+  width: 100vw;
+  /* justify-content: center; */
+  /* border: 1px solid rgb(2, 23, 5); */
+  /* scroll-margin-top: 0px; */
+  /* scroll-margin-bottom: 0px; */
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.mobileContent{
+  box-sizing: border-box;
+  background: rgba(217, 217, 217, 0.15);
+  max-height: 100%;
+  max-width: 100vw;
+  /* min-width: 100%; */
+  display: flex;
+  flex-direction: column;
+  /* align-self: center; */
+  align-items: center;
+  padding-top: 7.31rem;
+}
+
+.mobileContent img {
+  height: 15rem;
+  align-self: center;
+}
+
+.shopLinkMobile {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 2rem 0;
+  z-index: 99999;
+}
+
+.homeImagesDisabled {
+  display: none;
+}
+
+.homeImages { /**/
+  grid-row: 2;
+  width: 100vw;
+  height: 90%;
+  background: rgba(217, 217, 217, 0.15);
+  padding: .69rem 0;
+  justify-content: center;
+}
+
+.homeImages img { /**/
+  height: 15.5rem;
+}
+
+.homeImages img:first-of-type {
+  margin-right: 3.5vw;
+  margin-left: auto;
+}
+
+.homeImages img:nth-of-type(2) {
+  margin-right: auto;
+}
+
+.homeCopy { /**/
+  width: 100%;
+  padding: 2.31rem clamp(2.31rem, 6vw, 3rem) .9rem 0;
+  margin-left: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.copyDisabled {
+  display: none;
+}
+
+.copyMobile {
+  box-sizing: border-box;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.copy, .copyMobile p { /**/
+  color: #FFF;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.225rem;
+  margin: 0;
+}
+
+.copy {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.7rem;
+}
+
+.copyMobile p {
+  font-size: .9rem;
+  line-height: 1.4rem;
+}
+
+.copy::first-letter {
+  font-size: 1.48rem;
+} 
+
+.intro { /**/
+  color: #FFF;
+  font-family: Epilogue;
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.70125rem;
+  line-height: 1.5rem; /* 109.091% */
+  letter-spacing: 0.55rem;
+  text-transform: uppercase;
+}
+
+.line {
+  display: none;
+}
+
+.tagHeadRight {
+  /* display: none; */
+}
+
+/* .homeRow2 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+  width: 100vw;
+  justify-content: flex-end;
+} */
+
+.tagHead1 { /**/
+  grid-column: 2;
+  grid-row: 1;
+  width: 12rem;
+  color: #FFFFFD;
+  text-align: left;
+  font-family: Epilogue;
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6rem; /* 140.909% */
+  letter-spacing: 0.55rem;
+  text-transform: uppercase;
+  margin: 0;
+  align-self: flex-end;
+  padding-bottom: .3rem;
+}
+
+.tagHead1::first-letter {
+  font-size: 1.2rem;
+}
+
+.textLine2 {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: row;
+  width: 12rem;
+  padding-left: .25rem;
+  align-self: flex-end;
+}
+
+.tagHead2 { /**/
+  width: 100%;
+  max-height: 100%;
+  text-align: right;
+  color: #FFFFFD;
+  font-family: Epilogue;
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.5rem;
+  letter-spacing: 0.57375rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.boldCopy, .boldCopy1 { /**/
+  color: #FFFFFD;
+  font-family: Epilogue;
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.70125rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.boldCopy1 {
+  letter-spacing: 0.65rem;
+}
+
+.mobileBoldText {
+  text-align: center;
+  transform: translateX(5px);
+  padding-top: .5rem;
+}
+
+.bean { /**/
+  display: none;
 }
 
 .shop-container, .shop-containerNrw { /**/
@@ -572,17 +910,26 @@ input.cartQuantityInput { /**/
 
 .shop-containerNrw {
   background: 
-    linear-gradient(to right, 
+    /* linear-gradient(to right, 
       rgba(29, 69, 37, 0.10) 0%, 
       rgba(29, 69, 37, 0.10) 11.25rem, 
       transparent 11.25rem, 
       transparent calc(100% - 11.25rem), 
       rgba(29, 69, 37, 0.10) calc(100% - 11.25rem), 
-      rgba(29, 69, 37, 0.10) 100%), 
+      rgba(29, 69, 37, 0.10) 100%),  */
     linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), 
     url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
     background-attachment: fixed;
+}
 
+.shopContainerLayer {
+  position: absolute; 
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  scroll-margin-top: 0px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .shop { /**/
@@ -610,31 +957,8 @@ header { /**/
   flex-shrink: 0;
 }
 
-.mast-head { /**/
-  display: grid;
-  grid-template-columns: 35% 30% 35%;
-  min-width: 100%;
-  position: relative;
-  z-index: 990;
-}
-
-.logoContainer { /**/
-  position: sticky;
-  grid-column: 2;
-  display: grid;
-  justify-content: center;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.logo { /**/
-  max-width: 150px;
-  max-height: 150px;
-  z-index: 99;
-  min-width: 15.3125rem;
-  min-height: 15.3125rem;
-  align-self: flex-end;
-  padding-bottom: 2.2rem;
+.awardsContainer {
+  display: none;
 }
 
 /* 
@@ -993,7 +1317,7 @@ h1#header {
 .desColumn { /**/
   grid-column: 1 / span 2;
   grid-row: 6;
-  max-height: 8.6rem;
+  height: 6.3rem;
   overflow-y: hidden;
   margin-left: 1rem;
 }
@@ -1899,6 +2223,32 @@ textarea {
   color: #3D7B49;
 } */
 
+/* @media all and (min-width: 418px) {
+  .mo
+} */
+
+@media all and (min-width: 418px) {
+  .mobileContent img {  
+    height: 17.4375rem;
+  }
+}
+
+@media all and (min-width: 490px) {
+  .mobileContent img {  
+    height: 20rem;
+  }
+
+  .copyMobile {  
+    padding: 0 2rem;
+  }
+}
+
+@media all and (min-width: 600px) {
+  .copyMobile {
+    width: 560.41px;
+  }
+}
+
 @media all and (min-height: 568px) {
 
   .menuBar { /**/
@@ -2280,12 +2630,13 @@ textarea {
 
 @media all and (min-width: 700px) {
   .menuIconContainer { /**/
-    top: 15px;
-    left: 2.5%;
+    /* top: 15px;
+    left: 2.5%; */
+    display: none;
   }
 
   .menuIcon svg { /**/
-    fill: #343434;
+    /* fill: #343434; */
   }
 
   .container-details { /**/
@@ -2364,9 +2715,15 @@ textarea {
 
   .home { /**/
     height: 58rem;
-    background: linear-gradient(0deg, rgba(17, 24, 12, 0.90) 0%, rgba(17, 24, 12, 0.90) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat;
-    display: grid;
     grid-template-columns: 9.1rem 1fr 9.1rem;
+  }
+
+  .homeLayer { /**/
+    display: none;
+  }
+
+  .shopContainerLayer {
+    display: none;
   }
 
   .leftPage /**/, .rightPage /**/ {
@@ -2410,19 +2767,16 @@ textarea {
 
   .mast-head {
     height: 21.5rem;
+    min-width: 100%;
   }
 
-  .topNav { /**/
+  /* .topNav { 
     display: none;
-  }
+  } */
 
   .logo { /**/
     max-width: 160px;
     max-height: 160px;
-  }
-
-  .awardsContainer {
-    display: none;
   }
 
   .cartContainer {
@@ -2450,53 +2804,35 @@ textarea {
     margin-top: -18px;
   }
 
-  .homeLayer { /**/
-    /* position: absolute; */
-    /* width: 100vw;
-    height: 60rem;
-    background: rgba(29, 69, 37, 0.20);
-    z-index: -1; */
-  }
+  /* home-content-props */
 
-  .homeContent { /**/
+  .homeContent {
     grid-column: 1 / span 3;
-    /* height: 18.8125rem; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .homeRow1 {
     display: grid;
     align-items: center;
+    min-height: inherit;
+    background: none;
   }
 
-  .homeImages { /**/
-    grid-row: 2;
-    width: 100vw;
-    height: 90%;
-    background: rgba(217, 217, 217, 0.15);
-    padding: .69rem 0;
+  .awardsMobile {
+    display: none;
+  }
+
+  .copyDisabled {
+    display: unset;
+  }
+
+  .homeImagesDisabled {
     display: flex;
-    justify-content: center;
-  }
-
-  .homeImages img { /**/
-    height: 15.5rem;
-  }
-
-  .homeImages img:first-of-type {
-    margin-right: 3.5vw;
-    margin-left: auto;
-  }
-
-  .homeImages img:nth-of-type(2) {
-    margin-right: auto;
   }
 
   .homeCopy { /**/
     grid-row: 1;
     width: 100vw;
+    height: inherit;
     display: grid;
     grid-template-columns: 434.31px 192.84px;
     column-gap: 3.5vw;
@@ -2505,75 +2841,10 @@ textarea {
     /* margin-left: 2rem; */
   }
 
-  .copy { /**/
-    grid-column: 1;
-    grid-row: 1 / span 3;
-    padding: 0;
-    color: #FFF;
-    font-family: Mulish;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.7rem;
-    letter-spacing: 0.225rem;
-    margin: 0;
-  }
-
-  .copy::first-letter {
-    font-size: 1.48rem;
-  } 
-
-  .intro { /**/
-    color: #FFF;
-    font-family: Epilogue;
-    font-size: 1.125rem;
-    font-style: italic;
-    font-weight: 600;
-    letter-spacing: 0.70125rem;
-    line-height: 1.5rem; /* 109.091% */
-    letter-spacing: 0.55rem;
-    text-transform: uppercase;
-  }
-
-  .line { /**/
-    grid-row: 3;
-    width: 100%;
-    height: 0.125rem;
-    background: #FFF;
-    align-self: flex-end;
-    margin: .5rem 0 .55rem 0;
-  }
-
-  .tagHeadRight {
-    /* display: none; */
-  }
-
-  /* .homeRow2 {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1.5rem;
-    width: 100vw;
-    justify-content: flex-end;
-  } */
-
   .tagHead1 { /**/
-    grid-column: 2;
-    grid-row: 1;
-    color: #FFFFFD;
-    text-align: left;
-    font-family: Epilogue;
-    font-size: 1.125rem;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.75rem; /* 140.909% */
-    letter-spacing: 0.55rem;
-    text-transform: uppercase;
     margin: 5rem 0 0 0;
-    align-self: flex-end;
-  }
-
-  .tagHead1::first-letter {
-    font-size: 1.35rem;
+    width: 100%;
+    padding: 0;
   }
 
   .textLine2 {
@@ -2585,41 +2856,33 @@ textarea {
     padding-left: .25rem;
   }
 
-  .tagHead2 { /**/
+  .line { /**/
+    display: unset;
+    grid-row: 3;
     width: 100%;
-    max-height: 100%;
-    text-align: right;
-    color: #FFFFFD;
-    font-family: Epilogue;
-    font-size: 1.125rem;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.5rem;
-    letter-spacing: 0.57375rem;
-    text-transform: uppercase;
-    margin: 0;
+    height: 0.125rem;
+    background: #FFF;
+    align-self: flex-end;
+    margin: .5rem 0 .55rem 0;
   }
 
-  .boldCopy, .boldCopy1 { /**/
-    color: #FFFFFD;
-    font-family: Epilogue;
-    font-size: 1.125rem;
-    font-style: italic;
-    font-weight: 600;
-    letter-spacing: 0.70125rem;
-    text-transform: uppercase;
-    margin: 0;
-  }
-
-  .boldCopy1 {
-    letter-spacing: 0.65rem;
-  }
-
-  .bean { /**/
+  .homeRow2 {
     display: none;
   }
 
-
+  .shop-containerNrw {
+    background: 
+      linear-gradient(to right, 
+        rgba(29, 69, 37, 0.10) 0%, 
+        rgba(29, 69, 37, 0.10) 9.1rem, 
+        transparent 9.1rem, 
+        transparent calc(100% - 9.1rem), 
+        rgba(29, 69, 37, 0.10) calc(100% - 9.1rem), 
+        rgba(29, 69, 37, 0.10) 100%), 
+      linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), 
+      url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
+      background-attachment: fixed;
+  }
 
   
 }
@@ -2700,8 +2963,9 @@ textarea {
     padding-top: 1rem;
     width: 100%;
     justify-content: flex-end;
+    align-self: first baseline;
   }
-  
+
   .award-1 { /**/
     width: 4rem;
     height: 4rem;
@@ -2821,6 +3085,20 @@ textarea {
     margin: 0;
     padding: 0 3vw 0 0;
     line-height: 1.9375rem;
+  }
+
+  .shop-containerNrw {
+    background: 
+      linear-gradient(to right, 
+        rgba(29, 69, 37, 0.10) 0%, 
+        rgba(29, 69, 37, 0.10) 11.25rem, 
+        transparent 11.25rem, 
+        transparent calc(100% - 11.25rem), 
+        rgba(29, 69, 37, 0.10) calc(100% - 11.25rem), 
+        rgba(29, 69, 37, 0.10) 100%), 
+      linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), 
+      url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
+      background-attachment: fixed;
   }
 
   .container-items-list, .container-items-list-portrait {
@@ -2960,7 +3238,7 @@ textarea {
     grid-row: 5;
     margin: 0;
     padding: .25rem 0 0 .8rem;
-    max-height: 8.6rem;
+    height: 7.5rem;
   }
 
   #listDescription {  /**/

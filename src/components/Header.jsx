@@ -6,7 +6,7 @@ import steward from "/img/stewardAward.webp";
 import league from "/img/leagueAward.webp";
 import bio from "/img/bioAward.webp";
 
-function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, isWdDesktop, isTablet, isTabletPor, isMobile, orientation}) {
+function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, isWdDesktop, isTablet, isTabletPor, isMobile, orientation}) {
 
   return (
     <React.Fragment>
@@ -22,6 +22,8 @@ function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTr
               ? `translateY(${logoTranslateYTablet})`
               : isTabletPor
               ? `translateY(${logoTranslateYTabletPor})`
+              : isMobile
+              ? `translateY(${logoTranslateYMobile})`
               : `translateY(${logoTranslateYNrw})`, 
             transition: "transform 0.5s ease-in-out" 
           }}
