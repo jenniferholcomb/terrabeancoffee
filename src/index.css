@@ -1296,6 +1296,9 @@ h1#header {
   letter-spacing: 0.0525rem;
   text-transform: uppercase;
   margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 
@@ -1353,6 +1356,7 @@ h1#header {
   line-height: normal;
   letter-spacing: 0.02813rem;
   text-transform: capitalize;
+  margin-left: auto;
 }
 
 .subHeadTextB { /**/
@@ -1400,6 +1404,8 @@ h1#header {
   letter-spacing: 0.07875rem;
   text-transform: uppercase;
   max-height: 100%;
+  align-self: center;
+  margin-left: auto;
 }
 
 #detailQuantitySpan { /**/
@@ -1566,20 +1572,24 @@ h1#header {
 .addCartContainer { /**/
   grid-column: 2;
   grid-row: 4;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   margin: 20px 0 0 0;
   padding-left: 0;
   max-height: 100%;
-  max-width: 320px;
+  /* max-width: 320px; */
   width: 192px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .addCartContainer form { /**/
-  display: grid;
+  /* display: grid;
   justify-content: end;
   min-width: 100%;
-  width: 100%;
-  gap: 14px;
+  width: 192px;
+  gap: 14px; */
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 
 .inputRow { /**/
@@ -1587,8 +1597,9 @@ h1#header {
   flex-direction: row;
   align-items: center;
   padding: 0;
-  width: 100%;
-  transform: translateX(5px);
+  /* min-width: 192px;
+  transform: translateX(5px); */
+  max-width: 100%;
 }
 
 #inputSubhead { /**/
@@ -1596,7 +1607,7 @@ h1#header {
 
 }
 
-input.priceQuantityInputAddCart { /**/
+.priceQuantityInputAddCart { /**/
   /* width: 104px !important;
   height: 25px !important;
   border-radius: 20px;
@@ -1868,8 +1879,13 @@ input.nameInput {
 }
 
 input.priceQuantityInputAddCart {
-  width: 104px !important;
+  /* width: 104px !important; */
   text-align: center;
+}
+
+.priceQuantityInputAddCart {
+  width: 100px;
+  margin-left: auto;
 }
 
 select.nameInput { /**/ 

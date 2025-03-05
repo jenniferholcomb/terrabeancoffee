@@ -82,9 +82,9 @@ function ItemDetail(props) {
           </div>
 
           <div className="addCartContainer">
+            <h3 className="cardSubHead quantityText" id="inputSubhead">Quantity:</h3>
             <form onSubmit={handleQuantityForm}>
               <div className="inputRow">
-                <h3 className="cardSubHead" id="inputSubhead">Quantity:</h3>
                 <button id="decrement" type="button" onClick={handleQDecrement}>-</button>
                 <input 
                   className='priceQuantityInputAddCart'
