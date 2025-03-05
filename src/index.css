@@ -1170,7 +1170,7 @@ h1#header {
 
 
     width: calc(17.67281rem *.65);
-    height: calc(23.75rem *.65);
+    height: calc(23.75rem *.64);
     max-width: 100%;
     /* max-height: 75%; */
     border-radius: 0.3rem;
@@ -1339,7 +1339,7 @@ h1#header {
 .desColumn { /**/
   grid-column: 1 / span 2;
   grid-row: 6;
-  height: 6.3rem;
+  height: 6.8rem;
   overflow-y: hidden;
   margin-left: 1rem;
 }
