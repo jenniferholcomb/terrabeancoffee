@@ -1599,7 +1599,10 @@ h1#header {
   padding: 0;
   /* min-width: 192px;
   transform: translateX(5px); */
-  max-width: 100%;
+  /* max-width: 100%; */
+  width: 100px;
+  justify-self: end;
+  margin-bottom: 1rem;
 }
 
 #inputSubhead { /**/
