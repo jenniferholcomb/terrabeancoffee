@@ -1449,13 +1449,13 @@ h1#header {
 }
 
 .details { /**/
-  /* max-width: 320px; */
+  max-width: 320px;
   max-height: 100%;
   display: grid;
   grid-template-columns: 40% 60%;
   filter: none;
   margin-top: 40px;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
 }
 
 .detailContent { /**/
@@ -1566,15 +1566,18 @@ h1#header {
 .addCartContainer { /**/
   grid-column: 2;
   grid-row: 4;
+  box-sizing: border-box;
   margin: 20px 0 0 0;
   padding-left: 0;
   max-height: 100%;
   max-width: 320px;
+  width: 192px;
 }
 
 .addCartContainer form { /**/
   display: grid;
   justify-content: end;
+  min-width: 100%;
   width: 100%;
   gap: 14px;
 }
@@ -1584,11 +1587,13 @@ h1#header {
   flex-direction: row;
   align-items: center;
   padding: 0;
+  width: 100%;
+  transform: translateX(5px);
 }
 
 #inputSubhead { /**/
   margin: 0;
-  margin-right: 20px;
+
 }
 
 input.priceQuantityInputAddCart { /**/
@@ -1844,7 +1849,7 @@ input.nameInput, select.nameInput, textarea, input.priceQuantityInput1, input.pr
   border-radius: 0.3125rem;
   border-color: transparent;
   background: #FFFFFD;
-  height: 1.45rem !important;
+  /* height: 1.45rem !important; */
   box-shadow: 1px -2px 5px 0px rgba(0, 0, 0, 0.25);
   color: #433D3D;
   font-family: Mulish;
@@ -2448,9 +2453,11 @@ textarea {
   .addCartContainer { /**/
     grid-column: 2;
     grid-row: 3 / span 2;
-    margin-right: 46px;
+    width: 100%;
+    margin-right: 0;
     margin-bottom: 40px;
     padding-left: 0;
+    padding-right: 46px;
     margin-top: 20px;
     align-content: end;
     max-height: 100%;
@@ -2459,6 +2466,10 @@ textarea {
   .inputRow { /**/
     padding: 15px 0 20px 0;
     transform: translateX(-5px);
+  }
+
+  #inputSubhead {
+    margin-right: 20px;
   }
 
   .mobileNameDetail { /**/
