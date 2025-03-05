@@ -462,7 +462,9 @@ class MenuController extends React.Component {
                 </React.Fragment>
             }
           </div>
-
+          { isMobile && (
+            <div className="fixedBackground"></div>
+          )}
             {
               this.state.cartVisible ?
                 <React.Fragment>

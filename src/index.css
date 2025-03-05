@@ -16,7 +16,7 @@ html, body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #FFFFFD;
+  background: none;
   scroll-behavior: auto; 
   overscroll-behavior: contain; 
 }
@@ -931,11 +931,7 @@ input.cartQuantityInput { /**/
 }
 
 .shop-containerNrw {
-  background: 
-    linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), 
-    url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
-    background-attachment: fixed;
-    background-size: auto 100%;
+  background: none;
 }
 
 .shopContainerLayer {
@@ -946,6 +942,18 @@ input.cartQuantityInput { /**/
   scroll-margin-top: 0px;
   margin-top: 0;
   padding-top: 0;
+}
+
+.fixedBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), 
+    url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
+  z-index: -1;
 }
 
 .shop { /**/
@@ -2900,7 +2908,6 @@ textarea {
         rgba(29, 69, 37, 0.10) 100%), 
       linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), 
       url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
-      background-attachment: fixed;
   }
 
   
