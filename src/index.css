@@ -932,16 +932,10 @@ input.cartQuantityInput { /**/
 
 .shop-containerNrw {
   background: 
-    /* linear-gradient(to right, 
-      rgba(29, 69, 37, 0.10) 0%, 
-      rgba(29, 69, 37, 0.10) 11.25rem, 
-      transparent 11.25rem, 
-      transparent calc(100% - 11.25rem), 
-      rgba(29, 69, 37, 0.10) calc(100% - 11.25rem), 
-      rgba(29, 69, 37, 0.10) 100%),  */
     linear-gradient(0deg, rgba(255, 255, 253, 0.90) 0%, rgba(255, 255, 253, 0.90) 100%), 
     url(/img/terraHeader.webp) lightgray 50% / cover no-repeat;
     background-attachment: fixed;
+    background-size: auto 100%;
 }
 
 .shopContainerLayer {
@@ -1339,7 +1333,7 @@ h1#header {
 .desColumn { /**/
   grid-column: 1 / span 2;
   grid-row: 6;
-  height: 6.8rem;
+  height: 6.9rem;
   overflow-y: hidden;
   margin-left: 1rem;
 }
