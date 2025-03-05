@@ -1,11 +1,11 @@
-const CornerSVG = ({ shadowDx, shadowDy, blurStdDeviation, width, height, index }) => (
+const CornerSVG = ({ shadowDx, shadowDy, blurStdDeviation, width, height, index, cornersForm }) => (
   <svg key={index} className={`corner-${index + 1}`} xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 32 31" fill="none">
     <g filter="url(#corner-shadow)">
       <path
         d="M2 25L2 2L13 2L26 2C26 2 19.5 5.5 12.5 12C5.5 18.5 2 25 2 25Z"
         fill="#332C2C"
         fillOpacity="0.7"
-        shapeRendering="crispEdges"
+        shapeRendering="crispEdges" 
       />
     </g>
     <defs>

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import CornerSVG from "./CornerSVG";
 
 function Item(props) {
   const quantityNotification = 
@@ -26,15 +25,6 @@ function Item(props) {
             }}
             alt="coffee plantation"
           >
-            {[...Array(4)].map((_, index) => (
-              <>
-                {index < 2 ?                
-                  <CornerSVG shadowDx={2} shadowDy={2} blurStdDeviation={2} width={32} height={31} index={index} />
-                :
-                  <CornerSVG shadowDx={1} shadowDy={1} blurStdDeviation={1.5} width={30} height={29} index={index} />
-                }
-              </>
-            ))}
           </div>
         </div>
         <h1 className={props.detailPg ? "detailHeader cardHeader": "listCard cardHeader"} lang="en">{props.name}</h1>

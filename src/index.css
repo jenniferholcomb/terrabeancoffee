@@ -163,7 +163,7 @@ object.menuShop {
 }
 
 .closeIconWindow svg { /**/
-  fill: #000;
+  fill: #143f1a;
 }
 
 .menuMobile {
@@ -1170,18 +1170,38 @@ h1#header {
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-
-    width: calc(17.67281rem *.65);
-    height: calc(23.75rem *.64);
-    max-width: 100%;
-    /* max-height: 75%; */
-    border-radius: 0.3rem;
-    box-shadow: 1px -2px 4px 0px rgba(0, 0, 0, 0.15);
+  width: calc(17.67281rem *.65);
+  height: calc(23.75rem *.64);
+  max-width: 100%;
+  /* max-height: 75%; */
+  border-radius: 0.3rem;
+  box-shadow: 1px -2px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
+
 [class^="corner"] {
-  display: none;
+  width: calc(32px *.85);
+  height: calc(31px *.85);
+}
+
+.corner-1 { 
+  transform: translateX(-13px) translateY(-13px);
+}
+
+.corner-2 { 
+  transform: translateX(13px) translateY(-13px) rotate(90deg);
+  justify-self: end;
+}
+
+.corner-3 { 
+  align-self: self-end;
+  transform: translateX(-13px) translateY(13px) rotate(270deg);
+}
+
+.corner-4 { 
+  align-self: self-end;
+  justify-self: end;
+  transform: translateX(13px) translateY(13px) rotate(180deg);
 }
 
 /* .content {
@@ -1429,12 +1449,13 @@ h1#header {
 }
 
 .details { /**/
-  max-width: 320px;
+  /* max-width: 320px; */
   max-height: 100%;
   display: grid;
   grid-template-columns: 40% 60%;
   filter: none;
   margin-top: 40px;
+  padding: 0 1rem;
 }
 
 .detailContent { /**/
@@ -1562,7 +1583,6 @@ h1#header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  transform: translateX(-5px);
   padding: 0;
 }
 
@@ -2231,6 +2251,7 @@ textarea {
   grid-row: 7;
   bottom: 10%;
   padding: 35px 0px 48px 0px;
+  margin-bottom: 15px;
   max-width: 100%;
 }
 
@@ -2437,6 +2458,7 @@ textarea {
 
   .inputRow { /**/
     padding: 15px 0 20px 0;
+    transform: translateX(-5px);
   }
 
   .mobileNameDetail { /**/
@@ -2539,6 +2561,31 @@ textarea {
   .detailFormImage {
     margin: 0;
   }
+
+  /* [class^="corner"] {
+    width: calc(32px *.85);
+    height: calc(31px *.85);
+  }
+
+  .corner-1 { 
+    transform: translateX(-13px) translateY(-13px);
+  }
+  
+  .corner-2 { 
+    transform: translateX(13px) translateY(-13px) rotate(90deg);
+    justify-self: end;
+  }
+  
+  .corner-3 { 
+    align-self: self-end;
+    transform: translateX(-13px) translateY(13px) rotate(270deg);
+  }
+  
+  .corner-4 { 
+    align-self: self-end;
+    justify-self: end;
+    transform: translateX(13px) translateY(13px) rotate(180deg);
+  } */
 
   .formCol1Content { /**/
     padding-right: 0;
@@ -2938,6 +2985,12 @@ textarea {
   }
 }
 
+@media all and (max-height: 568px) {
+  .menuBar.open {
+    width: 100vw;
+  }
+}
+
 @media all and (min-width: 900px) {
   .menuIcon svg { /**/
     width: 22px;
@@ -3186,32 +3239,6 @@ textarea {
   #listImg { /**/
     /* margin: 0; */
   }
-
-  /* [class^="corner"] {
-    display: unset;
-    width: calc(32px *.85);
-    height: calc(31px *.85);
-  }
-
-  .corner-1 { 
-    transform: translateX(-13px) translateY(-13px);
-  }
-  
-  .corner-2 { 
-    transform: translateX(13px) translateY(-13px) rotate(90deg);
-    justify-self: end;
-  }
-  
-  .corner-3 { 
-    align-self: self-end;
-    transform: translateX(-13px) translateY(13px) rotate(270deg);
-  }
-  
-  .corner-4 { 
-    align-self: self-end;
-    justify-self: end;
-    transform: translateX(13px) translateY(13px) rotate(180deg);
-  } */
 
 
   /* .listHeaderContainer {
