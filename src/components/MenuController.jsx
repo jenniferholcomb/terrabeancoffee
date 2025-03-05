@@ -6,6 +6,7 @@ import ItemDetail from "./ItemDetail";
 import NewItemForm from "./NewItemForm";
 import ItemsList from "./ItemsList";
 import InventoryWidget from "./InventoryWidget";
+import MenuList from "./MenuList";
 import Cart from "./Cart";
 import { v4 } from 'uuid';
 
@@ -61,6 +62,10 @@ class MenuController extends React.Component {
   }
 
   componentDidMount() {
+    this.setupObserver();
+  }
+
+  setupObserver = () => {
     const { sectionsRef } = this.props;
 
     if (sectionsRef.current.length > 0) {
@@ -83,33 +88,12 @@ class MenuController extends React.Component {
                       behavior: "smooth"
                     });
                   }
-                  
-                  // sectionsRef.current[index].current.scrollIntoView({ 
-                  //   behavior: "smooth",
-                  //   block: "start",
-                  //   inline: "nearest"
-                  // });
-
                 } else if (!this.state.scrollingDown && sectionsRef.current[index - 1]?.current) {
-                  // const prevSection = sectionsRef.current[index-1]?.current;
-                  // if (prevSection) {
-                  //   const topOffset = prevSection.getBoundingClientRect().top + window.scrollY;
-                    
-                  //   window.scrollTo({
-                  //     top: topOffset,
-                  //     behavior: "smooth"
-                  //   });
-                  // }
-
                   sectionsRef.current[index - 1].current.scrollIntoView({ 
                     behavior: "smooth",
                     block: "start",
                     inline: "nearest" 
                   });
-
-                  // setTimeout(() => {
-                  //   window.scrollBy({ top: 0, left: 0, behavior: "instant" });
-                  // }, 300);
                 }
               }
             }
@@ -152,11 +136,30 @@ class MenuController extends React.Component {
     }
   }
 
-
   handleMenuClick = () => {
     this.setState(prevState => ({
       menuBarVisible: !prevState.menuBarVisible,
     }));
+  }
+
+  handleShopClick = () => {
+    this.handleMenuClick();
+
+    if (typeof document !== "undefined") {
+      const shopContainer = document.getElementById("shopContainer");
+
+      if (shopContainer) {
+        if (this.observer) {
+          this.observer.disconnect();
+        }
+
+        shopContainer.scrollIntoView({ behavior: "smooth" });
+
+        setTimeout(() => {
+          this.setupObserver();
+        }, 1000);
+      }
+    }
   }
 
   handleCartClick = () => {
@@ -315,36 +318,16 @@ class MenuController extends React.Component {
   }
 
   render() {
-    const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, translateYTablet, translateYTabletPor, translateYMobile, translateYMobileB, isScrolled, isScrolledNrw, isScrolledTablet, isScrolledTabletPor, isScrolledMobile, isScrolledMobileB, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, orientation, scrollY, scrollingDown, sectionsRef } = this.props;
+    const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, translateYTablet, translateYTabletPor, translateYMobile, translateYMobileB, isScrolled, isScrolledNrw, isScrolledTablet, isScrolledTabletPor, isScrolledMobile, isScrolledMobileB, isScrolledLogo, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, orientation, sectionsRef } = this.props;
 
     return (
       <React.Fragment>
         <div className="appContainer">
           <div className="home">
-            <div className="homeLayer" ref={sectionsRef.current[0]}></div>
-            {/* <div className="topNav"></div> */}
+            <div className="homeLayer" id={"homeSection"} ref={sectionsRef.current[0]}></div>
             <div className="leftPage">
-              <ul 
-                className="menuContent"
-                style={{
-                  transform: !isMobile && (orientation === "portrait") && (window.innerHeight > 960)
-                             ? "none"
-                             : isWdDesktop 
-                             ? `translateY(${translateY})` 
-                             : isTablet
-                             ? `translateY(${translateYTablet})`
-                             : isTabletPor
-                             ? `translateY(${translateYTabletPor})`
-                             : `translateY(${translateYNrw})`, 
-                             
-                  transition: "transform 0.5s ease-in-out" 
-                }}
-              >
-                <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ||  (isTabletPor && isScrolledTabletPor) ? "shopScrolled" : ""}`} onClick={() => document.getElementById("shop").scrollIntoView({ behavior: "smooth" })}>shop</li>
-                <li className="listContainer"><h3 className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ||  (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} onClick={this.handleMenuClick}>inventory</h3></li>
-                <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) || (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">about us</li>
-                <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) || (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">contact</li>
-              </ul>
+              <MenuList handleShopClick={this.handleShopClick}
+                        handleMenuClick={this.handleMenuClick} />
             </div>
             <div className="centerPage"> 
               <div className="centerGradient"></div>
@@ -363,6 +346,7 @@ class MenuController extends React.Component {
                 : 
                   <div 
                     className="menuIcon"
+                    onClick={ this.handleMenuClick }
                     style={{
                       transform: isScrolledMobileB
                                  ? `translateY(${translateYMobileB})`
@@ -393,7 +377,8 @@ class MenuController extends React.Component {
                       isTablet={isTablet} 
                       isTabletPor={isTabletPor}
                       isMobile={isMobile} 
-                      orientation={orientation} /> 
+                      orientation={orientation} 
+                      isScrolledLogo={isScrolledLogo} /> 
             </div>
             <div className="rightPage">
               <div 
@@ -421,7 +406,7 @@ class MenuController extends React.Component {
               </div>
           </div>
             <div className="homeContent">
-              <div className="homeRow1">
+              <div className="homeRow1" id="row1">
                 <div className="awardsMobile">
                   <img className="award-1" src={steward} alt="Terra Bean Coffee Co logo" />
                   <img className="award-1" src={league} alt="Terra Bean Coffee Co logo" />
@@ -436,14 +421,14 @@ class MenuController extends React.Component {
                     {this.state.introParagraph}
                   </h5>
                   <object className="line"></object>
-                  <h3 className="tagHeadRight tagHead1"><span className={`${isMobile || isTabletPor ? "boldCopy1" : ""}`}>crafted</span> with care,</h3>
+                  <h3 className="tagHeadRight tagHead1"><span className="boldCopy1">crafted</span> with care,</h3>
                   <div className="textLine2">
                     <h3 className="tagHead2">from <span className="boldCopy">soil</span> to <span className="boldCopy">brew</span></h3>
                     <img className="bean" src={coffeeBean} alt="coffee bean graphic" />
                   </div>
                 </div>
               </div>
-              <div className="homeRow2" ref={sectionsRef.current[1]}>
+              <div className="homeRow2" id="row2" ref={sectionsRef.current[1]}>
                 <div className="mobileContent">
                   <img src={roasters} alt="roasters roasting coffee" />
                   <div className="copyMobile">
@@ -457,15 +442,11 @@ class MenuController extends React.Component {
                   <h5 className="boldCopy mobileBoldText">shop</h5>
                 </div>
               </div>
-              {/* <div className="homeRow2">
-                <h3 className="tagHead1">crafted with care,<br />from <span className="boldCopy">soil</span>to <span className="boldCopy">brew</span></h3>
-              </div> */}
-
             </div>
           </div>
 
           <div className={`${isWdDesktop ? "shop-container" : "shop-containerNrw"}`} id="shop">
-            <div className="shopContainerLayer" ref={sectionsRef.current[2]}></div>
+            <div className="shopContainerLayer" id="shopContainer" ref={sectionsRef.current[2]}></div>
             {
               isTablet && this.state.selectedItem !== null ? 
                 null
@@ -566,37 +547,25 @@ class MenuController extends React.Component {
                 </React.Fragment>
               : null
             }
-
-              
-                  <div className={`menuBar ${this.state.menuBarVisible ? "open" : ""}`}></div>
-                  <div className={`menuScreen ${this.state.menuBarVisible ? "open" : ""}`} onClick={this.handleExitMenu}></div>
-                
-
-            {/* <div className="menuIconContainer">
+            <div className={`menuBar ${this.state.menuBarVisible ? "open" : ""}`}></div>
+            <div className={`menuScreen ${this.state.menuBarVisible ? "open" : ""}`} onClick={this.handleExitMenu}></div>
+            <div className="menuBarContainer">
               {
-                this.state.menuBarVisible ?
+                this.state.menuBarVisible && (
                   <React.Fragment>
                     <div className="menuCloseIcon"> 
                       <img src={closeIcon} onClick={ this.handleMenuClick } alt="close icon" />
                     </div>
+                    <MenuList handleShopClick={this.handleShopClick}
+                              handleMenuClick={this.handleMenuClick} 
+                              mobileMenu={true} />
                     <div className="inventory-widget"> </div>
                     <InventoryWidget itemsList={ this.state.itemsList } 
                                     onAddBeanClick={ this.handleAddBeanClick } />
                   </React.Fragment>
-                  
-                : 
-                  <div className="menuIcon">
-                    {
-                      this.state.newItemFormVisible || this.state.editItemFormVisible || this.state.deleteWarningVisible || this.state.cartVisible || this.state.checkoutCompleteVisible || this.state.selectedItem !== null ?
-                        <div className="disabled"></div>
-                      :
-                        [...Array(3)].map((_) => (
-                          <object className="menuLine"></object>
-                        ))
-                    }
-                  </div>  
+                )
               }
-            </div> */}
+            </div>
             </div>
           
           

@@ -5,7 +5,6 @@ import CornerSVG from './CornerSVG';
 import empty from '/img/emptyImg.webp';
 
 function ReusableForm(props) {
-  console.log(props)
   const [nameText, setNameText] = useState(props.name ? props.name.length : 0);
   const [descText, setDescText] = useState(props.name ? props.description.length : 0);
   const [roastValue, setRoastValue] = useState(props.name ? props.roast : '');

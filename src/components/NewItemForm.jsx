@@ -6,8 +6,6 @@ import { v4 } from 'uuid';
 function NewItemForm(props) {
   console.log(props)
   function handleNewItemFormSubmission(event) {
-
-    console.log(event.currentTarget)
     event.preventDefault();
     props.onNewItemCreation({
       name: event.currentTarget.form.name.value,
