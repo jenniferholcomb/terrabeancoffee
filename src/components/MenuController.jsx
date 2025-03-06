@@ -489,7 +489,7 @@ class MenuController extends React.Component {
                     <div className="deleteWarning">
                       <p className="deleteWarningText">{ this.state.deleteWarningVisible ? `Are you sure you want to delete ${this.state.selectedItem.name}?` : this.state.newItemAddedSuccessful ? `You've successfully added ${this.state.itemsList[this.state.itemsList.length - 1].name}.` : 'Purchase successfull. Thanks for shopping.' }</p>
                       <div className="deleteWdgButtons">
-                        <button type="submit" className="cartButtonList" id="doneButton" onClick={this.handleCancelingMessage}><span className="buttonTextList">{this.state.deleteWarningVisible ? `Cancel` : `Done`}</span></button>
+                        <button type="submit" className="cartButtonList cancelButton" id="doneButton" onClick={this.handleCancelingMessage}><span className="buttonTextList">{this.state.deleteWarningVisible ? `Cancel` : `Done`}</span></button>
                         {
                           this.state.deleteWarningVisible ?
                             <button type="submit" className="cartButtonList deleteButton" onClick={() => this.handleDeletingItem(this.state.selectedItem.id)}><span className="buttonTextSolid">Delete Bean</span></button>

@@ -8,7 +8,7 @@ const CornerSVG = ({ shadowDx, shadowDy, blurStdDeviation, width, height, index,
         shapeRendering="crispEdges" 
       />
     </g>
-    <defs>
+    {/* <defs>
       <filter id="corner-shadow" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
@@ -19,7 +19,7 @@ const CornerSVG = ({ shadowDx, shadowDy, blurStdDeviation, width, height, index,
         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
         <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
       </filter>
-    </defs>
+    </defs> */}
   </svg>
 );
 

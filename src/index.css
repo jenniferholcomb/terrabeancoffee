@@ -1301,7 +1301,9 @@ h1#header {
   align-items: center;
 }
 
-
+.quantityText {
+  padding-top: 4px;
+}
 
 .listSubHeadOr { /**/
   grid-column: 1;
@@ -1356,7 +1358,7 @@ h1#header {
   line-height: normal;
   letter-spacing: 0.02813rem;
   text-transform: capitalize;
-  margin-left: auto;
+  padding-bottom: 2px;
 }
 
 .subHeadTextB { /**/
@@ -1590,6 +1592,7 @@ h1#header {
   gap: 14px; */
   grid-column: 2;
   grid-row: 1 / span 2;
+  margin-right: 49px;
 }
 
 .inputRow { /**/
@@ -2145,15 +2148,16 @@ textarea {
 .deleteWarningText { /**/
   max-width: 100%;
   text-align: center;
-  color: #000;
-  font-size: 16px;
-  font-weight: 400;
+  color: #433D3D;
+  font-family: Mulish;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
   line-height: normal;
-  letter-spacing: 0.5px;
-  text-transform: none;
+  letter-spacing: 0.02813rem;
+  text-transform: capitalize;
   padding: 42px 65px 34px 65px;
   margin: 0;
-
 }
 
 .deleteWdgButtons { /**/
@@ -2201,7 +2205,12 @@ textarea {
   width: 110px;
 }
 
+.cancelButton {
+  width: 6.2rem;
+}
+
 .deleteButton { /**/
+  width: 6.2rem;
   background: #B02024;
   border: none;
   box-shadow: 4px -3px 6px 0px rgba(0, 0, 0, 0.25);
@@ -2444,6 +2453,14 @@ textarea {
     max-width: 100%;
   }
 
+  .cardImgContainer {
+    padding-top: 0;
+  }
+
+  #listImg {
+    padding-top: 1rem;
+  }
+
   #detailImg { /**/
     display: unset;
     grid-column: 3;
@@ -2476,19 +2493,21 @@ textarea {
     margin-right: 0;
     margin-bottom: 40px;
     padding-left: 0;
-    padding-right: 46px;
-    margin-top: 20px;
     align-content: end;
     max-height: 100%;
+    justify-self: end;
+  }
+
+  .addCartContainer form {
+    margin-right: 49px;
   }
 
   .inputRow { /**/
-    padding: 15px 0 20px 0;
-    transform: translateX(-5px);
+    padding: 0;
   }
 
   #inputSubhead {
-    margin-right: 20px;
+    margin-left: auto;
   }
 
   .mobileNameDetail { /**/
@@ -2508,7 +2527,7 @@ textarea {
     grid-column: 1;
     grid-row: 1;
     margin-bottom: 20px;
-    padding: 20px 0 7px 0;
+    padding: 20px 0 40px 0;
     max-width: 13ch;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -2521,6 +2540,7 @@ textarea {
   .detColumn { /**/
     grid-column: 1 / span 2;
     grid-row: 5;
+    margin-bottom: 30px;
   }
 
   .detailFlag { /**/
@@ -2781,12 +2801,20 @@ textarea {
     padding-top: 40px;
   }
 
+  .cardImgContainer {
+    padding: 0;
+  }
+
+  #listImg {
+    padding-right: 1rem;
+  }
+
   .detailPriceContainer { /**/
     grid-column: 1;
     grid-row: 2;
     justify-content: start;
     margin-left: 37px;
-    padding-top: 10px;
+    padding-top: 0;
   }
 
   #detailQuantitySpan { /**/
@@ -2796,10 +2824,14 @@ textarea {
   .addCartContainer { /**/
     grid-column: 2;
     grid-row: 2 / span 2;
-    margin-right: 46px;
+    margin-right: 35px;
     margin-bottom: 40px;
     padding-left: 0;
     margin-top: 20px;
+  }
+
+  .addCartContainer form {
+    margin-right: 0;
   }
 
   #detailQuantitySpan { /**/
@@ -3267,7 +3299,7 @@ textarea {
   }
   
   #listImg { /**/
-    /* margin: 0; */
+    padding: 0;
   }
 
 
