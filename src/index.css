@@ -87,30 +87,33 @@ object.menuShop {
   background-color: #143f1a;
   position: fixed;
   top: 0;
-  left: -100%;
+  left: 0;
+  width: 100px;
   height: 100vh;
   z-index: 999;
-  transition: transform 0.3s ease-in-out; 
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out; 
 }
 
 .menuBar.open { 
-  width: 100vw;
-  left: 0;
+  transform: translateX(0);
 }
 
 .menuScreen { 
   position: fixed;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   height: 100vh;
   background: rgba(62, 56, 56, 0.8);
   z-index: 998;
-  transition: transform 0.3s ease-in-out; 
+  transform: translateX(-100%);
+  transition-delay: 0s; 
 }
 
 .menuScreen.open { 
-  transform: translateX(100%);
+  transform: translateX(0); 
+  transition: transform 0.15s ease-in-out; 
 }
 
 .menuBarContainer {
@@ -2521,8 +2524,14 @@ label {
   }
 
   .logo {  
-    max-width: 160px;
-    max-height: 160px;
+    max-width: 130px;
+    max-height: 130px;
+    min-width: 12rem;
+    min-height: 12rem;
+  }
+
+  .container-items-list {
+    margin: 18rem 1rem 0 1rem;
   }
 
   .cartContainer {
@@ -2722,6 +2731,13 @@ label {
     padding-right: 1.34rem;
   }
 
+  .logo {  
+    max-width: 130px;
+    max-height: 130px;
+    min-width: 13rem;
+    min-height: 13rem;
+  }
+
   .cartContainer {
     right: 2.12rem;
   }
@@ -2741,6 +2757,7 @@ label {
 
   .container-items-list {  
     column-gap: min(2.5vw, 4rem);
+    margin: 20.75rem 1rem 0 1rem;
   }
   
   .homeContent {
@@ -2981,6 +2998,10 @@ label {
   }
 
   .logo {  
+    max-width: 160px;
+    max-height: 160px;
+    min-width: 15.3125rem;
+    min-height: 15.3125rem;
     padding-bottom: 4rem;
   }
 

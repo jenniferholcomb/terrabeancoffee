@@ -7,6 +7,7 @@ export function useResize() {
   const [isDesktop, setIsDesktop] = useState(false);
   const [isWdDesktop, setIsWdDesktop] = useState(false);
   const [innerHeight, setInnerHeight] = useState(null);
+  const [initialInnerHeight, setInitialInnerHeight] = useState(null);
   const [orientation, setOrientation] = useState(null);
 
   const handleResize = () => {
@@ -52,12 +53,29 @@ export function useResize() {
   const setVh = () => {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    const resizable = window.matchMedia("(pointer: fine)").matches; //desktop
+    if (!resizable) {
+      if (initialInnerHeight === null) {
+        document.documentElement.style.setProperty('--vh1', `${vh}px`);
+        setInitialInnerHeight(vh);
+      } else {
+        document.documentElement.style.setProperty('--vh1', `${initialInnerHeight}px`);        
+      }
+    } else {
+      document.documentElement.style.setProperty('--vh1', `${vh}px`);
+    }
+    
+    document.documentElement.style.setProperty('--vh1', `${vh}px`);
     setInnerHeight(window.innerHeight);
   };
 
   useEffect(() => {
     handleResize();
     setVh();
+
+    // const userAgent = navigator.userAgent.toLowerCase();
+    // setisDesktopBrowser(/(windows|macintosh|linux)/i.test(userAgent));
 
     window.addEventListener('resize', handleResize);
     window.addEventListener('resize', setVh);

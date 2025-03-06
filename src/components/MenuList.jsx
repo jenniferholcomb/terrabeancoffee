@@ -23,8 +23,7 @@ function MenuList({handleShopClick, handleMenuClick, mobileMenu, handleCartClick
         transition: "transform 0.5s ease-in-out" 
       }}
     >
-      <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ||  (isTabletPor && isScrolledTabletPor) ? "shopScrolled" : ""}`} 
-          onClick={handleShopClick}>shop</li>
+      <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ||  (isTabletPor && isScrolledTabletPor) ? "shopScrolled" : ""}`} onClick={handleShopClick}>shop</li>
       { !mobileMenu ?
         <li className="listContainer"><h3 className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ||  (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} onClick={handleMenuClick}>inventory</h3></li>
       :

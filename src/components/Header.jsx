@@ -6,7 +6,7 @@ import steward from "/img/stewardAward.webp";
 import league from "/img/leagueAward.webp";
 import bio from "/img/bioAward.webp";
 
-function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, isWdDesktop, isTablet, isTabletPor, isMobile, orientation, isScrolledLogo}) {
+function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, isWdDesktop, isTablet, isTabletPor, isMobile, orientation, isScrolledLogo, isScrolled}) {
 
   return (
     <React.Fragment>
@@ -28,7 +28,18 @@ function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTr
             transition: "transform 0.5s ease-in-out" 
           }}
         >
-          <img className={`${isScrolledLogo && isMobile ? "logoMobileScrolled" : "logo"}`} src={logo} alt="Terra Bean Coffee Co logo" />
+          <img 
+            className={`${isScrolledLogo && isMobile ? "logoMobileScrolled" : "logo"}`} 
+            src={logo} 
+            alt="Terra Bean Coffee Co logo" 
+            style={{
+              opacity: isScrolledLogo
+                       ? "100%"
+                       : isScrolled
+                       ? "35%"
+                       : ""
+            }}
+          />
         </div>
         <div className='awardsContainer'>
           <img className="award-1" src={steward} alt="Terra Bean Coffee Co logo" />

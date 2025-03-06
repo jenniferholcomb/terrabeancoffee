@@ -143,7 +143,9 @@ class MenuController extends React.Component {
   }
 
   handleShopClick = () => {
-    this.handleMenuClick();
+    if (this.state.menuBarVisible) {
+      this.handleMenuClick();
+    }
 
     if (typeof document !== "undefined") {
       const shopContainer = document.getElementById("shopContainer");
@@ -318,8 +320,8 @@ class MenuController extends React.Component {
   }
 
   render() {
-    const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, initialSectionHeight, translateY, translateYNrw, translateYTablet, translateYTabletPor, translateYMobile, translateYMobileB, isScrolled, isScrolledNrw, isScrolledTablet, isScrolledTabletPor, isScrolledMobile, isScrolledMobileB, isScrolledLogo, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, orientation, sectionsRef } = this.props;
-    console.log(initialSectionHeight)
+    const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, translateYTablet, translateYTabletPor, translateYMobile, translateYMobileB, isScrolled, isScrolledNrw, isScrolledTablet, isScrolledTabletPor, isScrolledMobile, isScrolledMobileB, isScrolledLogo, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, orientation, sectionsRef } = this.props;
+
     return (
       <React.Fragment>
         <div className="appContainer">
@@ -377,7 +379,8 @@ class MenuController extends React.Component {
                       isTabletPor={isTabletPor}
                       isMobile={isMobile} 
                       orientation={orientation} 
-                      isScrolledLogo={isScrolledLogo} /> 
+                      isScrolledLogo={isScrolledLogo} 
+                      isScrolled={isScrolled} /> 
             </div>
             <div className="rightPage">
               <div 
@@ -444,8 +447,8 @@ class MenuController extends React.Component {
             </div>
           </div>
 
-          <div className={`${isWdDesktop ? "shop-container" : "shop-containerNrw"}`} id="shop">
-            <div className="shopContainerLayer" id="shopContainer" ref={sectionsRef.current[2]}></div>
+          <div className={`${isWdDesktop ? "shop-container" : "shop-containerNrw"}`} id="shopContainer" ref={sectionsRef.current[2]}>
+            <div className="shopContainerLayer" id="shopContainer"></div>
             {
               isTablet && this.state.selectedItem !== null ? 
                 null
@@ -557,10 +560,12 @@ class MenuController extends React.Component {
                     <div className="menuCloseIcon"> 
                       <img src={closeIcon} onClick={ this.handleMenuClick } alt="close icon" />
                     </div>
-                    <MenuList handleShopClick={this.handleShopClick}
-                              handleMenuClick={this.handleMenuClick} 
-                              mobileMenu={true} 
-                              handleCartClick={this.handleCartClick} />
+                    { isMobile && (
+                      <MenuList handleShopClick={this.handleShopClick}
+                                handleMenuClick={this.handleMenuClick} 
+                                mobileMenu={true} 
+                                handleCartClick={this.handleCartClick} />
+                    )}
                     <div className="inventory-widget"> </div>
                     <InventoryWidget itemsList={ this.state.itemsList } 
                                     onAddBeanClick={ this.handleAddBeanClick } />

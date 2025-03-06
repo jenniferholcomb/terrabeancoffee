@@ -7,7 +7,6 @@ export const withHooksHOC = (Component) => {
     const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, innerHeight, orientation } = useResize();
     const { scrollY, scrollingDown } = useScroll();
     const sectionsRef = useRef([]);
-    const initialSectionHeight = useRef(null);
 
     const section1 = document.getElementById("homeSection");
     const section1b = document.getElementById("row1");
@@ -17,9 +16,6 @@ export const withHooksHOC = (Component) => {
     let section2Height;
     if (section1 && section1b && section2) {
       section1Height = section1.getBoundingClientRect().height;
-      console.log(section1Height)
-      console.log(innerHeight)
-      console.log(initialSectionHeight.current)
       section1bHeight = section1b.getBoundingClientRect().height;
       section2Height = section2.getBoundingClientRect().height;
     }
@@ -42,27 +38,19 @@ export const withHooksHOC = (Component) => {
     const isScrolledTabletPor = scrollY > 150;
     const isScrolledMobile = scrollY > 150;
     const isScrolledMobileB = scrollY > 1060;
-    const isScrolledLogo = scrollY > 700;
+    const isScrolledLogo = scrollY > 850;
 
     const logoTranslateY = scrollY > 375 ? "51.5rem" : "0rem";
     const logoTranslateYNrw = scrollY > 300 ? "48rem" : "0rem";
-    const logoTranslateYTablet = scrollY > 275 ? "45.5rem" : "0rem";
-    const logoTranslateYTabletPor = scrollY > 275 ? "56.75rem" : "0rem";
+    const logoTranslateYTablet = scrollY > 275 ? "42.75rem" : "0rem";
+    const logoTranslateYTabletPor = scrollY > 275 ? "53.5rem" : "0rem";
     const logoTranslateYMobile = scrollY > 250 ? `${(section2Height + section1bHeight + 35.2 + 310 )}px` : "0rem";
-
-    useEffect(() => {
-      if(initialSectionHeight.current === null) {
-        initialSectionHeight.current = innerHeight;
-        document.documentElement.style.setProperty('--vh1', `${innerHeight * 0.01}px`);
-      }
-    }, [innerHeight]);
     
     return <Component isMobile={isMobile}
                       isTabletPor={isTabletPor}
                       isTablet={isTablet} 
                       isDesktop={isDesktop}
                       isWdDesktop={isWdDesktop}
-                      initialSectionHeight={initialSectionHeight.current}
                       translateY={translateY} 
                       translateYNrw={translateYNrw}
                       translateYTablet={translateYTablet}
