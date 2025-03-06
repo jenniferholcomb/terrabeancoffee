@@ -1,6 +1,6 @@
 import { withHooksHOC } from './withHooksHOC';
 
-function MenuList({handleShopClick, handleMenuClick, mobileMenu, isMobile, isWdDesktop, translateY, isTablet, translateYTablet, 
+function MenuList({handleShopClick, handleMenuClick, mobileMenu, handleCartClick, isMobile, isWdDesktop, translateY, isTablet, translateYTablet, 
   isTabletPor, translateYTabletPor, translateYNrw, isScrolled, isDesktop,
   isScrolledNrw, isScrolledTabletPor, isScrolledTablet, orientation}) {
 
@@ -25,9 +25,11 @@ function MenuList({handleShopClick, handleMenuClick, mobileMenu, isMobile, isWdD
     >
       <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ||  (isTabletPor && isScrolledTabletPor) ? "shopScrolled" : ""}`} 
           onClick={handleShopClick}>shop</li>
-      { !mobileMenu && (
+      { !mobileMenu ?
         <li className="listContainer"><h3 className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) ||  (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} onClick={handleMenuClick}>inventory</h3></li>
-      )}
+      :
+        <li className="listContainer"><h3 className="menuList" onClick={handleCartClick}>cart</h3></li>
+      }
       <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) || (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">about us</li>
       <li className={`menuList ${(isWdDesktop && isScrolled) || (isDesktop && isScrolledNrw) || (isTablet && isScrolledTablet) || (isTabletPor && isScrolledTabletPor) ? "listScrolled" : ""}`} title="I'm static - checkout 'shop' or 'inventory'">contact</li>
     </ul>

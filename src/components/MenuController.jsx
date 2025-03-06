@@ -560,7 +560,8 @@ class MenuController extends React.Component {
                     </div>
                     <MenuList handleShopClick={this.handleShopClick}
                               handleMenuClick={this.handleMenuClick} 
-                              mobileMenu={true} />
+                              mobileMenu={true} 
+                              handleCartClick={this.handleCartClick} />
                     <div className="inventory-widget"> </div>
                     <InventoryWidget itemsList={ this.state.itemsList } 
                                     onAddBeanClick={ this.handleAddBeanClick } />
