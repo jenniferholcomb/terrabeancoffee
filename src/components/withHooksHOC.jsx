@@ -53,6 +53,7 @@ export const withHooksHOC = (Component) => {
     useEffect(() => {
       if(initialSectionHeight.current === null) {
         initialSectionHeight.current = innerHeight;
+        document.documentElement.style.setProperty('--vh1', `${innerHeight * 0.01}px`);
       }
     }, [innerHeight]);
     

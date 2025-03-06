@@ -324,14 +324,7 @@ class MenuController extends React.Component {
       <React.Fragment>
         <div className="appContainer">
           <div className="home">
-            <div 
-              className="homeLayer" 
-              id={"homeSection"} 
-              ref={sectionsRef.current[0]}
-              style={{
-                height: `${initialSectionHeight}px`
-              }}
-              ></div>
+            <div className="homeLayer" id={"homeSection"} ref={sectionsRef.current[0]}></div>
             <div className="leftPage">
               <MenuList handleShopClick={this.handleShopClick}
                         handleMenuClick={this.handleMenuClick} />
