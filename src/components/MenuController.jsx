@@ -318,13 +318,20 @@ class MenuController extends React.Component {
   }
 
   render() {
-    const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, translateY, translateYNrw, translateYTablet, translateYTabletPor, translateYMobile, translateYMobileB, isScrolled, isScrolledNrw, isScrolledTablet, isScrolledTabletPor, isScrolledMobile, isScrolledMobileB, isScrolledLogo, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, orientation, sectionsRef } = this.props;
-
+    const { isMobile, isTabletPor, isTablet, isDesktop, isWdDesktop, initialSectionHeight, translateY, translateYNrw, translateYTablet, translateYTabletPor, translateYMobile, translateYMobileB, isScrolled, isScrolledNrw, isScrolledTablet, isScrolledTabletPor, isScrolledMobile, isScrolledMobileB, isScrolledLogo, logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTranslateYTabletPor, logoTranslateYMobile, orientation, sectionsRef } = this.props;
+    console.log(initialSectionHeight)
     return (
       <React.Fragment>
         <div className="appContainer">
           <div className="home">
-            <div className="homeLayer" id={"homeSection"} ref={sectionsRef.current[0]}></div>
+            <div 
+              className="homeLayer" 
+              id={"homeSection"} 
+              ref={sectionsRef.current[0]}
+              style={{
+                height: `${initialSectionHeight}px`
+              }}
+              ></div>
             <div className="leftPage">
               <MenuList handleShopClick={this.handleShopClick}
                         handleMenuClick={this.handleMenuClick} />
@@ -342,7 +349,6 @@ class MenuController extends React.Component {
                     <InventoryWidget itemsList={ this.state.itemsList } 
                                     onAddBeanClick={ this.handleAddBeanClick } />
                   </React.Fragment>
-                  
                 : 
                   <div 
                     className="menuIcon"
