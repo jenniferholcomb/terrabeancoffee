@@ -59,8 +59,8 @@ export function useResize() {
     if (initialInnerHeight === null) {
       document.documentElement.style.setProperty('--vh1', `${vh}px`);
       setInitialInnerHeight(vh);
-    } else if (isDesktopBrowser) {
-      document.documentElement.style.setProperty('--vh1', `${vh}px`);        
+    // } else if (isDesktopBrowser) {
+    //   document.documentElement.style.setProperty('--vh1', `${vh}px`);        
     } else {
       document.documentElement.style.setProperty('--vh1', `${initialInnerHeight}px`);  
     }
