@@ -83,19 +83,27 @@ object.menuShop {
   background: #143f1a;
 }
 
-.menuBar { 
+.menuBar, .menuMobileBar { 
   background-color: #143f1a;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100px;
   height: 100vh;
   z-index: 999;
   transform: translateX(-100%);
+}
+
+.menuBar {
+  width: 100px;
   transition: transform 0.5s ease-in-out; 
 }
 
-.menuBar.open { 
+.menuMobileBar {
+  width: 100vw;
+  transition: transform 0.3s ease-in-out; 
+}
+
+.menuBar.open, .menuMobileBar.open { 
   transform: translateX(0);
 }
 
@@ -114,6 +122,10 @@ object.menuShop {
 .menuScreen.open { 
   transform: translateX(0); 
   transition: transform 0.15s ease-in-out; 
+}
+
+.menuScreenDisabled {
+  display: none;
 }
 
 .menuBarContainer {

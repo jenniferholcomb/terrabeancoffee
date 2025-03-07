@@ -551,8 +551,8 @@ class MenuController extends React.Component {
                 </React.Fragment>
               : null
             }
-            <div className={`menuBar ${this.state.menuBarVisible ? "open" : ""}`}></div>
-            <div className={`menuScreen ${this.state.menuBarVisible ? "open" : ""}`} onClick={this.handleExitMenu}></div>
+            <div className={isMobile ? `menuMobileBar ${this.state.menuBarVisible ? "open" : ""}` : `menuBar ${this.state.menuBarVisible ? "open" : ""}`}></div>
+            <div className={!isMobile ? `menuScreen ${this.state.menuBarVisible ? "open" : ""}` : "menuScreenDisabled"} onClick={this.handleExitMenu}></div>
             <div className="menuBarContainer">
               {
                 this.state.menuBarVisible && (

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import logo from "/terraBeanLogo.webp";
+import logo from "/img/terraBeanLogo.webp";
 import steward from "/img/stewardAward.webp";
 import league from "/img/leagueAward.webp";
 import bio from "/img/bioAward.webp";
