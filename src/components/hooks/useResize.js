@@ -8,7 +8,7 @@ export function useResize() {
   const [isWdDesktop, setIsWdDesktop] = useState(false);
   const [innerHeight, setInnerHeight] = useState(null);
   const initialInnerHeight = useRef(null);
-  const isDesktopBrowser = useRef(null);
+  const [isDesktopBrowser, setIsDesktopBrowser] = useState(null);
   const [orientation, setOrientation] = useState(null);
 
   const handleResize = () => {
@@ -57,33 +57,42 @@ export function useResize() {
     setInnerHeight(vh);
   };
 
-  const setVh1 = () => {
-    console.log(initialInnerHeight.current)
-    console.log(isDesktopBrowser.current)
+  // const setVh1 = () => {
+  //   console.log(initialInnerHeight.current)
+  //   console.log(isDesktopBrowser)
+  //   if (initialInnerHeight.current === null) {
+  //     document.documentElement.style.setProperty('--vh1', `${window.innerHeight * 0.01}px`);
+  //     initialInnerHeight.current = window.innerHeight * 0.01;
+  //   } else if (isDesktopBrowser.current) {
+  //     document.documentElement.style.setProperty('--vh1', `${window.innerHeight * 0.01}px`);        
+  //   } else {
+  //     document.documentElement.style.setProperty('--vh1', `${initialInnerHeight.current}px`);  
+  //   }
+  // }
+
+  useEffect(() => {
     if (initialInnerHeight.current === null) {
-      document.documentElement.style.setProperty('--vh1', `${window.innerHeight * 0.01}px`);
-      initialInnerHeight.current = window.innerHeight * 0.01;
-    } else if (isDesktopBrowser.current) {
-      document.documentElement.style.setProperty('--vh1', `${window.innerHeight * 0.01}px`);        
+      initialInnerHeight.current = innerHeight;
+      document.documentElement.style.setProperty('--vh1', `${innerHeight}px`);
+    } else if (isDesktopBrowser) {
+      document.documentElement.style.setProperty('--vh1', `${innerHeight}px`);    
     } else {
       document.documentElement.style.setProperty('--vh1', `${initialInnerHeight.current}px`);  
     }
-  }
+  }, [innerHeight]);
 
   useEffect(() => {
     handleResize();
     setVh();
 
     const userAgent = navigator.userAgent.toLowerCase();
-    isDesktopBrowser.current = /(windows|macintosh|linux)/i.test(userAgent);
+    setIsDesktopBrowser(/(windows|macintosh|linux)/i.test(userAgent));
 
     window.addEventListener('resize', handleResize);
     window.addEventListener('resize', setVh);
-    window.addEventListener('resize', setVh1);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('resize', setVh1);
       return () => window.removeEventListener('resize', setVh);
     };
   }, []); 
