@@ -54,6 +54,7 @@ export function useResize() {
   const setVh = () => {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+    setInnerHeight(vh);
 
     if (initialInnerHeight === null) {
       document.documentElement.style.setProperty('--vh1', `${vh}px`);
@@ -63,10 +64,6 @@ export function useResize() {
     } else {
       document.documentElement.style.setProperty('--vh1', `${initialInnerHeight}px`);  
     }
-
-    
-    document.documentElement.style.setProperty('--vh1', `${vh}px`);
-    setInnerHeight(window.innerHeight);
   };
 
   useEffect(() => {
