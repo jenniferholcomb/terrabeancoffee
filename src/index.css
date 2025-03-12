@@ -529,7 +529,8 @@ input.cartQuantityInput {
 
 .home {
   display: grid;
-  background: linear-gradient(0deg, rgba(17, 24, 12, 0.90) 0%, rgba(17, 24, 12, 0.90) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat;
+  /* background: linear-gradient(0deg, rgba(17, 24, 12, 0.90) 0%, rgba(17, 24, 12, 0.90) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat; */
+  background: linear-gradient(0deg, rgba(11, 16, 8, 0.95) 0%, rgba(11, 16, 8, 0.95) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat;
   height: 100%;
   justify-content: center;
 }
@@ -761,7 +762,7 @@ input.cartQuantityInput {
   font-family: Mulish;
   font-style: normal;
   font-weight: 400;
-  letter-spacing: 0.225rem;
+  letter-spacing: 0.2rem;
   margin: 0;
 }
 
@@ -1060,7 +1061,8 @@ header {
   width: 320px;
   height: 433px;
   border-radius: 0.3125rem;
-  background: #F4E7D1;
+  background: #f8f5ee; 
+  /* background: #eae3d7; */
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
@@ -1074,7 +1076,7 @@ header {
 .cardImgContainer {  
   grid-column: 2;
   grid-row: 1 / span 5;
-  min-height: 100%;
+  /* min-height: 100%; */
   display: flex;
   justify-content: flex-end;
   padding: 1rem 1rem .75rem 0;
@@ -1092,7 +1094,7 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: calc(17.67281rem *.65);
-  height: calc(23.75rem *.64);
+  height: calc(23.75rem *.545);
   max-width: 100%;
   border-radius: 0.3rem;
   box-shadow: 1px -2px 4px 0px rgba(0, 0, 0, 0.15);
@@ -1126,7 +1128,7 @@ header {
 .cardFlag {  
   grid-column: 2;
   grid-row: 7;
-  max-width: 100%;
+  /* max-width: 100%; */
   display: flex;
   justify-content: flex-end;
   margin-top: 0px;
@@ -1167,15 +1169,15 @@ header {
 }
 
 .cardHeader {  
-  color: #000;
+  color: #433D3D;
   font-family: Mulish;
+  text-shadow: 1px -2px 4px rgba(0, 0, 0, 0.15);
   font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
+  font-style: italic;
+  font-weight: 800;
   line-height: normal;
-  letter-spacing: 0.11375rem;
+  letter-spacing: 0.27rem;
   text-transform: uppercase;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
   margin: 0;
 }
 
@@ -1184,7 +1186,7 @@ header {
   font-family: Mulish;
   font-size: 0.75rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
   letter-spacing: 0.0525rem;
   text-transform: uppercase;
@@ -1238,7 +1240,7 @@ header {
 }
 
 #desSubHead {  
-  padding-top: 3px;
+  padding-top: 8px;
   margin-bottom: 0;
 }
 
@@ -1246,7 +1248,7 @@ header {
   color: #433D3D;
   font-family: Mulish;
   font-size: 0.9375rem;
-  font-style: normal;
+  font-style: italic;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.02813rem;
@@ -1275,25 +1277,25 @@ header {
   color: #3A3333;
   font-family: Mulish;
   font-size: 0.8125rem;
-  font-style: normal;
-  font-weight: 500;
+  font-style: italic;
+  font-weight: 300;
   line-height: normal;
   letter-spacing: 0.02438rem;
   margin: 5px 16px 0px 16px;
 }
 
 #listDescription {   
-  margin: 0 1rem 7px 1rem;
+  margin: 8px 1rem 7px 1rem;
 }
 
 .cardPrice {  
   grid-column: 1;
   grid-row: 2;
-  color: #000;
+  color: #433D3D;
   font-family: Mulish;
   font-size: 1rem;
-  font-style: normal;
-  font-weight: 700;
+  font-style: italic;
+  font-weight: 800;
   line-height: normal;
   letter-spacing: 0.07875rem;
   text-transform: uppercase;
@@ -1311,15 +1313,15 @@ header {
 }
 
 #listPrice {  
-  margin: 1.6rem 0 0 1.1rem;
+  margin: 1rem 0 0 1.1rem;
 }
 
 .priceUnit {  
   color: #433D3D;
   font-family: Mulish;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 600;
+  font-style: italic;
+  font-weight: 400;
   line-height: normal;
   letter-spacing: 0.84px;
   text-transform: lowercase;
@@ -1329,7 +1331,7 @@ header {
   position: fixed;
   min-width: 100vw;
   min-height: 100%;
-  background-color: #F4E7D1;
+  background-color: #f8f5ee;
   backdrop-filter: blur(5px) saturate(70%);
   z-index: 9999;
   display: grid;
@@ -1844,7 +1846,7 @@ label {
   width: 320px;
   height: 176px;
   border-radius: 5px;
-  background: #F4E7D1;
+  background: #f8f5ee;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -1894,7 +1896,7 @@ label {
 
 .cartButtonListDisabled   {
   border: transparent;
-  background: #e4dac7;
+  background: #e7e5e1;
 }
 
 .cartSaveButton {  
@@ -1919,10 +1921,11 @@ label {
 }
 
 .buttonNoStroke {
-  border-top: 1px solid #433d3d80;
+  /* border-top: 1px solid #433d3d80;
   border-right: 1px solid #433d3d80;
   border-left: 1px solid #433d3d5c;
-  border-bottom: .75px solid #433d3d42;
+  border-bottom: .5px solid #433d3d42; */
+  border: none;
   grid-column: 1;
   grid-row: 3;
   margin: 0 1.2rem 1.5rem 1rem;
@@ -1944,7 +1947,7 @@ label {
 }
 
 .buttonTextList {  
-  color: #433D3D;
+  color: #192512;
 }
 
 .buttonTextForm {  
@@ -2209,7 +2212,7 @@ label {
   .detColumn {  
     grid-column: 1 / span 2;
     grid-row: 5;
-    margin-bottom: 30px;
+    margin-bottom: 1.5rem;
   }
 
   .detailFlag {  
@@ -2414,7 +2417,7 @@ label {
     border-radius: 5px;
     grid-template-columns: 1fr 1fr;
     filter: drop-shadow(0px 4px 7.2px rgba(10, 9, 9, 0.30));
-    background-color: #F4E7D1;
+    background-color: #f8f5ee;
   }
 
   .indexEditWidget {  
@@ -2460,7 +2463,7 @@ label {
     margin-right: 35px;
     margin-bottom: 40px;
     padding-left: 0;
-    margin-top: 20px;
+    margin-top: 25px;
   }
 
   .addCartContainer form {
@@ -2478,7 +2481,11 @@ label {
   .formCard  , .formCart   {
     border-radius: 5px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    background-color: #F4E7D1;
+    background-color: #f8f5ee;
+  }
+
+  .detailFormImage {  
+    height: calc((23.75rem * .80));
   }
 
   .home {  
@@ -2784,8 +2791,8 @@ label {
 
   .homeImages {  
     width: 61.8%;
+    min-width: 61.8%;
     min-height: 100%;
-    margin-right: 3vw;
     padding: 0;
     gap: 2vw;
   }
@@ -2816,12 +2823,14 @@ label {
     display: flex;
     flex-direction: column;
     padding: 0;
+    margin-left: 3vw;
   }
 
   .copy {
     padding: 5px 3vw 0 0;
     margin: 0 0 auto 0;
     line-height: 1.5rem;
+    font-size: .95rem;
   }
 
   .copy::first-letter {
@@ -2846,6 +2855,7 @@ label {
     align-self: auto;
     margin: 0;
     line-height: 1.9375rem;
+    letter-spacing: 0.5rem;
   }
 
   .tagHead1::first-letter {
@@ -2853,10 +2863,11 @@ label {
   }
 
   .tagHead2 {
-    text-align: right;
     margin: 0;
     padding: 0 3vw 0 0;
     line-height: 1.9375rem;
+    text-align: left;
+    letter-spacing: 0.5rem;
   }
 
   .shop-containerNrw {
@@ -2956,6 +2967,11 @@ label {
     height: 7.5rem;
   }
 
+  #desSubHead {  
+    padding-top: 3px;
+    margin-bottom: 3px;
+  }
+
   #listDescription {   
     margin: 0 15px 15px 0px;
   }
@@ -2979,8 +2995,7 @@ label {
     grid-row: 6;
     text-align: right;
     align-self: flex-end;
-    font-size: 1.125rem;
-    padding-top: 2px;
+    font-size: 1.125rem; 
   }
 
   #listPrice {  
@@ -3031,42 +3046,53 @@ label {
 
   .home {
     height: 56rem;
+    /* height: 100vh; */
   }
 
   .homeContent {
     margin: 2rem 0;
+    padding-bottom: 0;
+  }
+
+  .homeRow1 {
+    /* margin-top: 1rem; */
+    height: unset;
+  }
+
+  .homeImages {
+    min-height: 100%;
+    padding: 1rem 0;
   }
 
   .homeImages img:first-of-type, .homeImages img:nth-of-type(2) {  
-    height: 17rem;
+    /* height: 17rem; */
     width: auto;
     object-position: 50%;
   }
 
+  .homeCopy {
+    margin-left: 3vw;
+  }
+
   .copy {
     margin: 0;
+    padding-right: 4vw;
   }
 
   .line {  
-    display: unset;
-    width: 100%;
-    height: 0.125rem;
-    background: #FFF;
-    align-self: flex-end;
-    margin: 1.94rem 0;
+    margin: 1.25rem 0;
   }
 
   .tagHead1 {
-    font-size: 1.375rem;
+    /* font-size: 1.375rem; */
   }
 
   .tagHead2 {  
-    text-align: right;
     padding-right: .25rem;
   }
 
   .boldCopy, .boldCopy1 {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
   }
 
   .bean {

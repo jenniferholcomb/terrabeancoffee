@@ -23,6 +23,7 @@ function ItemsList(props) {
             id={item.id}
             newItem={item.newItem}
             newOrigin={item.newOrigin}
+            isMobile={props.isMobile}
             key={item.id} 
           />
         )}

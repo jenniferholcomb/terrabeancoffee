@@ -35,7 +35,7 @@ function Header({logoTranslateY, logoTranslateYNrw, logoTranslateYTablet, logoTr
             style={{
               opacity: isScrolledLogo
                        ? "100%"
-                       : isScrolled
+                       : isScrolled && isMobile
                        ? "35%"
                        : ""
             }}

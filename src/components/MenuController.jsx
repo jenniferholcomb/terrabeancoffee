@@ -426,7 +426,7 @@ class MenuController extends React.Component {
                   <h3 className="tagHeadRight tagHead1"><span className="boldCopy1">crafted</span> with care,</h3>
                   <div className="textLine2">
                     <h3 className="tagHead2">from <span className="boldCopy">soil</span> to <span className="boldCopy">brew</span></h3>
-                    <img className="bean" src={coffeeBean} alt="coffee bean graphic" />
+                    {/* <img className="bean" src={coffeeBean} alt="coffee bean graphic" /> */}
                   </div>
                 </div>
               </div>
@@ -447,7 +447,7 @@ class MenuController extends React.Component {
             </div>
           </div>
 
-          <div className={`${isWdDesktop ? "shop-container" : "shop-containerNrw"}`} id="shopContainer" ref={sectionsRef.current[2]}>
+          <div className={`${isWdDesktop ? "shop-container" : "shop-containerNrw"}`} id="shopContainer" ref={isMobile ? sectionsRef.current[2] : null}>
             <div className="shopContainerLayer" id="shopContainer"></div>
             {
               isTablet && this.state.selectedItem !== null ? 
