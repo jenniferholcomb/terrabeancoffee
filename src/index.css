@@ -1263,7 +1263,7 @@ header {
 .desColumn {  
   grid-column: 1 / span 2;
   grid-row: 6;
-  height: 7.1rem;
+  height: 7.3rem;
   overflow-y: hidden;
   margin-left: 1rem;
 }
@@ -1553,8 +1553,16 @@ button .cartButton {
 
 .formHeader {  
   color: #143f1a;
-  margin: 0 0 0px 35px;
+  margin: 0;
   padding-top: 55px;
+  font-family: Mulish;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .breakLine1  , .breakLine3  {
@@ -2001,9 +2009,7 @@ label {
 }
 
 @media all and (min-width: 600px) {
-  .copyMobile {
-    width: 560.41px;
-  }
+
 }
 
 @media all and (min-height: 568px) {
@@ -2385,6 +2391,15 @@ label {
 
   .cartButtons {  
     padding: 46px 35px 35px 35px;
+  }
+
+  .copyMobile {
+    width: 560.41px;
+  }
+
+  .formHeader {  
+    margin: 0 0 0 35px;
+    text-align: left;
   }
 }
 

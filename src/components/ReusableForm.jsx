@@ -80,7 +80,7 @@ function ReusableForm(props) {
     <React.Fragment>
       <div className="formContainer">
         <div className="formCard">
-          <h2  className={`${"cardHeader"} ${"formHeader"}`}>{props.headerText}</h2>
+          <h2  className="formHeader">{props.headerText}</h2>
           <div className="breakLine1"></div>
           <form onSubmit={props.formSubmissionHandler}>
             <div className="reuseForm">
