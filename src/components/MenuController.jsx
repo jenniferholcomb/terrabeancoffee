@@ -325,7 +325,7 @@ class MenuController extends React.Component {
     return (
       <React.Fragment>
         <div className="appContainer">
-          <div className="home">
+          <div className={orientation === "portrait" ? "homePortrait" : "homeLandscape"}>
             <div className="homeLayer" id={"homeSection"} ref={sectionsRef.current[0]}></div>
             <div className="leftPage">
               <MenuList handleShopClick={this.handleShopClick}

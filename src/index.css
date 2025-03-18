@@ -34,9 +34,9 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
-  /* -moz-appearance: textfield; */
-}
+/* input[type=number] {
+  -moz-appearance: textfield;
+} */
 
 .cartButtonListDisabled  {
   display: block !important; /* since you set the element's display to none inline,
@@ -527,7 +527,7 @@ input.cartQuantityInput {
   letter-spacing: 0.28px;
 }
 
-.home {
+.homePortrait, .homeLandscape {
   display: grid;
   /* background: linear-gradient(0deg, rgba(17, 24, 12, 0.90) 0%, rgba(17, 24, 12, 0.90) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat; */
   background: linear-gradient(0deg, rgba(11, 16, 8, 0.95) 0%, rgba(11, 16, 8, 0.95) 100%), url('/img/terraHeader.webp') lightgray 50% / cover no-repeat;
@@ -2503,7 +2503,7 @@ label {
     height: calc((23.75rem * .80));
   }
 
-  .home {  
+  .homePortrait, .homeLandscape {  
     grid-template-columns: 9.1rem 1fr 9.1rem;
   }
 
@@ -2716,7 +2716,7 @@ label {
 
 @media all and (min-width: 1024px) {
 
-  .home {
+  .homePortrait, .homeLandscape {
     grid-template-columns: 11.25rem 1fr 11.25rem;
     height: 51rem;
   }
@@ -3059,7 +3059,7 @@ label {
     height: 30rem;
   }
 
-  .home {
+  .homePortrait, .homeLandscape {
     height: 56rem;
     /* height: 100vh; */
   }
@@ -3098,9 +3098,9 @@ label {
     margin: 1.25rem 0;
   }
 
-  .tagHead1 {
-    /* font-size: 1.375rem; */
-  }
+  /* .tagHead1 {
+    font-size: 1.375rem;
+  } */
 
   .tagHead2 {  
     padding-right: .25rem;
@@ -3209,7 +3209,7 @@ label {
 }
 
 @media all and (min-width: 1500px) {
-  .home {
+  .homePortrait, .homeLandscape {
     grid-template-columns: 1fr 71.1875rem 1fr;
     height: 100%;
   }
