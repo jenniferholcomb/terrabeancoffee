@@ -23,7 +23,8 @@
 ![Screenshot](./public/img/desktopTerraScreenshot.png)
 
 ### Mobile View  
-<img src="./public/img/terrabeanMobileScreen1.png" alt="Mobile Screenshot" width="400"/>
+<img src="./public/img/terrabeanMobileScreen1.png" alt="Mobile Screenshot" width="200"/>
+<img src="./public/img/terrabeanMobileScreen2.png" alt="Mobile Screenshot" width="200"/>
 
 ### Desktop View  
 <img src="./public/img/desktopTerraScreenshot.png" alt="Desktop Screenshot" width="700"/>  
