@@ -18,13 +18,11 @@
 
 ## Screenshots
 
-![Screenshot](./public/img/terrabeanMobileScreen1.png)
-![Screenshot](./public/img/terrabeanMobileScreen2.png)
-![Screenshot](./public/img/desktopTerraScreenshot.png)
-
-### Mobile View  
-<img src="./public/img/terrabeanMobileScreen1.png" alt="Mobile Screenshot" width="200"/>
-<img src="./public/img/terrabeanMobileScreen2.png" alt="Mobile Screenshot" width="200"/>
+### Mobile Views
+<p align="center">
+  <img src="./public/img/terrabeanMobileScreen1.png" alt="Mobile Screenshot 1" width="300"/>
+  <img src="./public/img/terrabeanMobileScreen2.png" alt="Mobile Screenshot 2" width="300"/>
+</p>
 
 ### Desktop View  
 <img src="./public/img/desktopTerraScreenshot.png" alt="Desktop Screenshot" width="700"/>  
