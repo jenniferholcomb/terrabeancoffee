@@ -18,9 +18,9 @@
 
 ## Screenshots
 
-![Screenshot](./img/terrabeanMobileScreen1.png)
-![Screenshot](./img/terrabeanMobileScreen2.png)
-![Screenshot](./img/desktopTerraScreenshot.png)
+![Screenshot](./public/img/terrabeanMobileScreen1.png)
+![Screenshot](./public/img/terrabeanMobileScreen2.png)
+![Screenshot](./public/img/desktopTerraScreenshot.png)
 
 ## Setup/Installation Requirements
 
