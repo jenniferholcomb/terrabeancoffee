@@ -22,6 +22,13 @@
 ![Screenshot](./public/img/terrabeanMobileScreen2.png)
 ![Screenshot](./public/img/desktopTerraScreenshot.png)
 
+### Mobile View  
+<img src="/img/terrabeanMobileScreen1.png" alt="Mobile Screenshot" width="400"/>
+
+### Desktop View  
+<img src="/img/desktopTerraScreenshot.png" alt="Desktop Screenshot" width="700"/>  
+
+
 ## Setup/Installation Requirements
 
 * Clone this repository to your desktop.
