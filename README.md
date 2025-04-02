@@ -16,6 +16,12 @@
 
 #### A coffee bean roasters website, this project was a practice in design, as well as front end programming. Application has full CRUD capability, a shopping cart, navigation bar, and explores movement of UI elements with scrolling. Designed in Figma, with AI images, graphics, and logo manipulated in Photoshop. The origins of this project are from an application prompt for tracking inventory for a small online retailer. Inventory functionality, as well as admin duties, are displayed on index cards.
 
+## Screenshots
+
+![Screenshot](./img/terrabeanMobileScreen1.png)
+![Screenshot](./img/terrabeanMobileScreen2.png)
+![Screenshot](./img/desktopTerraScreenshot.png)
+
 ## Setup/Installation Requirements
 
 * Clone this repository to your desktop.
@@ -58,4 +64,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 👤 Jennifer Holcomb  
 📧 Email: jenniferlholcomb@gmail.com  
 🖥️ [Portfolio Website](https://jenholcomb.netlify.app) 
-🔗 [LinkedIn] (https://www.linkedin.com/in/jennifer-holcomb-pdx/)
+🔗 [LinkedIn](https://www.linkedin.com/in/jennifer-holcomb-pdx/)
