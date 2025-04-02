@@ -2,7 +2,9 @@
 
 **Live Demo:** 👉 [View on Netlify](https://terrabeancoffee.netlify.app)  
 
-#### Conceptual ecommerce website with inventory management, CRUD functionality, and shopping cart.
+#### A coffee bean roasters website, this project was a practice in design, as well as front end programming. Application has full CRUD capability, a shopping cart, navigation bar, and explores movement of UI elements with scrolling. Designed in Figma, with AI images, graphics, and logo manipulated in Photoshop. The origins of this project are from an application prompt for tracking inventory for a small online retailer. Inventory functionality, as well as admin duties, are displayed on index cards.
+
+---
 
 ## Technologies Used
 
@@ -14,7 +16,12 @@
 - 📦 npm
 - 🔍 eslint
 
-#### A coffee bean roasters website, this project was a practice in design, as well as front end programming. Application has full CRUD capability, a shopping cart, navigation bar, and explores movement of UI elements with scrolling. Designed in Figma, with AI images, graphics, and logo manipulated in Photoshop. The origins of this project are from an application prompt for tracking inventory for a small online retailer. Inventory functionality, as well as admin duties, are displayed on index cards.
+### **Design Tools**
+- <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" width="20"> Figma
+- <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Illustrator" width="20"> Illustrator
+- <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop" width="20"> Photoshop
+
+---
 
 ## Screenshots
 
@@ -28,6 +35,8 @@
 <p align="center">
   <img src="./public/img/desktopTerraScreenshot.png" alt="Desktop Screenshot" width="700"/>  
 </p>
+
+---
 
 ## Setup/Installation Requirements
 
@@ -53,6 +62,8 @@ Contributions are welcome! To contribute:
 3. Commit your changes (`git commit -m 'Add new feature'`).
 4. Push to the branch (`git push origin feature-branch`).
 5. Open a Pull Request.
+
+---
 
 ## License
 
