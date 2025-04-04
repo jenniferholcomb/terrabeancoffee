@@ -2718,7 +2718,7 @@ label {
 
   .homePortrait, .homeLandscape {
     grid-template-columns: 11.25rem 1fr 11.25rem;
-    height: 51rem;
+    height: 54rem;
   }
 
   .menuContent {
@@ -2796,6 +2796,7 @@ label {
   
   .homeContent {
     margin: 2rem 0 2rem 0;
+    padding-bottom: 1rem;
   }
 
   .homeRow1 {
@@ -3065,6 +3066,7 @@ label {
   }
 
   .homeContent {
+    display: flex;
     margin: 2rem 0;
     padding-bottom: 0;
   }
@@ -3076,7 +3078,7 @@ label {
 
   .homeImages {
     min-height: 100%;
-    padding: 1rem 0;
+    padding: 0;
   }
 
   .homeImages img:first-of-type, .homeImages img:nth-of-type(2) {  
