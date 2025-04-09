@@ -34,8 +34,8 @@ function Item(props) {
               <circle cx="34.5" cy="40.5" r="30.5" />
             </clipPath>
             <defs>
-              <filter id="filter0_d_286_3" x="0" y="0" width="71" height="71" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <filter id="filter0_d_286_3" x="0" y="0" width="71" height="71" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                 <feOffset dx="1" dy="-2"/>
                 <feGaussianBlur stdDeviation="2.5"/>

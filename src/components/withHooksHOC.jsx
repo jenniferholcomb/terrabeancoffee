@@ -26,7 +26,7 @@ export const withHooksHOC = (Component) => {
 
     const translateY = scrollY > 300 ? "65rem" : "0rem";
     const translateYNrw = scrollY > 225 ? "55.5rem" : "0rem";
-    const translateYTablet = scrollY > 150 ? "50.75rem" : "0rem";
+    const translateYTablet = scrollY > 150 ? "53.5rem" : "0rem";
     const translateYTabletPor = scrollY > 150 ? "57.5rem" : "0rem";
     // const translateYMobile = scrollY > 150 ? "51.8rem" : "0rem";
     const translateYMobile = scrollY > 150 ? `${section1Height}px` : "0rem";
@@ -42,7 +42,7 @@ export const withHooksHOC = (Component) => {
 
     const logoTranslateY = scrollY > 375 ? "51.5rem" : "0rem";
     const logoTranslateYNrw = scrollY > 300 ? "48rem" : "0rem";
-    const logoTranslateYTablet = scrollY > 275 ? "42.75rem" : "0rem";
+    const logoTranslateYTablet = scrollY > 275 ? "46.75rem" : "0rem";
     const logoTranslateYTabletPor = scrollY > 275 ? "53.5rem" : "0rem";
     const logoTranslateYMobile = scrollY > 250 ? `${(section2Height + section1bHeight + 35.2 + 310 )}px` : "0rem";
     

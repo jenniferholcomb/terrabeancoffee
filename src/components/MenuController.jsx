@@ -362,8 +362,8 @@ class MenuController extends React.Component {
                       this.state.newItemFormVisible || this.state.editItemFormVisible || this.state.deleteWarningVisible || this.state.cartVisible || this.state.checkoutCompleteVisible || this.state.selectedItem !== null ?
                         <div className="disabled"></div>
                       :
-                        [...Array(3)].map((_) => (
-                          <object className={`${isScrolledMobileB ? "menuShop" : ""}`}></object>
+                        [...Array(3)].map((_, index) => (
+                          <object className={`${isScrolledMobileB ? "menuShop" : ""}`} key={index}></object>
                         ))
                     }
                   </div>  
